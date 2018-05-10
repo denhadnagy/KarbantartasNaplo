@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		653506A320A4891000CD611C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506A220A4891000CD611C /* AppDelegate.swift */; };
+		653506A520A4891000CD611C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506A420A4891000CD611C /* ViewController.swift */; };
+		653506A820A4891000CD611C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653506A620A4891000CD611C /* Main.storyboard */; };
+		653506AA20A4891100CD611C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 653506A920A4891100CD611C /* Assets.xcassets */; };
+		653506AD20A4891100CD611C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653506AB20A4891100CD611C /* LaunchScreen.storyboard */; };
+		653506B820A4891100CD611C /* KarbantartasNaploTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506B720A4891100CD611C /* KarbantartasNaploTests.swift */; };
+		653506C320A4891100CD611C /* KarbantartasNaploUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506C220A4891100CD611C /* KarbantartasNaploUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		653506B420A4891100CD611C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6535069720A4891000CD611C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6535069E20A4891000CD611C;
+			remoteInfo = KarbantartasNaplo;
+		};
+		653506BF20A4891100CD611C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6535069720A4891000CD611C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6535069E20A4891000CD611C;
+			remoteInfo = KarbantartasNaplo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6535069F20A4891000CD611C /* KarbantartasNaplo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KarbantartasNaplo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		653506A220A4891000CD611C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		653506A420A4891000CD611C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		653506A720A4891000CD611C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		653506A920A4891100CD611C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		653506AC20A4891100CD611C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		653506AE20A4891100CD611C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		653506B320A4891100CD611C /* KarbantartasNaploTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarbantartasNaploTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		653506B720A4891100CD611C /* KarbantartasNaploTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarbantartasNaploTests.swift; sourceTree = "<group>"; };
+		653506B920A4891100CD611C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		653506BE20A4891100CD611C /* KarbantartasNaploUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarbantartasNaploUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		653506C220A4891100CD611C /* KarbantartasNaploUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarbantartasNaploUITests.swift; sourceTree = "<group>"; };
+		653506C420A4891100CD611C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6535069C20A4891000CD611C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653506B020A4891100CD611C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653506BB20A4891100CD611C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6535069620A4891000CD611C = {
+			isa = PBXGroup;
+			children = (
+				653506A120A4891000CD611C /* KarbantartasNaplo */,
+				653506B620A4891100CD611C /* KarbantartasNaploTests */,
+				653506C120A4891100CD611C /* KarbantartasNaploUITests */,
+				653506A020A4891000CD611C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		653506A020A4891000CD611C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6535069F20A4891000CD611C /* KarbantartasNaplo.app */,
+				653506B320A4891100CD611C /* KarbantartasNaploTests.xctest */,
+				653506BE20A4891100CD611C /* KarbantartasNaploUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		653506A120A4891000CD611C /* KarbantartasNaplo */ = {
+			isa = PBXGroup;
+			children = (
+				653506A220A4891000CD611C /* AppDelegate.swift */,
+				653506A420A4891000CD611C /* ViewController.swift */,
+				653506A620A4891000CD611C /* Main.storyboard */,
+				653506A920A4891100CD611C /* Assets.xcassets */,
+				653506AB20A4891100CD611C /* LaunchScreen.storyboard */,
+				653506AE20A4891100CD611C /* Info.plist */,
+			);
+			path = KarbantartasNaplo;
+			sourceTree = "<group>";
+		};
+		653506B620A4891100CD611C /* KarbantartasNaploTests */ = {
+			isa = PBXGroup;
+			children = (
+				653506B720A4891100CD611C /* KarbantartasNaploTests.swift */,
+				653506B920A4891100CD611C /* Info.plist */,
+			);
+			path = KarbantartasNaploTests;
+			sourceTree = "<group>";
+		};
+		653506C120A4891100CD611C /* KarbantartasNaploUITests */ = {
+			isa = PBXGroup;
+			children = (
+				653506C220A4891100CD611C /* KarbantartasNaploUITests.swift */,
+				653506C420A4891100CD611C /* Info.plist */,
+			);
+			path = KarbantartasNaploUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6535069E20A4891000CD611C /* KarbantartasNaplo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653506C720A4891100CD611C /* Build configuration list for PBXNativeTarget "KarbantartasNaplo" */;
+			buildPhases = (
+				6535069B20A4891000CD611C /* Sources */,
+				6535069C20A4891000CD611C /* Frameworks */,
+				6535069D20A4891000CD611C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KarbantartasNaplo;
+			productName = KarbantartasNaplo;
+			productReference = 6535069F20A4891000CD611C /* KarbantartasNaplo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		653506B220A4891100CD611C /* KarbantartasNaploTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653506CA20A4891100CD611C /* Build configuration list for PBXNativeTarget "KarbantartasNaploTests" */;
+			buildPhases = (
+				653506AF20A4891100CD611C /* Sources */,
+				653506B020A4891100CD611C /* Frameworks */,
+				653506B120A4891100CD611C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653506B520A4891100CD611C /* PBXTargetDependency */,
+			);
+			name = KarbantartasNaploTests;
+			productName = KarbantartasNaploTests;
+			productReference = 653506B320A4891100CD611C /* KarbantartasNaploTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		653506BD20A4891100CD611C /* KarbantartasNaploUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653506CD20A4891100CD611C /* Build configuration list for PBXNativeTarget "KarbantartasNaploUITests" */;
+			buildPhases = (
+				653506BA20A4891100CD611C /* Sources */,
+				653506BB20A4891100CD611C /* Frameworks */,
+				653506BC20A4891100CD611C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653506C020A4891100CD611C /* PBXTargetDependency */,
+			);
+			name = KarbantartasNaploUITests;
+			productName = KarbantartasNaploUITests;
+			productReference = 653506BE20A4891100CD611C /* KarbantartasNaploUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6535069720A4891000CD611C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = Daniel;
+				TargetAttributes = {
+					6535069E20A4891000CD611C = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					653506B220A4891100CD611C = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 6535069E20A4891000CD611C;
+					};
+					653506BD20A4891100CD611C = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 6535069E20A4891000CD611C;
+					};
+				};
+			};
+			buildConfigurationList = 6535069A20A4891000CD611C /* Build configuration list for PBXProject "KarbantartasNaplo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6535069620A4891000CD611C;
+			productRefGroup = 653506A020A4891000CD611C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6535069E20A4891000CD611C /* KarbantartasNaplo */,
+				653506B220A4891100CD611C /* KarbantartasNaploTests */,
+				653506BD20A4891100CD611C /* KarbantartasNaploUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6535069D20A4891000CD611C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653506AD20A4891100CD611C /* LaunchScreen.storyboard in Resources */,
+				653506AA20A4891100CD611C /* Assets.xcassets in Resources */,
+				653506A820A4891000CD611C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653506B120A4891100CD611C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653506BC20A4891100CD611C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6535069B20A4891000CD611C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653506A520A4891000CD611C /* ViewController.swift in Sources */,
+				653506A320A4891000CD611C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653506AF20A4891100CD611C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653506B820A4891100CD611C /* KarbantartasNaploTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653506BA20A4891100CD611C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653506C320A4891100CD611C /* KarbantartasNaploUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		653506B520A4891100CD611C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6535069E20A4891000CD611C /* KarbantartasNaplo */;
+			targetProxy = 653506B420A4891100CD611C /* PBXContainerItemProxy */;
+		};
+		653506C020A4891100CD611C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6535069E20A4891000CD611C /* KarbantartasNaplo */;
+			targetProxy = 653506BF20A4891100CD611C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		653506A620A4891000CD611C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				653506A720A4891000CD611C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		653506AB20A4891100CD611C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				653506AC20A4891100CD611C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		653506C520A4891100CD611C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		653506C620A4891100CD611C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		653506C820A4891100CD611C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KarbantartasNaplo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hu.daniel.KarbantartasNaplo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		653506C920A4891100CD611C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KarbantartasNaplo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hu.daniel.KarbantartasNaplo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		653506CB20A4891100CD611C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KarbantartasNaploTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hu.daniel.KarbantartasNaploTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KarbantartasNaplo.app/KarbantartasNaplo";
+			};
+			name = Debug;
+		};
+		653506CC20A4891100CD611C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KarbantartasNaploTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hu.daniel.KarbantartasNaploTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KarbantartasNaplo.app/KarbantartasNaplo";
+			};
+			name = Release;
+		};
+		653506CE20A4891100CD611C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KarbantartasNaploUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hu.daniel.KarbantartasNaploUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KarbantartasNaplo;
+			};
+			name = Debug;
+		};
+		653506CF20A4891100CD611C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KarbantartasNaploUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hu.daniel.KarbantartasNaploUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KarbantartasNaplo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6535069A20A4891000CD611C /* Build configuration list for PBXProject "KarbantartasNaplo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653506C520A4891100CD611C /* Debug */,
+				653506C620A4891100CD611C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653506C720A4891100CD611C /* Build configuration list for PBXNativeTarget "KarbantartasNaplo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653506C820A4891100CD611C /* Debug */,
+				653506C920A4891100CD611C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653506CA20A4891100CD611C /* Build configuration list for PBXNativeTarget "KarbantartasNaploTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653506CB20A4891100CD611C /* Debug */,
+				653506CC20A4891100CD611C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653506CD20A4891100CD611C /* Build configuration list for PBXNativeTarget "KarbantartasNaploUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653506CE20A4891100CD611C /* Debug */,
+				653506CF20A4891100CD611C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6535069720A4891000CD611C /* Project object */;
+}
