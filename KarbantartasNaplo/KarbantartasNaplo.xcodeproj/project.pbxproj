@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65232EB420B2DA6E00B8BD20 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65232EB320B2DA6E00B8BD20 /* SignUpViewController.swift */; };
 		653506A320A4891000CD611C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506A220A4891000CD611C /* AppDelegate.swift */; };
-		653506A520A4891000CD611C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506A420A4891000CD611C /* ViewController.swift */; };
+		653506A520A4891000CD611C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506A420A4891000CD611C /* LoginViewController.swift */; };
 		653506A820A4891000CD611C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653506A620A4891000CD611C /* Main.storyboard */; };
 		653506AA20A4891100CD611C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 653506A920A4891100CD611C /* Assets.xcassets */; };
 		653506AD20A4891100CD611C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653506AB20A4891100CD611C /* LaunchScreen.storyboard */; };
@@ -34,9 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65232EB320B2DA6E00B8BD20 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6535069F20A4891000CD611C /* KarbantartasNaplo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KarbantartasNaplo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		653506A220A4891000CD611C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		653506A420A4891000CD611C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		653506A420A4891000CD611C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		653506A720A4891000CD611C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		653506A920A4891100CD611C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		653506AC20A4891100CD611C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65232EB220B2D9E200B8BD20 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				653506A420A4891000CD611C /* LoginViewController.swift */,
+				65232EB320B2DA6E00B8BD20 /* SignUpViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		6535069620A4891000CD611C = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +108,8 @@
 		653506A120A4891000CD611C /* KarbantartasNaplo */ = {
 			isa = PBXGroup;
 			children = (
+				65232EB220B2D9E200B8BD20 /* ViewController */,
 				653506A220A4891000CD611C /* AppDelegate.swift */,
-				653506A420A4891000CD611C /* ViewController.swift */,
 				653506A620A4891000CD611C /* Main.storyboard */,
 				653506A920A4891100CD611C /* Assets.xcassets */,
 				653506AB20A4891100CD611C /* LaunchScreen.storyboard */,
@@ -256,7 +267,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				653506A520A4891000CD611C /* ViewController.swift in Sources */,
+				65232EB420B2DA6E00B8BD20 /* SignUpViewController.swift in Sources */,
+				653506A520A4891000CD611C /* LoginViewController.swift in Sources */,
 				653506A320A4891000CD611C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,7 +442,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KarbantartasNaplo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -438,6 +452,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hu.daniel.KarbantartasNaplo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,7 +462,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KarbantartasNaplo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,6 +472,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hu.daniel.KarbantartasNaplo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
