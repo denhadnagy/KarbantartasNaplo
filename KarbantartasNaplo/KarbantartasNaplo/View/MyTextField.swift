@@ -61,9 +61,10 @@ class MyTextField: UIView, UITextFieldDelegate {
     
     private func commonInit() {
         Bundle.main.loadNibNamed("MyTextField", owner: self, options: nil)
+        addSubview(stackView)
+        
         stackView.frame = self.bounds
         stackView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        addSubview(stackView)
         
         textField.delegate = self
         
@@ -71,6 +72,7 @@ class MyTextField: UIView, UITextFieldDelegate {
         activeLineView.frame.size.width = 0
     }
     
+    //MARK: - Standard functions
     override func layoutSubviews() {
         if activeLineView.frame.size.width > 0 { activeLineView.frame.size.width = frame.size.width }
     }

@@ -10,36 +10,37 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextViewDelegate {
     //MARK: - Outlets
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var loginLabel: UILabel!
-    @IBOutlet weak var loginStackView: UIStackView!
-    @IBOutlet weak var emailTextField: MyTextField!
-    @IBOutlet weak var passwordTextField: MyTextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signUpTextView: UITextView!
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var loginLabel: UILabel!
+    @IBOutlet private weak var emailTextField: MyTextField!
+    @IBOutlet private weak var passwordTextField: MyTextField!
+    @IBOutlet private weak var loginFailedLabel: UILabel!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var signUpTextView: UITextView!
     
-    @IBOutlet weak var logoImageViewTopCR: NSLayoutConstraint!
-    @IBOutlet weak var logoImageViewHeightCR: NSLayoutConstraint!
-    @IBOutlet weak var loginLabelTopCR: NSLayoutConstraint!
+    @IBOutlet private weak var logoImageViewTopCR: NSLayoutConstraint!
+    @IBOutlet private weak var logoImageViewHeightCR: NSLayoutConstraint!
+    @IBOutlet private weak var loginLabelTopCR: NSLayoutConstraint!
     
-    @IBOutlet weak var loginLabelTopRC: NSLayoutConstraint!
-    @IBOutlet weak var loginLabelBottomRC: NSLayoutConstraint!
+    @IBOutlet private weak var loginLabelTopRC: NSLayoutConstraint!
+    @IBOutlet private weak var loginLabelBottomRC: NSLayoutConstraint!
     
-    @IBOutlet weak var loginLabelTopCC: NSLayoutConstraint!
-    @IBOutlet weak var loginLabelBottomCC: NSLayoutConstraint!
+    @IBOutlet private weak var loginLabelTopCC: NSLayoutConstraint!
+    @IBOutlet private weak var loginLabelBottomCC: NSLayoutConstraint!
     
-    var isKeyboardShown = false
-    var isRotatingWithKeyboard = false
+    //MARK: - Properties
+    private var isKeyboardShown = false
+    private var isRotatingWithKeyboard = false
     
     //MARK: - Standard functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.image = UIImage(named: "icons8-new-post-100")
+        emailTextField.image = UIImage(named: "icons8-new-post")
         emailTextField.placeholder = "Email"
         emailTextField.activeLineColor = Constants.color
         
-        passwordTextField.image = UIImage(named: "icons8-lock-100")
+        passwordTextField.image = UIImage(named: "icons8-lock")
         passwordTextField.placeholder = "Password"
         passwordTextField.isSecureTextEntry = true
         passwordTextField.activeLineColor = Constants.color
@@ -76,7 +77,7 @@ class LoginViewController: UIViewController, UITextViewDelegate {
         if isKeyboardShown { isRotatingWithKeyboard = true }
     }
     
-    @objc func keyboardWillShow(notification: Notification) {
+    @objc private func keyboardWillShow(notification: Notification) {
         var smallerBounds = loginLabel.bounds
         loginLabel.font = loginLabel.font.withSize(16)
         smallerBounds.size = loginLabel.intrinsicContentSize
@@ -86,7 +87,7 @@ class LoginViewController: UIViewController, UITextViewDelegate {
         loginLabel.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         loginLabel.bounds = smallerBounds
         
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.2) {
             self.logoImageViewTopCR.constant = 10
             self.logoImageViewHeightCR.constant = 48
             self.loginLabelTopCR.constant = 5
@@ -94,18 +95,17 @@ class LoginViewController: UIViewController, UITextViewDelegate {
             self.loginLabelBottomRC.constant = 10
             self.loginLabelTopCC.constant = 10
             self.loginLabelBottomCC.constant = 5
-            self.loginStackView.spacing = 10
             
             self.loginLabel.transform = .identity
             
             self.view.layoutIfNeeded()
-        })
+        }
         
         isKeyboardShown = true
         if isRotatingWithKeyboard { isRotatingWithKeyboard = false }
     }
     
-    @objc func keyboardWillHide(notification: Notification) {
+    @objc private func keyboardWillHide(notification: Notification) {
         if isRotatingWithKeyboard { return }
         
         var biggerBounds = loginLabel.bounds
@@ -117,7 +117,7 @@ class LoginViewController: UIViewController, UITextViewDelegate {
         loginLabel.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         loginLabel.bounds = biggerBounds
         
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.2) {
             self.logoImageViewTopCR.constant = 50
             self.logoImageViewHeightCR.constant = 96
             self.loginLabelTopCR.constant = 20
@@ -125,12 +125,11 @@ class LoginViewController: UIViewController, UITextViewDelegate {
             self.loginLabelBottomRC.constant = 50
             self.loginLabelTopCC.constant = 39
             self.loginLabelBottomCC.constant = 30
-            self.loginStackView.spacing = 20
             
             self.loginLabel.transform = .identity
             
             self.view.layoutIfNeeded()
-        })
+        }
         
         isKeyboardShown = false
     }
@@ -145,6 +144,17 @@ class LoginViewController: UIViewController, UITextViewDelegate {
     
     //MARK: - Actions
     @IBAction func loginButtonTouchUpInside(_ sender: UIButton) {
-        
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            DataCenter.shared.loginUser(email: email, password: password) { success, errorMessage in
+                if success {
+                    //TODO:
+                } else {
+                    self.loginFailedLabel.text = errorMessage!
+                    UIView.animate(withDuration: 0.2) {
+                        self.loginFailedLabel.alpha = 1
+                    }
+                }
+            }
+        }
     }
 }

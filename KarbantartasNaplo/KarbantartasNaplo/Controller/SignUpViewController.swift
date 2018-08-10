@@ -10,41 +10,42 @@ import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Outlets
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var signUpLabel: UILabel!
-    @IBOutlet weak var signUpStackView: UIStackView!
-    @IBOutlet weak var emailTextField: MyTextField!
-    @IBOutlet weak var passwordTextField: MyTextField!
-    @IBOutlet weak var passwordAgainTextField: MyTextField!
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var signUpLabel: UILabel!
+    @IBOutlet private weak var emailTextField: MyTextField!
+    @IBOutlet private weak var passwordTextField: MyTextField!
+    @IBOutlet private weak var passwordAgainTextField: MyTextField!
+    @IBOutlet private weak var signUpFailedLabel: UILabel!
+    @IBOutlet private weak var signUpButton: UIButton!
     
-    @IBOutlet weak var logoImageViewTopCR: NSLayoutConstraint!
-    @IBOutlet weak var logoImageViewHeightCR: NSLayoutConstraint!
-    @IBOutlet weak var signUpLabelTopCR: NSLayoutConstraint!
+    @IBOutlet private weak var logoImageViewTopCR: NSLayoutConstraint!
+    @IBOutlet private weak var logoImageViewHeightCR: NSLayoutConstraint!
+    @IBOutlet private weak var signUpLabelTopCR: NSLayoutConstraint!
     
-    @IBOutlet weak var signUpLabelTopRC: NSLayoutConstraint!
-    @IBOutlet weak var signUpLabelBottomRC: NSLayoutConstraint!
+    @IBOutlet private weak var signUpLabelTopRC: NSLayoutConstraint!
+    @IBOutlet private weak var signUpLabelBottomRC: NSLayoutConstraint!
     
-    @IBOutlet weak var signUpLabelTopCC: NSLayoutConstraint!
-    @IBOutlet weak var signUpLabelBottomCC: NSLayoutConstraint!
+    @IBOutlet private weak var signUpLabelTopCC: NSLayoutConstraint!
+    @IBOutlet private weak var signUpLabelBottomCC: NSLayoutConstraint!
     
-    var isKeyboardShown = false
-    var isRotatingWithKeyboard = false
+    //MARK: - Properties
+    private var isKeyboardShown = false
+    private var isRotatingWithKeyboard = false
 
     //MARK: - Standard functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emailTextField.image = UIImage(named: "icons8-new-post-100")
+        emailTextField.image = UIImage(named: "icons8-new-post")
         emailTextField.placeholder = "Email"
         emailTextField.activeLineColor = Constants.color
         
-        passwordTextField.image = UIImage(named: "icons8-lock-100")
+        passwordTextField.image = UIImage(named: "icons8-lock")
         passwordTextField.placeholder = "Password"
         passwordTextField.isSecureTextEntry = true
         passwordTextField.activeLineColor = Constants.color
         
-        passwordAgainTextField.image = UIImage(named: "icons8-lock-100")
+        passwordAgainTextField.image = UIImage(named: "icons8-lock")
         passwordAgainTextField.placeholder = "Password again"
         passwordAgainTextField.isSecureTextEntry = true
         passwordAgainTextField.activeLineColor = Constants.color
@@ -72,7 +73,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if isKeyboardShown { isRotatingWithKeyboard = true }
     }
     
-    @objc func keyboardWillShow(notification: Notification) {
+    @objc private func keyboardWillShow(notification: Notification) {
         var smallerBounds = signUpLabel.bounds
         signUpLabel.font = signUpLabel.font.withSize(16)
         smallerBounds.size = signUpLabel.intrinsicContentSize
@@ -90,7 +91,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.signUpLabelBottomRC.constant = 10
             self.signUpLabelTopCC.constant = 10
             self.signUpLabelBottomCC.constant = 5
-            self.signUpStackView.spacing = 10
             
             self.signUpLabel.transform = .identity
             
@@ -101,7 +101,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if isRotatingWithKeyboard { isRotatingWithKeyboard = false }
     }
     
-    @objc func keyboardWillHide(notification: Notification) {
+    @objc private func keyboardWillHide(notification: Notification) {
         if isRotatingWithKeyboard { return }
         
         var biggerBounds = signUpLabel.bounds
@@ -121,7 +121,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.signUpLabelBottomRC.constant = 30
             self.signUpLabelTopCC.constant = 39
             self.signUpLabelBottomCC.constant = 20
-            self.signUpStackView.spacing = 20
             
             self.signUpLabel.transform = .identity
             
@@ -137,6 +136,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func signUpButtonTouchUpInside(_ sender: UIButton) {
-        
+        if let email = emailTextField.text, let password = passwordTextField.text, let passwordAgain = passwordAgainTextField.text {
+            DataCenter.shared.signUpUser(email: email, password: password, passwordAgain: passwordAgain) { success, errorMessage in
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.signUpFailedLabel.text = errorMessage!
+                    UIView.animate(withDuration: 0.2) {
+                        self.signUpFailedLabel.alpha = 1
+                    }
+                }
+            }
+        }
     }
 }

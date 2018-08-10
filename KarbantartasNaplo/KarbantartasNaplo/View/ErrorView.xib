@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ErrorView" customModule="KarbantartasNaplo" customModuleProvider="target">
+            <connections>
+                <outlet property="errorDescriptionLabel" destination="e86-DR-LHM" id="5v4-9X-Oqy"/>
+                <outlet property="errorView" destination="iN0-l3-epB" id="SPG-ji-KFx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEE-b2-voj">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="js6-rW-XM1"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                    <state key="normal" image="icons8-delete-white"/>
+                    <connections>
+                        <action selector="closeButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="nE6-MI-D3o"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e86-DR-LHM">
+                    <rect key="frame" x="40" y="0.0" width="270" height="40"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="e86-DR-LHM" secondAttribute="bottom" id="4Nk-YE-gPs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e86-DR-LHM" secondAttribute="trailing" constant="40" id="AKy-Ya-Q51"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DEE-b2-voj" secondAttribute="bottom" id="Fxh-f4-sCF"/>
+                <constraint firstItem="DEE-b2-voj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RS9-3R-Bh2"/>
+                <constraint firstItem="e86-DR-LHM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="WZX-Aw-5DQ"/>
+                <constraint firstItem="e86-DR-LHM" firstAttribute="leading" secondItem="DEE-b2-voj" secondAttribute="trailing" id="dzr-lW-g5Q"/>
+                <constraint firstItem="DEE-b2-voj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oWh-wq-WFT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="12" y="-262"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icons8-delete-white" width="30" height="30"/>
+    </resources>
+</document>
