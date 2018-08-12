@@ -33,6 +33,21 @@ class NetworkManager {
         sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/updateDevice", method: .put, parameters: parameters, headers: nil, completion: completion)
     }
     
+    static func setDevicePeriod(device: Device, period: Int, completion: @escaping (Data?, Error?) -> Void) {
+        let parameters: [String: Any] = [
+            "number": device.number,
+            "id": device.id,
+            "token": device.token,
+            "name": device.name,
+            "itemNo": device.itemNo ?? NSNull(),
+            "operationTime": device.operationTime ?? NSNull(),
+            "period": period,
+            "lastService": device.lastService
+        ]
+        
+        sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/updateDevice", method: .put, parameters: parameters, headers: nil, completion: completion)
+    }
+    
     //MARK: - POST requests
     static func login(email: String, password: String, completion: @escaping (Data?, Error?) -> Void) {
         let headers = [

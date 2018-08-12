@@ -11,7 +11,9 @@ import UIKit
 class DetailsViewController: UIViewController, ErrorViewDelegate {
     //MARK: - Outlets
     @IBOutlet private var serviceView: UIView!
-    @IBOutlet private weak var serviceContinueButton: UIButton!
+    @IBOutlet private var setPeriodView: UIView!
+    @IBOutlet private weak var setPeriodLabel: UILabel!
+    @IBOutlet private weak var setPeriodSlider: UISlider!
     @IBOutlet private weak var detailsNavigationItem: UINavigationItem!
     @IBOutlet private weak var errorView: ErrorView!
     @IBOutlet private weak var nameLabel: UILabel!
@@ -26,7 +28,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     @IBOutlet private weak var errorViewTop: NSLayoutConstraint!
     
     //MARK: - Properties
-    private var serviceViewCenterY: NSLayoutConstraint!
+    private var popupViewCenterY: NSLayoutConstraint!
     private var visualEffectView: UIVisualEffectView!
     var delegate: DetailsViewControllerDelegate?
     var device: Device!
@@ -39,7 +41,11 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
         serviceView.layer.cornerRadius = 10
         serviceView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         serviceView.translatesAutoresizingMaskIntoConstraints = false
-        serviceContinueButton.layer.cornerRadius = 5
+        
+        setPeriodView.alpha = 0
+        setPeriodView.layer.cornerRadius = 10
+        setPeriodView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        setPeriodView.translatesAutoresizingMaskIntoConstraints = false
         
         errorView.delegate = self
         
@@ -67,13 +73,15 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if view.subviews.contains(serviceView) { closeServiceView() }
+        if view.subviews.contains(serviceView) { closePopupView(popupView: serviceView) }
+        if view.subviews.contains(setPeriodView) { closePopupView(popupView: setPeriodView) }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: { context in
-            if self.view.subviews.contains(self.serviceView) { self.setServiceViewPosition() }
+            if self.view.subviews.contains(self.serviceView) { self.setPopupViewPosition(popupView: self.serviceView) }
+            if self.view.subviews.contains(self.setPeriodView) { self.setPopupViewPosition(popupView: self.setPeriodView) }
         }, completion: nil)
     }
     
@@ -91,7 +99,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
         NSLayoutConstraint(item: serviceView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: serviceView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 240).isActive = true
         NSLayoutConstraint(item: serviceView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 160).isActive = true
-        setServiceViewPosition()
+        setPopupViewPosition(popupView: serviceView)
         
         UIView.animate(withDuration: 0.2) {
             self.visualEffectView.effect = UIBlurEffect(style: .dark)
@@ -101,7 +109,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     }
     
     @IBAction func serviceViewContinueButtonTouchUpInside(_ sender: UIButton) {
-        closeServiceView()
+        closePopupView(popupView: serviceView)
         NetworkManager.serviceDevice(device: device) { data, error in
             var errorMessage = "Kommunikációs hiba!"
             
@@ -118,6 +126,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
                                 
                                 self.operationTimeLabel.text = self.device.operationTime != nil ? "\(self.device.operationTime!) h" : "?"
                                 self.lastServiceLabel.text = dateFormatter.string(from: lastServiceDate)
+                                self.rateProgressView.progressLineColor = self.device.severity.color
                                 self.rateProgressView.value = self.device.rate ?? 0.0
                                 self.delegate?.deviceChanged()
                                 
@@ -140,32 +149,95 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     }
     
     @IBAction func serviceViewCloseButtonTouchUpInside(_ sender: UIButton) {
-        closeServiceView()
+        closePopupView(popupView: serviceView)
     }
     
     @IBAction func periodButtonTouchUpInside(_ sender: UIButton) {
+        visualEffectView = UIVisualEffectView()
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(visualEffectView)
+        NSLayoutConstraint(item: visualEffectView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: visualEffectView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: visualEffectView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: visualEffectView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
         
+        setPeriodLabel.text = "\(device.period) h"
+        setPeriodSlider.value = Float(device.period)
+        view.addSubview(setPeriodView)
+        NSLayoutConstraint(item: setPeriodView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: setPeriodView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 240).isActive = true
+        NSLayoutConstraint(item: setPeriodView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 160).isActive = true
+        setPopupViewPosition(popupView: setPeriodView)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.visualEffectView.effect = UIBlurEffect(style: .dark)
+            self.setPeriodView.transform = CGAffineTransform.identity
+            self.setPeriodView.alpha = 1
+        }
+    }
+    
+    @IBAction func setPeriodSliderValueChanged(_ sender: UISlider) {
+        setPeriodLabel.text = "\(Int(sender.value)) h"
+    }
+    
+    @IBAction func setPeriodViewOkButtonTouchUpInside(_ sender: UIButton) {
+        closePopupView(popupView: setPeriodView)
+        NetworkManager.setDevicePeriod(device: device, period: Int(setPeriodSlider.value)) { data, error in
+            var errorMessage = "Kommunikációs hiba!"
+            
+            if data != nil {
+                do {
+                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                        if let message = jsonData["message"] as? String {
+                            if message == "success" {
+                                self.device.setPeriod(period: Int(self.setPeriodSlider.value))
+                                
+                                self.periodLabel.text = "\(self.device.period) h"
+                                self.rateProgressView.progressLineColor = self.device.severity.color
+                                self.rateProgressView.value = self.device.rate ?? 0.0
+                                self.delegate?.deviceChanged()
+                                
+                                errorMessage = ""
+                            }
+                        }
+                    }
+                } catch { }
+            }
+            
+            if errorMessage != "" {
+                self.errorView.text = errorMessage
+                UIView.animate(withDuration: 0.4) {
+                    self.errorViewTop.constant = 0
+                }
+            } else {
+                self.closeErrorView()
+            }
+        }
+    }
+    
+    @IBAction func setPeriodViewCloseButtonTouchUpInside(_ sender: UIButton) {
+        closePopupView(popupView: setPeriodView)
     }
     
     //MARK: - Common functions
-    private func setServiceViewPosition() {
-        if serviceViewCenterY != nil {
-            serviceViewCenterY.isActive = false
-            serviceViewCenterY = nil
+    private func setPopupViewPosition(popupView: UIView) {
+        if popupViewCenterY != nil {
+            popupViewCenterY.isActive = false
+            popupViewCenterY = nil
         }
-        serviceViewCenterY = NSLayoutConstraint(item: serviceView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: -view.frame.origin.y / 2)
-        serviceViewCenterY.isActive = true
+        popupViewCenterY = NSLayoutConstraint(item: popupView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: -view.frame.origin.y / 2)
+        popupViewCenterY.isActive = true
     }
     
-    private func closeServiceView() {
+    private func closePopupView(popupView: UIView) {
         UIView.animate(withDuration: 0.2, animations: {
-            self.serviceView.alpha = 0
-            self.serviceView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            popupView.alpha = 0
+            popupView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.visualEffectView.effect = nil
         }) { completion in
             self.visualEffectView.removeFromSuperview()
             self.visualEffectView = nil
-            self.serviceView.removeFromSuperview()
+            popupView.removeFromSuperview()
         }
     }
     

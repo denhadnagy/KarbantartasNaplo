@@ -42,4 +42,8 @@ class Device: Codable {
         operationTime = 0
         lastService = Int(Date().timeIntervalSince1970)
     }
+    
+    func setPeriod(period: Int) {
+        self.period = period
+    }
 }

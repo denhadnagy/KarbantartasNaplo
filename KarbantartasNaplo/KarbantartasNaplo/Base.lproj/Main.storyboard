@@ -1113,9 +1113,11 @@
                         <outlet property="periodLabel" destination="A3z-bc-2t3" id="y0a-uU-KkW"/>
                         <outlet property="rateProgressView" destination="A7Y-NZ-XyE" id="vEx-x7-g35"/>
                         <outlet property="serviceButton" destination="gvL-Bm-qJ8" id="Pgf-xI-Hho"/>
-                        <outlet property="serviceContinueButton" destination="uUk-DF-tBY" id="AZ4-DW-dfC"/>
                         <outlet property="serviceView" destination="O94-YI-qfo" id="3TZ-jd-2Gy"/>
                         <outlet property="setPeriodButton" destination="Tit-TR-7Ir" id="KI7-hU-3Uf"/>
+                        <outlet property="setPeriodLabel" destination="MT5-Bm-hiN" id="0g0-do-WK1"/>
+                        <outlet property="setPeriodSlider" destination="3fY-4S-JwA" id="mao-JY-pNS"/>
+                        <outlet property="setPeriodView" destination="aSK-Gu-Bt1" id="Ox4-Az-IWI"/>
                         <outlet property="tokenLabel" destination="cPa-jJ-cgE" id="WcP-rK-qwe"/>
                     </connections>
                 </viewController>
@@ -1175,6 +1177,70 @@
                         <constraint firstItem="NQo-ws-0ee" firstAttribute="trailing" secondItem="uUk-DF-tBY" secondAttribute="trailing" constant="20" id="ypf-2f-C4J"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="NQo-ws-0ee"/>
+                </view>
+                <view contentMode="scaleToFill" id="aSK-Gu-Bt1">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="160"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0M-Cc-jXW">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="EoU-jN-oYA"/>
+                                <constraint firstAttribute="width" constant="40" id="jgD-dG-hyS"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" image="icons8-delete"/>
+                            <connections>
+                                <action selector="setPeriodViewCloseButtonTouchUpInside:" destination="PC0-Jc-guA" eventType="touchUpInside" id="Kxo-cj-Sg9"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periódus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="162-0q-I9F">
+                            <rect key="frame" x="86" y="10" width="68" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gy-jg-iLh">
+                            <rect key="frame" x="20" y="115" width="200" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="KDp-ch-eTe"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="Ok"/>
+                            <connections>
+                                <action selector="setPeriodViewOkButtonTouchUpInside:" destination="PC0-Jc-guA" eventType="touchUpInside" id="ZZJ-2Q-RKz"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MT5-Bm-hiN">
+                            <rect key="frame" x="10" y="40" width="220" height="33.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="9999" translatesAutoresizingMaskIntoConstraints="NO" id="3fY-4S-JwA">
+                            <rect key="frame" x="18" y="78.5" width="204" height="31"/>
+                            <connections>
+                                <action selector="setPeriodSliderValueChanged:" destination="PC0-Jc-guA" eventType="valueChanged" id="Q5G-n9-l8l"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.69820205479452058" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="F2U-bH-BeH" firstAttribute="trailing" secondItem="3fY-4S-JwA" secondAttribute="trailing" constant="20" id="1At-fq-zUD"/>
+                        <constraint firstItem="MT5-Bm-hiN" firstAttribute="top" secondItem="F0M-Cc-jXW" secondAttribute="bottom" id="4AV-n1-WGg"/>
+                        <constraint firstItem="162-0q-I9F" firstAttribute="centerX" secondItem="F2U-bH-BeH" secondAttribute="centerX" id="5U6-7X-jAY"/>
+                        <constraint firstItem="MT5-Bm-hiN" firstAttribute="leading" secondItem="F2U-bH-BeH" secondAttribute="leading" constant="10" id="6fA-Gj-MG8"/>
+                        <constraint firstItem="F2U-bH-BeH" firstAttribute="trailing" secondItem="MT5-Bm-hiN" secondAttribute="trailing" constant="10" id="EYb-yJ-8Sl"/>
+                        <constraint firstItem="8Gy-jg-iLh" firstAttribute="leading" secondItem="F2U-bH-BeH" secondAttribute="leading" constant="20" id="FaF-2y-XOg"/>
+                        <constraint firstItem="3fY-4S-JwA" firstAttribute="leading" secondItem="F2U-bH-BeH" secondAttribute="leading" constant="20" id="LCe-GB-mzT"/>
+                        <constraint firstItem="3fY-4S-JwA" firstAttribute="top" secondItem="MT5-Bm-hiN" secondAttribute="bottom" constant="5" id="LEh-YF-VgO"/>
+                        <constraint firstItem="F0M-Cc-jXW" firstAttribute="top" secondItem="F2U-bH-BeH" secondAttribute="top" id="LSX-LI-lwP"/>
+                        <constraint firstItem="162-0q-I9F" firstAttribute="top" secondItem="F2U-bH-BeH" secondAttribute="top" constant="10" id="NZo-X3-hzH"/>
+                        <constraint firstAttribute="trailing" secondItem="8Gy-jg-iLh" secondAttribute="trailing" constant="20" id="VbX-Cb-SMk"/>
+                        <constraint firstItem="F0M-Cc-jXW" firstAttribute="leading" secondItem="F2U-bH-BeH" secondAttribute="leading" id="Wmh-WQ-OiQ"/>
+                        <constraint firstItem="F2U-bH-BeH" firstAttribute="bottom" secondItem="8Gy-jg-iLh" secondAttribute="bottom" constant="10" id="yvf-8w-JWi"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="F2U-bH-BeH"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="3254.5774647887324" y="28.125"/>
