@@ -49,6 +49,16 @@ class NetworkManager {
     }
     
     //MARK: - POST requests
+    static func addNoteToDevice(device: Device, creationDate: Int, comment: String, completion: @escaping (Data?, Error?) -> Void) {
+        let parameters: [String: Any] = [
+            "deviceId": device.id,
+            "creationDate": creationDate,
+            "comment": comment
+        ]
+        
+        sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/addNoteToDevice", method: .post, parameters: parameters, headers: nil, completion: completion)
+    }
+    
     static func login(email: String, password: String, completion: @escaping (Data?, Error?) -> Void) {
         let headers = [
             "hardwareId": UIDevice.current.identifierForVendor!.uuidString,
@@ -78,11 +88,21 @@ class NetworkManager {
         sendRequest(to: "http://138.197.187.213/itacademy/register", method: .post, parameters: parameters, headers: headers, completion: completion)
     }
     
+    //MARK: - DELETE requests
+    static func deleteNoteOfDevice(device: Device, creationDate: Int, completion: @escaping (Data?, Error?) -> Void) {
+        let parameters: [String: Any] = [
+            "deviceId": device.id,
+            "creationDate": creationDate
+        ]
+        
+        sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/deleteNoteOfDevice", method: .delete, parameters: parameters, headers: nil, completion: completion)
+    }
+    
     //MARK: - Send request function
     private static func sendRequest(to url: String, method: HTTPMethod, parameters: Parameters?, headers: HTTPHeaders?, completion: @escaping (Data?, Error?) -> Void) {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 2
-        configuration.timeoutIntervalForResource = 2
+        configuration.timeoutIntervalForRequest = 5
+        configuration.timeoutIntervalForResource = 5
         manager = Alamofire.SessionManager(configuration: configuration)
         
         manager!.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in

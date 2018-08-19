@@ -14,7 +14,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     @IBOutlet private var setPeriodView: UIView!
     @IBOutlet private weak var setPeriodLabel: UILabel!
     @IBOutlet private weak var setPeriodSlider: UISlider!
-    @IBOutlet private weak var detailsNavigationItem: UINavigationItem!
+    @IBOutlet private weak var setPeriodOkButton: UIButton!
     @IBOutlet private weak var errorView: ErrorView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var tokenLabel: UILabel!
@@ -30,7 +30,8 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     //MARK: - Properties
     private var popupViewCenterY: NSLayoutConstraint!
     private var visualEffectView: UIVisualEffectView!
-    var delegate: DetailsViewControllerDelegate?
+    var delegateInDevicesViewController: DetailsViewControllerDelegate?
+    var delegateInNotesViewController: DetailsViewControllerDelegate?
     var device: Device!
     
     //MARK: - Standard functions
@@ -62,8 +63,10 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
         lastServiceLabel.text = dateFormatter.string(from: lastServiceDate)
         serviceButton.layer.cornerRadius = 5
         serviceButton.backgroundColor = Constants.color
+        serviceButton.isEnabled = device.operationTime != nil   //TODO:
         setPeriodButton.layer.cornerRadius = 5
         setPeriodButton.backgroundColor = Constants.color
+        setPeriodButton.isEnabled = true    //TODO:
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +76,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        if errorViewTop.constant == 0 { hideErrorView() }
         if view.subviews.contains(serviceView) { closePopupView(popupView: serviceView) }
         if view.subviews.contains(setPeriodView) { closePopupView(popupView: setPeriodView) }
     }
@@ -80,9 +84,17 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: { context in
-            if self.view.subviews.contains(self.serviceView) { self.setPopupViewPosition(popupView: self.serviceView) }
-            if self.view.subviews.contains(self.setPeriodView) { self.setPopupViewPosition(popupView: self.setPeriodView) }
+            if self.view.subviews.contains(self.serviceView) { self.setPopupViewPosition(forPopupView: self.serviceView) }
+            if self.view.subviews.contains(self.setPeriodView) { self.setPopupViewPosition(forPopupView: self.setPeriodView) }
         }, completion: nil)
+    }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? NotesViewController {
+            delegateInNotesViewController = vc
+            vc.device = device
+        }
     }
     
     //MARK: - Actions
@@ -99,7 +111,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
         NSLayoutConstraint(item: serviceView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: serviceView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 240).isActive = true
         NSLayoutConstraint(item: serviceView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 160).isActive = true
-        setPopupViewPosition(popupView: serviceView)
+        setPopupViewPosition(forPopupView: serviceView)
         
         UIView.animate(withDuration: 0.2) {
             self.visualEffectView.effect = UIBlurEffect(style: .dark)
@@ -112,6 +124,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
         closePopupView(popupView: serviceView)
         NetworkManager.serviceDevice(device: device) { data, error in
             var errorMessage = "Kommunikációs hiba!"
+            let oldOperationTime = self.device.operationTime
             
             if data != nil {
                 do {
@@ -128,7 +141,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
                                 self.lastServiceLabel.text = dateFormatter.string(from: lastServiceDate)
                                 self.rateProgressView.progressLineColor = self.device.severity.color
                                 self.rateProgressView.value = self.device.rate ?? 0.0
-                                self.delegate?.deviceChanged()
+                                self.delegateInDevicesViewController?.deviceChanged()
                                 
                                 errorMessage = ""
                             }
@@ -137,13 +150,38 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
                 } catch { }
             }
             
-            if errorMessage != "" {
-                self.errorView.text = errorMessage
-                UIView.animate(withDuration: 0.4) {
-                    self.errorViewTop.constant = 0
+            if errorMessage.isEmpty {
+                let comment = """
+                Üzemidő nullázása.
+                Előző karbantartás óta eltelt üzemidő: \(oldOperationTime != nil ? String(oldOperationTime!) : "?") h.
+                Karbantartási periódus: \(self.device.period) h.
+                """
+                NetworkManager.addNoteToDevice(device: self.device, creationDate: self.device.lastService, comment: comment) { data, error in
+                    errorMessage = "Kommunikációs hiba!"
+                    
+                    if data != nil {
+                        do {
+                            if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                                if let message = jsonData["message"] as? String {
+                                    if message == "success" {
+                                        self.device.addNote(date: Date(timeIntervalSince1970: TimeInterval(self.device.lastService)), comment: comment)
+                                        self.delegateInNotesViewController?.deviceChanged()
+                                        
+                                        errorMessage = ""
+                                    }
+                                }
+                            }
+                        } catch { }
+                    }
+                    
+                    if errorMessage.isEmpty {
+                        DispatchQueue.main.async { self.hideErrorView() }
+                    } else {
+                        DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
+                    }
                 }
             } else {
-                self.closeErrorView()
+                DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
             }
         }
     }
@@ -163,11 +201,12 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
         
         setPeriodLabel.text = "\(device.period) h"
         setPeriodSlider.value = Float(device.period)
+        setPeriodOkButton.isEnabled = false
         view.addSubview(setPeriodView)
         NSLayoutConstraint(item: setPeriodView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: setPeriodView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 240).isActive = true
         NSLayoutConstraint(item: setPeriodView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 160).isActive = true
-        setPopupViewPosition(popupView: setPeriodView)
+        setPopupViewPosition(forPopupView: setPeriodView)
         
         UIView.animate(withDuration: 0.2) {
             self.visualEffectView.effect = UIBlurEffect(style: .dark)
@@ -177,13 +216,16 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     }
     
     @IBAction func setPeriodSliderValueChanged(_ sender: UISlider) {
-        setPeriodLabel.text = "\(Int(sender.value)) h"
+        let sliderValue = Int(sender.value)
+        setPeriodLabel.text = "\(sliderValue) h"
+        setPeriodOkButton.isEnabled = device.period != sliderValue
     }
     
     @IBAction func setPeriodViewOkButtonTouchUpInside(_ sender: UIButton) {
         closePopupView(popupView: setPeriodView)
         NetworkManager.setDevicePeriod(device: device, period: Int(setPeriodSlider.value)) { data, error in
             var errorMessage = "Kommunikációs hiba!"
+            let oldPeriod = self.device.period
             
             if data != nil {
                 do {
@@ -195,7 +237,7 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
                                 self.periodLabel.text = "\(self.device.period) h"
                                 self.rateProgressView.progressLineColor = self.device.severity.color
                                 self.rateProgressView.value = self.device.rate ?? 0.0
-                                self.delegate?.deviceChanged()
+                                self.delegateInDevicesViewController?.deviceChanged()
                                 
                                 errorMessage = ""
                             }
@@ -204,13 +246,35 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
                 } catch { }
             }
             
-            if errorMessage != "" {
-                self.errorView.text = errorMessage
-                UIView.animate(withDuration: 0.4) {
-                    self.errorViewTop.constant = 0
+            if errorMessage.isEmpty {
+                let comment = "Karbantartási periódus módosítása: \(oldPeriod) h -> \(self.device.period) h."
+                let date = Date()
+                NetworkManager.addNoteToDevice(device: self.device, creationDate: Int(date.timeIntervalSince1970), comment: comment) { data, error in
+                    errorMessage = "Kommunikációs hiba!"
+                    
+                    if data != nil {
+                        do {
+                            if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                                if let message = jsonData["message"] as? String {
+                                    if message == "success" {
+                                        self.device.addNote(date: date, comment: comment)
+                                        self.delegateInNotesViewController?.deviceChanged()
+                                        
+                                        errorMessage = ""
+                                    }
+                                }
+                            }
+                        } catch { }
+                    }
+                    
+                    if errorMessage.isEmpty {
+                        DispatchQueue.main.async { self.hideErrorView() }
+                    } else {
+                        DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
+                    }
                 }
             } else {
-                self.closeErrorView()
+                DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
             }
         }
     }
@@ -220,12 +284,20 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     }
     
     //MARK: - Common functions
-    private func setPopupViewPosition(popupView: UIView) {
+    private func showErrorView(withErrorMessage: String) {
+        self.errorView.text = withErrorMessage
+        self.errorViewTop.constant = 0
+        UIView.animate(withDuration: 0.4) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func setPopupViewPosition(forPopupView: UIView) {
         if popupViewCenterY != nil {
             popupViewCenterY.isActive = false
             popupViewCenterY = nil
         }
-        popupViewCenterY = NSLayoutConstraint(item: popupView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: -view.frame.origin.y / 2)
+        popupViewCenterY = NSLayoutConstraint(item: forPopupView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: -view.frame.origin.y / 2)
         popupViewCenterY.isActive = true
     }
     
@@ -242,22 +314,12 @@ class DetailsViewController: UIViewController, ErrorViewDelegate {
     }
     
     //MARK: - ErrorViewDelegate function
-    func closeErrorView() {
+    func hideErrorView() {
+        self.errorViewTop.constant = -40
         UIView.animate(withDuration: 0.4, animations: {
-            self.errorViewTop.constant = -40
+            self.view.layoutIfNeeded()
         }) { completion in
             self.errorView.text = ""
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -17,6 +17,7 @@ class Device: Codable {
     private(set) var operationTime: Int?
     private(set) var period = 0
     private(set) var lastService = 0
+    private(set) var notes = [Note]()
     
     var rate: Double? {
         get {
@@ -45,5 +46,13 @@ class Device: Codable {
     
     func setPeriod(period: Int) {
         self.period = period
+    }
+    
+    func addNote(date: Date, comment: String) {
+        notes.insert(Note(creationDate: Int(date.timeIntervalSince1970), comment: comment), at: 0)
+    }
+    
+    func removeNote(at: Int) {
+        notes.remove(at: at)
     }
 }

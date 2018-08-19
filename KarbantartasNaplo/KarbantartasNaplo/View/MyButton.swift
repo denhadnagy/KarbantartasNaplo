@@ -19,7 +19,7 @@ class MyButton: UIButton {
     
     var isChecked = true {
         didSet {
-            self.shapeLayer.opacity = self.isChecked ? 1 : 0
+            shapeLayer.opacity = isChecked ? 1 : 0
         }
     }
     
@@ -44,7 +44,8 @@ class MyButton: UIButton {
         let bezierPath = UIBezierPath(ovalIn: bounds)
         shapeLayer.path = bezierPath.cgPath
         shapeLayer.fillColor = color.cgColor
-        
         layer.addSublayer(shapeLayer)
+        
+        bringSubview(toFront: imageView!)
     }
 }

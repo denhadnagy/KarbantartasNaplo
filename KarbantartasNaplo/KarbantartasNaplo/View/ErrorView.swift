@@ -38,6 +38,6 @@ class ErrorView: UIView {
     }
     
     @IBAction func closeButtonTouchUpInside(_ sender: UIButton) {
-        delegate?.closeErrorView()
+        delegate?.hideErrorView()
     }
 }

@@ -38,7 +38,7 @@ class DevicesViewController: UIViewController, UITableViewDataSource, UITableVie
         navigationController?.navigationBar.shadowImage = image
         navigationController?.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
         
-        filterView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        filterView.layer.borderColor = #colorLiteral(red: 0.846993506, green: 0.8470955491, blue: 0.8469586968, alpha: 1)
         filterView.layer.borderWidth = 1
         urgentFilterButton.color = Severity.urgent.color
         urgentFilterLabel.text = Severity.urgent.rawValue
@@ -56,13 +56,18 @@ class DevicesViewController: UIViewController, UITableViewDataSource, UITableVie
 
         DataCenter.shared.getDevices() { success in
             if success {
-                self.displayedDevices = DataCenter.shared.devices
-                self.devicesTableView.reloadData()
-                self.closeErrorView()
+                DispatchQueue.main.async {
+                    self.displayedDevices = DataCenter.shared.devices
+                    self.devicesTableView.reloadData()
+                    self.hideErrorView()
+                }
             } else {
-                self.errorView.text = "Kommunikációs hiba!"
-                UIView.animate(withDuration: 0.4) {
+                DispatchQueue.main.async {
+                    self.errorView.text = "Kommunikációs hiba!"
                     self.errorViewTop.constant = 0
+                    UIView.animate(withDuration: 0.4) {
+                        self.view.layoutIfNeeded()
+                    }
                 }
             }
         }
@@ -88,7 +93,7 @@ class DevicesViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? DetailsViewController {
-            vc.delegate = self
+            vc.delegateInDevicesViewController = self
             vc.device = selectedDevice
         }
     }
@@ -128,9 +133,10 @@ class DevicesViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //MARK: - ErrorViewDelegate function
-    func closeErrorView() {
+    func hideErrorView() {
+        self.errorViewTop.constant = -40
         UIView.animate(withDuration: 0.4, animations: {
-            self.errorViewTop.constant = -40
+            self.view.layoutIfNeeded()
         }) { completion in
             self.errorView.text = ""
         }

@@ -24,7 +24,7 @@ class DevicesTableViewCell: UITableViewCell {
             circleView.color = device.severity.color
             tokenNameLabel.text = "\(device.token)   \(device.name)"
             lastServiceLabel.text = "Előző szerviz: \(dateFormatter.string(from: lastServiceDate))"
-            operationTimeLabel.text = "Üzemidő: " + (device.operationTime != nil ? "\(device.operationTime!)" : "?") + "/\(device.period) h"
+            operationTimeLabel.text = "Üzemidő: \(device.operationTime != nil ? String(device.operationTime!) : "?")/\(device.period) h"
             rateLabel.text = device.rate != nil ? "\(String(format: "%.0f", device.rate!)) %" : "0 %"
         }
     }

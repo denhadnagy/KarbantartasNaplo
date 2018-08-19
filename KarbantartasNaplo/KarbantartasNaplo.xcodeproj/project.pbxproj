@@ -33,6 +33,9 @@
 		65724806211D76AE00EEBDD8 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65724805211D76AE00EEBDD8 /* Protocols.swift */; };
 		6573C49620DBDE97006500AF /* SeverityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6573C49520DBDE97006500AF /* SeverityView.xib */; };
 		6573C49820DBE0C0006500AF /* SeverityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6573C49720DBE0C0006500AF /* SeverityView.swift */; };
+		657AA9602122C24100C6953A /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657AA95F2122C24100C6953A /* NotesTableViewCell.swift */; };
+		657BCBE82121A05F00486449 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BCBE72121A05F00486449 /* Note.swift */; };
+		657BCBEA2122012100486449 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BCBE92122012100486449 /* NotesViewController.swift */; };
 		657DF62720CBC68A0066C81D /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DF62620CBC68A0066C81D /* Login.swift */; };
 		6580025A20D550F100011C93 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580025920D550F100011C93 /* Enumerations.swift */; };
 		6584D77E20CFC34400121A17 /* DevicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584D77D20CFC34400121A17 /* DevicesTableViewCell.swift */; };
@@ -97,6 +100,9 @@
 		65724805211D76AE00EEBDD8 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		6573C49520DBDE97006500AF /* SeverityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeverityView.xib; sourceTree = "<group>"; };
 		6573C49720DBE0C0006500AF /* SeverityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeverityView.swift; sourceTree = "<group>"; };
+		657AA95F2122C24100C6953A /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		657BCBE72121A05F00486449 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		657BCBE92122012100486449 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		657DF62620CBC68A0066C81D /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		6580025920D550F100011C93 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		6584D77D20CFC34400121A17 /* DevicesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesTableViewCell.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				6539C88520E4BE6400A2B3CF /* DetailsViewController.swift */,
 				656D92D620CECC6F009CF273 /* DevicesViewController.swift */,
 				653506A420A4891000CD611C /* LoginViewController.swift */,
+				657BCBE92122012100486449 /* NotesViewController.swift */,
 				65232EB320B2DA6E00B8BD20 /* SignUpViewController.swift */,
 				656AEFF820D924B400574F7C /* SummaryViewController.swift */,
 			);
@@ -169,6 +176,7 @@
 				65013CAB20D2CD0800C99B17 /* MyButton.swift */,
 				653487FF20BC5FC2002A8519 /* MyTextField.swift */,
 				653487FD20BC5703002A8519 /* MyTextField.xib */,
+				657AA95F2122C24100C6953A /* NotesTableViewCell.swift */,
 				6573C49720DBE0C0006500AF /* SeverityView.swift */,
 				6573C49520DBDE97006500AF /* SeverityView.xib */,
 			);
@@ -240,6 +248,7 @@
 			children = (
 				656D92D420CEC146009CF273 /* Device.swift */,
 				657DF62620CBC68A0066C81D /* Login.swift */,
+				657BCBE72121A05F00486449 /* Note.swift */,
 				655ED7AA20CA6A7F0006E472 /* User.swift */,
 			);
 			path = Model;
@@ -479,6 +488,7 @@
 				653506A520A4891000CD611C /* LoginViewController.swift in Sources */,
 				653506A320A4891000CD611C /* AppDelegate.swift in Sources */,
 				656AEFF920D924B400574F7C /* SummaryViewController.swift in Sources */,
+				657BCBE82121A05F00486449 /* Note.swift in Sources */,
 				6534880020BC5FC2002A8519 /* MyTextField.swift in Sources */,
 				6580025A20D550F100011C93 /* Enumerations.swift in Sources */,
 				65724806211D76AE00EEBDD8 /* Protocols.swift in Sources */,
@@ -486,6 +496,7 @@
 				655ED7AD20CA6CAF0006E472 /* DataCenter.swift in Sources */,
 				6539C88620E4BE6400A2B3CF /* DetailsViewController.swift in Sources */,
 				65F78F8320E66C49009FDB9E /* CircleProgressView.swift in Sources */,
+				657BCBEA2122012100486449 /* NotesViewController.swift in Sources */,
 				6573C49820DBE0C0006500AF /* SeverityView.swift in Sources */,
 				6584D78020CFD32200121A17 /* CircleView.swift in Sources */,
 				65724804211D70EC00EEBDD8 /* ErrorView.swift in Sources */,
@@ -493,6 +504,7 @@
 				656D92D720CECC6F009CF273 /* DevicesViewController.swift in Sources */,
 				656D92D520CEC146009CF273 /* Device.swift in Sources */,
 				6584D77E20CFC34400121A17 /* DevicesTableViewCell.swift in Sources */,
+				657AA9602122C24100C6953A /* NotesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +688,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hu.itacademy.KarbantartasNaplo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8314c714-e0d0-483d-a997-f464640523d6";
+				PROVISIONING_PROFILE = "56918108-002d-4c6e-800e-bcc222d67bba";
 				PROVISIONING_PROFILE_SPECIFIER = "ITAcademy Wildcard";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -690,7 +702,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 6Q2S6T7492;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KarbantartasNaplo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -698,8 +710,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hu.itacademy.KarbantartasNaplo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8314c714-e0d0-483d-a997-f464640523d6";
-				PROVISIONING_PROFILE_SPECIFIER = "ITAcademy Wildcard";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

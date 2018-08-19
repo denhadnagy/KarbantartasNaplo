@@ -33,7 +33,6 @@ class CircleView: UIView {
         let bezierPath = UIBezierPath(ovalIn: bounds)
         shapeLayer.path = bezierPath.cgPath
         shapeLayer.fillColor = color.cgColor
-        
         layer.addSublayer(shapeLayer)
     }
 }

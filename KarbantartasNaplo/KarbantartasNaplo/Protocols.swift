@@ -7,7 +7,7 @@
 //
 
 protocol ErrorViewDelegate {
-    func closeErrorView()
+    func hideErrorView()
 }
 
 protocol DetailsViewControllerDelegate {
