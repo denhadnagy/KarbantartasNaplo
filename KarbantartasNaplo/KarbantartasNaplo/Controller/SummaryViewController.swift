@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class SummaryViewController: UIViewController, UINavigationBarDelegate {
+class SummaryViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet private var infoView: UIView!
     @IBOutlet private weak var infoCircleView: CircleView!
@@ -29,6 +29,8 @@ class SummaryViewController: UIViewController, UINavigationBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
         navigationBar.delegate = self
         
         infoView.alpha = 0
@@ -109,7 +111,7 @@ class SummaryViewController: UIViewController, UINavigationBarDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if view.subviews.contains(infoView) { infoViewClose() }
+        if view.subviews.contains(infoView) { closePopupView(popupView: infoView) }
     }
     
     //Function will fire (in case of rotating device) even if view has not yet loaded.
@@ -119,7 +121,6 @@ class SummaryViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func setChartLegendPosition() {
-        //TODO: test
         if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation.isFlat {
             pieChartView.legend.orientation = .vertical
             pieChartView.legend.horizontalAlignment = .left
@@ -131,51 +132,59 @@ class SummaryViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
-    //MARK: - UINavigationBarDelegate functions
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return UIBarPosition.topAttached
-    }
-    
     //MARK: - Actions
     @IBAction func severityViewTap(_ sender: UITapGestureRecognizer) {
-        visualEffectView = UIVisualEffectView()
-        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(visualEffectView)
-        NSLayoutConstraint(item: visualEffectView, attribute: .top, relatedBy: .equal, toItem: navigationBar, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: visualEffectView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: visualEffectView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: visualEffectView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-        
         let severityView = sender.view as! SeverityView
         infoCircleView.color = severityView.severity.color
         infoDescriptionLabel.text = severityView.severity.description
-        view.addSubview(infoView)
-        NSLayoutConstraint(item: infoView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: infoView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: infoView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 240).isActive = true
-        NSLayoutConstraint(item: infoView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150).isActive = true
         
-        UIView.animate(withDuration: 0.2) {
-            self.visualEffectView.effect = UIBlurEffect(style: .dark)
-            self.infoView.transform = CGAffineTransform.identity
-            self.infoView.alpha = 1
-        }
+        showPopupView(popupView: infoView)
     }
     
     @IBAction func infoViewCloseButtonTouchUpInside(_ sender: UIButton) {
-        infoViewClose()
+        closePopupView(popupView: infoView)
     }
     
     //MARK: - Common functions
-    private func infoViewClose() {
+    private func showPopupView(popupView: UIView) {
+        visualEffectView = UIVisualEffectView()
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(visualEffectView)
+        visualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        visualEffectView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
+        visualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        visualEffectView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        view.addSubview(popupView)
+        popupView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        popupView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        popupView.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        popupView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        
+        UIView.animate(withDuration: 0.2) {
+            self.visualEffectView.effect = UIBlurEffect(style: .regular)
+            popupView.transform = CGAffineTransform.identity
+            popupView.alpha = 1
+        }
+    }
+    
+    private func closePopupView(popupView: UIView) {
         UIView.animate(withDuration: 0.2, animations: {
-            self.infoView.alpha = 0
-            self.infoView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            popupView.alpha = 0
+            popupView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.visualEffectView.effect = nil
         }) { completion in
             self.visualEffectView.removeFromSuperview()
             self.visualEffectView = nil
-            self.infoView.removeFromSuperview()
+            popupView.removeFromSuperview()
         }
+    }
+}
+
+//MARK: - Extensions
+extension SummaryViewController: UINavigationBarDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.topAttached
     }
 }

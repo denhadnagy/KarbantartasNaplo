@@ -8,9 +8,8 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController {
     //MARK: - Outlets
-    @IBOutlet private weak var logoImageView: UIImageView!
     @IBOutlet private weak var signUpLabel: UILabel!
     @IBOutlet private weak var emailTextField: MyTextField!
     @IBOutlet private weak var passwordTextField: MyTextField!
@@ -36,18 +35,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emailTextField.image = UIImage(named: "icons8-new-post")
-        emailTextField.placeholder = "Email"
+        emailTextField.image = UIImage(named: "icons8-customer-outlined")
+        emailTextField.placeholder = "Felhasználónév"
+        emailTextField.keyboardType = UIKeyboardType.emailAddress
         emailTextField.activeLineColor = Constants.color
         
         passwordTextField.image = UIImage(named: "icons8-lock")
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = "Jelszó"
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.keyboardType = UIKeyboardType.alphabet
         passwordTextField.activeLineColor = Constants.color
         
         passwordAgainTextField.image = UIImage(named: "icons8-lock")
-        passwordAgainTextField.placeholder = "Password again"
+        passwordAgainTextField.placeholder = "Jelszó újra"
         passwordAgainTextField.isSecureTextEntry = true
+        passwordAgainTextField.keyboardType = UIKeyboardType.alphabet
         passwordAgainTextField.activeLineColor = Constants.color
         
         signUpButton.layer.cornerRadius = 5
@@ -56,20 +58,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
         if isKeyboardShown { isRotatingWithKeyboard = true }
     }
     
@@ -83,17 +82,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         signUpLabel.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         signUpLabel.bounds = smallerBounds
         
+        logoImageViewTopCR.constant = 10
+        logoImageViewHeightCR.constant = 48
+        signUpLabelTopCR.constant = 5
+        signUpLabelTopRC.constant = 30
+        signUpLabelBottomRC.constant = 10
+        signUpLabelTopCC.constant = 10
+        signUpLabelBottomCC.constant = 5
         UIView.animate(withDuration: 0.2, animations: {
-            self.logoImageViewTopCR.constant = 10
-            self.logoImageViewHeightCR.constant = 48
-            self.signUpLabelTopCR.constant = 5
-            self.signUpLabelTopRC.constant = 30
-            self.signUpLabelBottomRC.constant = 10
-            self.signUpLabelTopCC.constant = 10
-            self.signUpLabelBottomCC.constant = 5
-            
             self.signUpLabel.transform = .identity
-            
             self.view.layoutIfNeeded()
         })
         
@@ -113,17 +110,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         signUpLabel.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         signUpLabel.bounds = biggerBounds
         
+        logoImageViewTopCR.constant = 50
+        logoImageViewHeightCR.constant = 96
+        signUpLabelTopCR.constant = 20
+        signUpLabelTopRC.constant = 59
+        signUpLabelBottomRC.constant = 30
+        signUpLabelTopCC.constant = 39
+        signUpLabelBottomCC.constant = 20
         UIView.animate(withDuration: 0.2, animations: {
-            self.logoImageViewTopCR.constant = 50
-            self.logoImageViewHeightCR.constant = 96
-            self.signUpLabelTopCR.constant = 20
-            self.signUpLabelTopRC.constant = 59
-            self.signUpLabelBottomRC.constant = 30
-            self.signUpLabelTopCC.constant = 39
-            self.signUpLabelBottomCC.constant = 20
-            
             self.signUpLabel.transform = .identity
-            
             self.view.layoutIfNeeded()
         })
         
@@ -131,10 +126,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: - Actions
-    @IBAction func cancelButtonTouchUpInside(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-
     @IBAction func signUpButtonTouchUpInside(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text, let passwordAgain = passwordAgainTextField.text {
             DataCenter.shared.signUpUser(email: email, password: password, passwordAgain: passwordAgain) { success, errorMessage in
@@ -148,5 +139,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    @IBAction func cancelButtonTouchUpInside(_ sender: UIButton) {
+        view.endEditing(true)
+        dismiss(animated: true, completion: nil)
     }
 }

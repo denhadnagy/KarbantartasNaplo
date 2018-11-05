@@ -46,6 +46,6 @@ class MyButton: UIButton {
         shapeLayer.fillColor = color.cgColor
         layer.addSublayer(shapeLayer)
         
-        bringSubview(toFront: imageView!)
+        bringSubviewToFront(imageView!)
     }
 }

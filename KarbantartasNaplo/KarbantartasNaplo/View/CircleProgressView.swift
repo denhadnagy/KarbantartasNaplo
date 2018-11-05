@@ -67,13 +67,13 @@ class CircleProgressView: UIView {
         trackLayer.strokeColor = trackLineColor.cgColor
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineWidth = trackLineWidth
-        trackLayer.lineCap = kCALineCapRound
+        trackLayer.lineCap = CAShapeLayerLineCap.round
         layer.addSublayer(trackLayer)
         
         progressLayer.strokeColor = progressLineColor.cgColor
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineWidth = progressLineWidth
-        progressLayer.lineCap = kCALineCapRound
+        progressLayer.lineCap = CAShapeLayerLineCap.round
         progressLayer.strokeEnd = 0.0
         layer.addSublayer(progressLayer)
         
@@ -87,6 +87,8 @@ class CircleProgressView: UIView {
     
     //MARK: - Standard functions
     override func layoutSubviews() {
+        super.layoutSubviews()
+        
         let center = CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0)
         let radius = Double(min(frame.size.width, frame.size.height) - max(trackLineWidth, progressLineWidth)) / 2.0
         let bezierPath = UIBezierPath(arcCenter: center, radius: CGFloat(radius), startAngle: -CGFloat.pi * 0.5, endAngle: CGFloat.pi * 1.5, clockwise: true)

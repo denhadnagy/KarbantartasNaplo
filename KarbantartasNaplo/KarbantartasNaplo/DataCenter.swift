@@ -34,7 +34,7 @@ class DataCenter {
     func loginUser(email: String, password: String, completion: @escaping (Bool, String?) -> Void) {
         NetworkManager.login(email: email, password: password) { data, error in
             if data == nil {
-                completion(false, "An error occured!")
+                completion(false, "Kommunikációs hiba!")
                 return
             }
             
@@ -42,7 +42,7 @@ class DataCenter {
                 self.login = try JSONDecoder().decode(Login.self, from: data!)
                 completion(true, nil)
             } catch {
-                completion(false, "Invalid Email or Password!")
+                completion(false, "Érvénytelen Email vagy Jelszó!")
             }
         }
     }

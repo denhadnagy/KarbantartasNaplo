@@ -11,9 +11,7 @@ import UIKit
 class NotesTableViewCell: UITableViewCell {
     @IBOutlet private weak var creationDateLabel: UILabel!
     @IBOutlet private weak var commentLabel: UILabel!
-    //okFilterButton.setImage(UIImage(named: "icons8-chart"), for: UIControlState.normal)
-    //okFilterButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    //okFilterButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+    
     var note: Note! {
         didSet {
             let creationDate = Date(timeIntervalSince1970: TimeInterval(note.creationDate))

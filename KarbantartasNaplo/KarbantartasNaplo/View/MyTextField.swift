@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyTextField: UIView, UITextFieldDelegate {
+class MyTextField: UIView {
     //MARK: - Outlets
     @IBOutlet private var stackView: UIStackView!
     @IBOutlet private weak var imageView: UIImageView!
@@ -42,6 +42,12 @@ class MyTextField: UIView, UITextFieldDelegate {
         }
     }
     
+    var keyboardType = UIKeyboardType.default {
+        didSet {
+            textField.keyboardType = keyboardType
+        }
+    }
+    
     var activeLineColor: UIColor! {
         didSet {
             activeLineView.backgroundColor = activeLineColor
@@ -63,7 +69,7 @@ class MyTextField: UIView, UITextFieldDelegate {
         Bundle.main.loadNibNamed("MyTextField", owner: self, options: nil)
         addSubview(stackView)
         
-        stackView.frame = self.bounds
+        stackView.frame = bounds
         stackView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         textField.delegate = self
@@ -74,10 +80,13 @@ class MyTextField: UIView, UITextFieldDelegate {
     
     //MARK: - Standard functions
     override func layoutSubviews() {
+        super.layoutSubviews()
         if activeLineView.frame.size.width > 0 { activeLineView.frame.size.width = frame.size.width }
     }
-    
-    //MARK: - TextFieldDelegates
+}
+
+//MARK: - Extensions
+extension MyTextField: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         UIView.animate(withDuration: 0.4, animations: {
             self.activeLineView.frame.origin.x = 0

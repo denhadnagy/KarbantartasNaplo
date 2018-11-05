@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DevicesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetailsViewControllerDelegate, ErrorViewDelegate {
+class DevicesViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet private weak var filterView: UIView!
     @IBOutlet private weak var urgentFilterButton: MyButton!
@@ -21,25 +21,57 @@ class DevicesViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet private weak var okFilterLabel: UILabel!
     @IBOutlet private weak var errorView: ErrorView!
     @IBOutlet private weak var devicesTableView: UITableView!
+    @IBOutlet private weak var menuButton: MyFloatingButton!
     
-    @IBOutlet private weak var errorViewTop: NSLayoutConstraint!
+    @IBOutlet private weak var errorViewBottom: NSLayoutConstraint!
+    @IBOutlet private weak var loginButtonCenterX: NSLayoutConstraint!
+    @IBOutlet private weak var aboutButtonCenterX: NSLayoutConstraint!
     
     //MARK: - Properties
     private var displayedDevices = [Device]()
     private var selectedDevice: Device?
     
+    private var isMenuShown = false {
+        didSet {
+            let duration = 0.4
+            let damping = CGFloat(0.4)
+            let velocity = CGFloat(0.1)
+            if isMenuShown {
+                aboutButtonCenterX.constant = -aboutButtonCenterX.constant
+                UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: {
+                    self.menuButton.setImage(UIImage(named: "icons8-multiply"), for: .normal)
+                    self.menuButton.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+                
+                loginButtonCenterX.constant = -loginButtonCenterX.constant
+                UIView.animate(withDuration: duration, delay: 0.1, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() }, completion: nil)
+            } else {
+                aboutButtonCenterX.constant = -aboutButtonCenterX.constant
+                UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: {
+                    self.menuButton.setImage(UIImage(named: "icons8-menu"), for: .normal)
+                    self.menuButton.transform = CGAffineTransform.identity
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+                
+                loginButtonCenterX.constant = -loginButtonCenterX.constant
+                UIView.animate(withDuration: duration, delay: 0.1, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() }, completion: nil)
+            }
+        }
+    }
+    
     //MARK: - Standard functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Remove border of navigation bar.
-        let image = UIImage()
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.shadowImage = image
-        navigationController?.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
-        filterView.layer.borderColor = #colorLiteral(red: 0.846993506, green: 0.8470955491, blue: 0.8469586968, alpha: 1)
-        filterView.layer.borderWidth = 1
+        errorView.delegate = self
+        devicesTableView.dataSource = self
+        devicesTableView.delegate = self
+        
+        errorView.alpha = 0
         urgentFilterButton.color = Severity.urgent.color
         urgentFilterLabel.text = Severity.urgent.rawValue
         actualFilterButton.color = Severity.actual.color
@@ -48,46 +80,31 @@ class DevicesViewController: UIViewController, UITableViewDataSource, UITableVie
         soonFilterLabel.text = Severity.soon.rawValue
         okFilterButton.color = Severity.ok.color
         okFilterLabel.text = Severity.ok.rawValue
+        loginButtonCenterX.constant = -loginButtonCenterX.constant
+        aboutButtonCenterX.constant = -aboutButtonCenterX.constant
         
-        errorView.delegate = self
-        
-        devicesTableView.dataSource = self
-        devicesTableView.delegate = self
-
-        DataCenter.shared.getDevices() { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.displayedDevices = DataCenter.shared.devices
-                    self.devicesTableView.reloadData()
-                    self.hideErrorView()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.errorView.text = "Kommunikációs hiba!"
-                    self.errorViewTop.constant = 0
-                    UIView.animate(withDuration: 0.4) {
-                        self.view.layoutIfNeeded()
-                    }
-                }
-            }
-        }
-    }
-
-    //MARK: - UITableViewDataSource functions
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayedDevices.count
+//        DataCenter.shared.getDevices() { success in
+//            if success {
+//                DispatchQueue.main.async {
+//                    self.displayedDevices = DataCenter.shared.devices
+//                    self.devicesTableView.reloadData()
+//                    self.hideErrorView()
+//                }
+//            } else {
+//                DispatchQueue.main.async {
+//                    self.errorView.text = "Kommunikációs hiba!"
+//                    self.errorViewBottom.constant = 40
+//                    UIView.animate(withDuration: 0.4) {
+//                        self.view.layoutIfNeeded()
+//                    }
+//                }
+//            }
+//        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = devicesTableView.dequeueReusableCell(withIdentifier: "devicesTableViewCell") as! DevicesTableViewCell
-        cell.device = displayedDevices[indexPath.row]
-        return cell
-    }
-    
-    //MARK: - UITableViewDelegate functions
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedDevice = displayedDevices[indexPath.row]
-        performSegue(withIdentifier: "showDetailsSegue", sender: nil)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMenuShown { isMenuShown = false }
     }
     
     //MARK: - Navigation
@@ -102,6 +119,17 @@ class DevicesViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func filterButtonTouchUpInside(_ sender: MyButton) {
         sender.isChecked = !sender.isChecked
         filterDevices()
+    }
+    
+    @IBAction func menuButtonTouchUpInside(_ sender: MyFloatingButton) {
+        switch sender.tag {
+        case 1: debugPrint("About")
+        case 2: performSegue(withIdentifier: "showLoginSegue", sender: nil)
+        default:
+            break
+        }
+        
+        isMenuShown = !isMenuShown
     }
     
     //MARK: - Common functions
@@ -126,19 +154,42 @@ class DevicesViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         devicesTableView.reloadData()
     }
+}
+
+//MARK: - Extensions
+extension DevicesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return displayedDevices.count
+    }
     
-    //MARK: - DetailsViewControllerDelegate function
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = devicesTableView.dequeueReusableCell(withIdentifier: "devicesTableViewCell") as! DevicesTableViewCell
+        cell.device = displayedDevices[indexPath.row]
+        return cell
+    }
+}
+
+extension DevicesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedDevice = displayedDevices[indexPath.row]
+        performSegue(withIdentifier: "showDetailsSegue", sender: nil)
+    }
+}
+
+extension DevicesViewController: DetailsViewControllerDelegate {
     func deviceChanged() {
         filterDevices()
     }
-    
-    //MARK: - ErrorViewDelegate function
+}
+
+extension DevicesViewController: ErrorViewDelegate {
     func hideErrorView() {
-        self.errorViewTop.constant = -40
+        errorViewBottom.constant = 0
         UIView.animate(withDuration: 0.4, animations: {
             self.view.layoutIfNeeded()
         }) { completion in
             self.errorView.text = ""
+            self.errorView.alpha = 0
         }
     }
 }

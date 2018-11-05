@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ErrorViewDelegate {
+    func hideErrorView()
+}
+
 class ErrorView: UIView {
     @IBOutlet private var errorView: UIView!
     @IBOutlet private weak var errorDescriptionLabel: UILabel!

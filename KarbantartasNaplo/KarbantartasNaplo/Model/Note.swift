@@ -14,4 +14,8 @@ class Note: Codable {
         self.creationDate = creationDate
         self.comment = comment
     }
+    
+    func setComment(comment: String) {
+        self.comment = comment
+    }
 }

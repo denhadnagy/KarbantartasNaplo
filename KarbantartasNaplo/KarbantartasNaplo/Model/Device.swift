@@ -48,11 +48,23 @@ class Device: Codable {
         self.period = period
     }
     
+    func appendNote(_ note: Note) {
+        notes.append(note)
+    }
+    
     func addNote(date: Date, comment: String) {
         notes.insert(Note(creationDate: Int(date.timeIntervalSince1970), comment: comment), at: 0)
     }
     
     func removeNote(at: Int) {
         notes.remove(at: at)
+    }
+    
+    func removeAllNote() {
+        notes.removeAll()
+    }
+    
+    func sortNotes() {
+        notes = notes.sorted { $0.creationDate > $1.creationDate }
     }
 }

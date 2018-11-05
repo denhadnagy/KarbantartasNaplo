@@ -10,13 +10,15 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextViewDelegate {
     //MARK: - Outlets
-    @IBOutlet private weak var logoImageView: UIImageView!
     @IBOutlet private weak var loginLabel: UILabel!
+    @IBOutlet private weak var loginScrollView: UIScrollView!
     @IBOutlet private weak var emailTextField: MyTextField!
     @IBOutlet private weak var passwordTextField: MyTextField!
     @IBOutlet private weak var loginFailedLabel: UILabel!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var signUpTextView: UITextView!
+    
+    @IBOutlet private weak var loginScrollViewHeight: NSLayoutConstraint!
     
     @IBOutlet private weak var logoImageViewTopCR: NSLayoutConstraint!
     @IBOutlet private weak var logoImageViewHeightCR: NSLayoutConstraint!
@@ -36,44 +38,44 @@ class LoginViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.image = UIImage(named: "icons8-new-post")
-        emailTextField.placeholder = "Email"
+        emailTextField.image = UIImage(named: "icons8-customer-outlined")
+        emailTextField.placeholder = "Felhasználónév"
+        emailTextField.keyboardType = UIKeyboardType.emailAddress
         emailTextField.activeLineColor = Constants.color
         
         passwordTextField.image = UIImage(named: "icons8-lock")
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = "Jelszó"
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.keyboardType = UIKeyboardType.alphabet
         passwordTextField.activeLineColor = Constants.color
         
         loginButton.layer.cornerRadius = 5
         loginButton.backgroundColor = Constants.color
         
         signUpTextView.delegate = self
+        
         let attributedString = NSMutableAttributedString(string: signUpTextView.text)
-        let range = attributedString.mutableString.range(of: "Sign up!")
-        attributedString.addAttribute(NSAttributedStringKey.link, value: "", range: range)
-        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), range: range)
-        attributedString.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+        let range = attributedString.mutableString.range(of: "Regisztráljon!")
+        attributedString.addAttribute(NSAttributedString.Key.link, value: "", range: range)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), range: range)
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
         signUpTextView.attributedText = attributedString
         signUpTextView.textAlignment = .center
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         NotificationCenter.default.removeObserver(self)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
         if isKeyboardShown { isRotatingWithKeyboard = true }
     }
     
@@ -87,25 +89,29 @@ class LoginViewController: UIViewController, UITextViewDelegate {
         loginLabel.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         loginLabel.bounds = smallerBounds
         
-        UIView.animate(withDuration: 0.2) {
-            self.logoImageViewTopCR.constant = 10
-            self.logoImageViewHeightCR.constant = 48
-            self.loginLabelTopCR.constant = 5
-            self.loginLabelTopRC.constant = 30
-            self.loginLabelBottomRC.constant = 10
-            self.loginLabelTopCC.constant = 10
-            self.loginLabelBottomCC.constant = 5
-            
+        logoImageViewTopCR.constant = 10
+        logoImageViewHeightCR.constant = 48
+        loginLabelTopCR.constant = 5
+        loginLabelTopRC.constant = 30
+        loginLabelBottomRC.constant = 10
+        loginLabelTopCC.constant = 10
+        loginLabelBottomCC.constant = 5
+        UIView.animate(withDuration: 0.4) {
             self.loginLabel.transform = .identity
-            
             self.view.layoutIfNeeded()
         }
+        
+        let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let keyboardCoverHeight = loginScrollView.frame.maxY - keyboardFrame.origin.y
+        if keyboardCoverHeight > 0 { loginScrollViewHeight.constant -= keyboardCoverHeight }
         
         isKeyboardShown = true
         if isRotatingWithKeyboard { isRotatingWithKeyboard = false }
     }
     
     @objc private func keyboardWillHide(notification: Notification) {
+        loginScrollViewHeight.constant = 163
+        
         if isRotatingWithKeyboard { return }
         
         var biggerBounds = loginLabel.bounds
@@ -117,29 +123,19 @@ class LoginViewController: UIViewController, UITextViewDelegate {
         loginLabel.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         loginLabel.bounds = biggerBounds
         
-        UIView.animate(withDuration: 0.2) {
-            self.logoImageViewTopCR.constant = 50
-            self.logoImageViewHeightCR.constant = 96
-            self.loginLabelTopCR.constant = 20
-            self.loginLabelTopRC.constant = 59
-            self.loginLabelBottomRC.constant = 50
-            self.loginLabelTopCC.constant = 39
-            self.loginLabelBottomCC.constant = 30
-            
+        logoImageViewTopCR.constant = 50
+        logoImageViewHeightCR.constant = 96
+        loginLabelTopCR.constant = 20
+        loginLabelTopRC.constant = 59
+        loginLabelBottomRC.constant = 50
+        loginLabelTopCC.constant = 39
+        loginLabelBottomCC.constant = 30
+        UIView.animate(withDuration: 0.4) {
             self.loginLabel.transform = .identity
-            
             self.view.layoutIfNeeded()
         }
         
         isKeyboardShown = false
-    }
-    
-    //MARK: - UITextViewDelegate functions
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        let signUpViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "signUpViewController") as! SignUpViewController
-        present(signUpViewController, animated: true, completion: nil)
-        
-        return true
     }
     
     //MARK: - Actions
@@ -156,5 +152,18 @@ class LoginViewController: UIViewController, UITextViewDelegate {
                 }
             }
         }
+    }
+    
+    @IBAction func cancelButtonTouchUpInside(_ sender: UIButton) {
+        view.endEditing(true)
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: - Extensions
+extension LoginViewController: UITextFieldDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        performSegue(withIdentifier: "showSignUpSegue", sender: nil)
+        return true
     }
 }

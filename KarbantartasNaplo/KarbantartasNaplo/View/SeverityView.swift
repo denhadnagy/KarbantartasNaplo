@@ -52,6 +52,8 @@ class SeverityView: UIView {
         Bundle.main.loadNibNamed("SeverityView", owner: self, options: nil)
         addSubview(severityView)
         
+        layer.cornerRadius = 10
+        severityView.layer.cornerRadius = 10
         severityView.frame = self.bounds
         severityView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }

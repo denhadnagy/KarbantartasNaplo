@@ -48,6 +48,16 @@ class NetworkManager {
         sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/updateDevice", method: .put, parameters: parameters, headers: nil, completion: completion)
     }
     
+    static func updateNoteOfDevice(device: Device, creationDate: Int, comment: String, completion: @escaping (Data?, Error?) -> Void) {
+        let parameters: [String: Any] = [
+            "deviceId": device.id,
+            "creationDate": creationDate,
+            "comment": comment
+        ]
+        
+        sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/updateNoteOfDevice", method: .put, parameters: parameters, headers: nil, completion: completion)
+    }
+    
     //MARK: - POST requests
     static func addNoteToDevice(device: Device, creationDate: Int, comment: String, completion: @escaping (Data?, Error?) -> Void) {
         let parameters: [String: Any] = [
@@ -89,13 +99,13 @@ class NetworkManager {
     }
     
     //MARK: - DELETE requests
-    static func deleteNoteOfDevice(device: Device, creationDate: Int, completion: @escaping (Data?, Error?) -> Void) {
+    static func deleteNotesOfDevice(device: Device, creationDates: [Int], completion: @escaping (Data?, Error?) -> Void) {
         let parameters: [String: Any] = [
             "deviceId": device.id,
-            "creationDate": creationDate
+            "creationDates": creationDates
         ]
         
-        sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/deleteNoteOfDevice", method: .delete, parameters: parameters, headers: nil, completion: completion)
+        sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/deleteNotesOfDevice", method: .delete, parameters: parameters, headers: nil, completion: completion)
     }
     
     //MARK: - Send request function
