@@ -20,13 +20,10 @@ class EditNoteViewController: UIViewController {
     @IBOutlet private weak var okButton: MyFloatingButton!
     @IBOutlet private weak var cancelButton: MyFloatingButton!
     @IBOutlet private weak var commentTextView: UITextView!
-    @IBOutlet private weak var hideKeyboardButton: UIButton!
     
     @IBOutlet private weak var commentTextViewBottom: NSLayoutConstraint!
     
     //MARK: - Properties
-    private var isKeyboardShown = false
-    private var isRotatingWithKeyboard = false
     private var initialComment = ""
     var delegate: EditNoteViewControllerDelegate?
     var note: Note?
@@ -53,16 +50,20 @@ class EditNoteViewController: UIViewController {
         
         okButton.backgroundColor = Constants.color
         cancelButton.backgroundColor = Constants.color
-        hideKeyboardButton.alpha = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if commentTextView.text.isEmpty { commentTextView.becomeFirstResponder() }
+        commentTextView.becomeFirstResponder()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let location = commentTextView.text.count - 1
+        commentTextView.scrollRangeToVisible(NSMakeRange(location, 1))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,53 +71,15 @@ class EditNoteViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        if isKeyboardShown { isRotatingWithKeyboard = true }
-    }
-    
     @objc private func keyboardWillShow(notification: Notification) {
         var keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         keyboardFrame = view.convert(keyboardFrame, from: view.window)
-        
         commentTextViewBottom.constant = keyboardFrame.height
-        if !isRotatingWithKeyboard {
-            UIView.animate(withDuration: 0.2) {
-                self.hideKeyboardButton.alpha = 1
-                self.view.layoutIfNeeded()
-                //self.view.frame.size.height = UIScreen.main.bounds.height - keyboardFrame.size.height
-            }
-        } else {
-            //view.setNeedsLayout()
-            //view.layoutIfNeeded()
-            //view.frame.size.height = UIScreen.main.bounds.height - keyboardFrame.size.height
-            isRotatingWithKeyboard = false
-        }
-        
-        isKeyboardShown = true
-        //if isRotatingWithKeyboard { isRotatingWithKeyboard = false }
     }
     
     @objc private func keyboardWillHide(notification: Notification) {
-        if isRotatingWithKeyboard { return }
-        
         commentTextViewBottom.constant = 10
-        UIView.animate(withDuration: 0.2) {
-            self.hideKeyboardButton.alpha = 0
-            self.view.layoutIfNeeded()
-        }
-        
-        isKeyboardShown = false
     }
-    
-//    @objc private func keyboardWillChangeFrame(notification: Notification) {
-//        let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-//        if isRotatingWithKeyboard {
-//            commentTextViewBottom.constant = keyboardFrame.height
-//            view.setNeedsLayout()
-//            view.layoutIfNeeded()
-//        }
-//    }
     
     //MARK: - Actions
     @IBAction func okButtonTouchUpInside(_ sender: UIButton) {
@@ -132,10 +95,6 @@ class EditNoteViewController: UIViewController {
         close()
     }
     
-    @IBAction func hideKeyboardButtonTouchUpInside(_ sender: UIButton) {
-        commentTextView.resignFirstResponder()
-    }
-    
     //MARK: - Common functions
     private func close() {
         commentTextView.resignFirstResponder()
@@ -143,7 +102,7 @@ class EditNoteViewController: UIViewController {
     }
 }
 
-//MARK: - Extensions
+//MARK: - Extension: UITextViewDelegate
 extension EditNoteViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.isEmpty || textView.text == initialComment || textView.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty {

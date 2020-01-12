@@ -96,7 +96,7 @@ class SummaryViewController: UIViewController {
             chartDataEntries.append(PieChartDataEntry(value: okRate))
             chartDataEntries.append(PieChartDataEntry(value: undefinedRate))
             
-            let pieChartDataSet = PieChartDataSet(values: chartDataEntries, label: nil)
+            let pieChartDataSet = PieChartDataSet(entries: chartDataEntries, label: nil)
             pieChartDataSet.colors = [Severity.urgent.color, Severity.actual.color, Severity.soon.color, Severity.ok.color, Severity.undefined.color]
             pieChartDataSet.sliceSpace = 1
             pieChartDataSet.selectionShift = 5
@@ -120,18 +120,6 @@ class SummaryViewController: UIViewController {
         if pieChartView != nil { setChartLegendPosition() }
     }
     
-    private func setChartLegendPosition() {
-        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation.isFlat {
-            pieChartView.legend.orientation = .vertical
-            pieChartView.legend.horizontalAlignment = .left
-            pieChartView.legend.verticalAlignment = .top
-        } else {
-            pieChartView.legend.orientation = .horizontal
-            pieChartView.legend.horizontalAlignment = .center
-            pieChartView.legend.verticalAlignment = .bottom
-        }
-    }
-    
     //MARK: - Actions
     @IBAction func severityViewTap(_ sender: UITapGestureRecognizer) {
         let severityView = sender.view as! SeverityView
@@ -146,6 +134,18 @@ class SummaryViewController: UIViewController {
     }
     
     //MARK: - Common functions
+    private func setChartLegendPosition() {
+        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation.isFlat {
+            pieChartView.legend.orientation = .vertical
+            pieChartView.legend.horizontalAlignment = .left
+            pieChartView.legend.verticalAlignment = .top
+        } else {
+            pieChartView.legend.orientation = .horizontal
+            pieChartView.legend.horizontalAlignment = .center
+            pieChartView.legend.verticalAlignment = .bottom
+        }
+    }
+    
     private func showPopupView(popupView: UIView) {
         visualEffectView = UIVisualEffectView()
         visualEffectView.translatesAutoresizingMaskIntoConstraints = false
@@ -182,7 +182,7 @@ class SummaryViewController: UIViewController {
     }
 }
 
-//MARK: - Extensions
+//MARK: - Extension: UINavigationBarDelegate
 extension SummaryViewController: UINavigationBarDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached

@@ -28,6 +28,7 @@ class DevicesViewController: UIViewController {
     @IBOutlet private weak var aboutButtonCenterX: NSLayoutConstraint!
     
     //MARK: - Properties
+    private let refreshControl = UIRefreshControl()
     private var displayedDevices = [Device]()
     private var selectedDevice: Device?
     
@@ -42,20 +43,20 @@ class DevicesViewController: UIViewController {
                     self.menuButton.setImage(UIImage(named: "icons8-multiply"), for: .normal)
                     self.menuButton.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
                     self.view.layoutIfNeeded()
-                }, completion: nil)
+                })
                 
                 loginButtonCenterX.constant = -loginButtonCenterX.constant
-                UIView.animate(withDuration: duration, delay: 0.1, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() }, completion: nil)
+                UIView.animate(withDuration: duration, delay: 0.1, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() })
             } else {
                 aboutButtonCenterX.constant = -aboutButtonCenterX.constant
                 UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: {
                     self.menuButton.setImage(UIImage(named: "icons8-menu"), for: .normal)
                     self.menuButton.transform = CGAffineTransform.identity
                     self.view.layoutIfNeeded()
-                }, completion: nil)
+                })
                 
                 loginButtonCenterX.constant = -loginButtonCenterX.constant
-                UIView.animate(withDuration: duration, delay: 0.1, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() }, completion: nil)
+                UIView.animate(withDuration: duration, delay: 0.1, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() })
             }
         }
     }
@@ -83,23 +84,11 @@ class DevicesViewController: UIViewController {
         loginButtonCenterX.constant = -loginButtonCenterX.constant
         aboutButtonCenterX.constant = -aboutButtonCenterX.constant
         
-//        DataCenter.shared.getDevices() { success in
-//            if success {
-//                DispatchQueue.main.async {
-//                    self.displayedDevices = DataCenter.shared.devices
-//                    self.devicesTableView.reloadData()
-//                    self.hideErrorView()
-//                }
-//            } else {
-//                DispatchQueue.main.async {
-//                    self.errorView.text = "Kommunikációs hiba!"
-//                    self.errorViewBottom.constant = 40
-//                    UIView.animate(withDuration: 0.4) {
-//                        self.view.layoutIfNeeded()
-//                    }
-//                }
-//            }
-//        }
+        refreshControl.tintColor = Constants.color
+        refreshControl.addTarget(self, action: #selector(getDevices), for: .valueChanged)
+        devicesTableView.refreshControl = refreshControl
+        
+        getDevices()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,8 +114,7 @@ class DevicesViewController: UIViewController {
         switch sender.tag {
         case 1: debugPrint("About")
         case 2: performSegue(withIdentifier: "showLoginSegue", sender: nil)
-        default:
-            break
+        default: break
         }
         
         isMenuShown = !isMenuShown
@@ -135,28 +123,43 @@ class DevicesViewController: UIViewController {
     //MARK: - Common functions
     private func filterDevices() {
         displayedDevices = DataCenter.shared.devices.filter() { device in
-            var filterButton: MyButton
+            var isShowing = false
             
-            let severity = device.severity
-            switch severity {
-            case .urgent: filterButton = urgentFilterButton
-            case .actual: filterButton = actualFilterButton
-            case .soon: filterButton = soonFilterButton
-            case .ok: filterButton = okFilterButton
-            case .undefined: filterButton = MyButton()
+            switch device.severity {
+            case .urgent: isShowing = urgentFilterButton.isChecked
+            case .actual: isShowing = actualFilterButton.isChecked
+            case .soon: isShowing = soonFilterButton.isChecked
+            case .ok: isShowing = okFilterButton.isChecked
+            case .undefined: isShowing = true
             }
             
-            if filterButton.isChecked {
-                return true
-            } else {
-                return false
-            }
+            return isShowing
         }
         devicesTableView.reloadData()
     }
+    
+    @objc private func getDevices() {
+        DataCenter.shared.getDevices() { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.filterDevices()
+                    self.hideErrorView()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.errorView.text = "Kommunikációs hiba!"
+                    self.errorViewBottom.constant = 40
+                    UIView.animate(withDuration: 0.4) {
+                        self.view.layoutIfNeeded()
+                    }
+                }
+            }
+            self.refreshControl.endRefreshing()
+        }
+    }
 }
 
-//MARK: - Extensions
+//MARK: - Extensions: UITableView DataSource & Delegate
 extension DevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedDevices.count
@@ -176,12 +179,14 @@ extension DevicesViewController: UITableViewDelegate {
     }
 }
 
+//MARK: - Extension: DetailsViewControllerDelegate
 extension DevicesViewController: DetailsViewControllerDelegate {
     func deviceChanged() {
         filterDevices()
     }
 }
 
+//MARK: - Extension: ErrorViewDelegate
 extension DevicesViewController: ErrorViewDelegate {
     func hideErrorView() {
         errorViewBottom.constant = 0

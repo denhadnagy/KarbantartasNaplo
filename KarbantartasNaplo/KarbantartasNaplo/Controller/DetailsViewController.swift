@@ -211,7 +211,7 @@ class DetailsViewController: UIViewController {
             }
             
             if errorMessage.isEmpty {
-                self.device.setPeriod(period: newPeriod)
+                self.device.setPeriod(to: newPeriod)
                 
                 DispatchQueue.main.async {
                     self.periodLabel.text = "\(self.device.period) h"
@@ -310,7 +310,7 @@ class DetailsViewController: UIViewController {
     }
 }
 
-//MARK: - Extensions
+//MARK: - Extensions: UIPickerView DataSource & Delegate
 extension DetailsViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 4
@@ -327,6 +327,7 @@ extension DetailsViewController: UIPickerViewDelegate {
     }
 }
 
+//MARK: - Extension: ErrorViewDelegate
 extension DetailsViewController: ErrorViewDelegate {
     func hideErrorView() {
         errorViewBottom.constant = 0

@@ -148,7 +148,7 @@ class NotesViewController: UIViewController {
         for note in device.notes {
             deletedNotes.append(note)
         }
-        device.removeAllNote()
+        device.removeAllNotes()
         notesTableView.reloadData()
     }
     
@@ -177,7 +177,7 @@ class NotesViewController: UIViewController {
     }
 }
 
-//MARK: - Extensions
+//MARK: - Extensions: UITableView DataSource & Delegate
 extension NotesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return device.notes.count
@@ -195,23 +195,27 @@ extension NotesViewController: UITableViewDelegate {
         return isNotesTableViewEditing
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .default, title: "Törlés") { action, rowIndexPath in
-            self.deletedNotes.append(self.device.notes[rowIndexPath.row])
-            self.device.removeNote(at: rowIndexPath.row)
-            self.notesTableView.deleteRows(at: [rowIndexPath], with: .automatic)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Törlés") { (contextualAction, sourceView, success) in
+            self.deletedNotes.append(self.device.notes[indexPath.row])
+            self.device.removeNote(at: indexPath.row)
+            self.notesTableView.deleteRows(at: [indexPath], with: .automatic)
+            success(true)
         }
-        return [deleteAction]
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /* If TableViewCell Selection is None, modally presented segue must be executed this way,
-         otherwise destination VC opens for the second tap most of the times. */
+         otherwise destination VC opens for the second tap most of the times:
+         
+         DispatchQueue.main.async { self.performSegue(withIdentifier: "showEditNoteSegue", sender: nil) } */
         selectedNote = device.notes[indexPath.row]
-        DispatchQueue.main.async { self.performSegue(withIdentifier: "showEditNoteSegue", sender: nil) }
+        performSegue(withIdentifier: "showEditNoteSegue", sender: nil)
     }
 }
 
+//MARK: - Extension: DetailsViewControllerDelegate
 extension NotesViewController: DetailsViewControllerDelegate {
     func deviceChanged() {
         notesTableView.reloadData()
@@ -219,6 +223,7 @@ extension NotesViewController: DetailsViewControllerDelegate {
     }
 }
 
+//MARK: - Extension: EditNoteViewControllerDelegate
 extension NotesViewController: EditNoteViewControllerDelegate {
     func addNote(date: Date, comment: String) {
         NetworkManager.addNoteToDevice(device: device, creationDate: Int(date.timeIntervalSince1970), comment: comment) { data, error in
@@ -265,7 +270,7 @@ extension NotesViewController: EditNoteViewControllerDelegate {
             }
             
             if errorMessage.isEmpty {
-                self.device.notes.first(where: { $0.creationDate == creationDate })?.setComment(comment: comment)
+                self.device.notes.first(where: { $0.creationDate == creationDate })?.setComment(to: comment)
                 DispatchQueue.main.async {
                     self.notesTableView.reloadData()
                     self.hideErrorView()
@@ -277,6 +282,7 @@ extension NotesViewController: EditNoteViewControllerDelegate {
     }
 }
 
+//MARK: - Extension: ErrorViewDelegate
 extension NotesViewController: ErrorViewDelegate {
     func hideErrorView() {
         errorViewBottom.constant = 0

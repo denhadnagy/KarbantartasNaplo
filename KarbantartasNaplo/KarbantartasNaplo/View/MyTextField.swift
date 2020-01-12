@@ -88,19 +88,19 @@ class MyTextField: UIView {
 //MARK: - Extensions
 extension MyTextField: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        UIView.animate(withDuration: 0.4, animations: {
+        UIView.animate(withDuration: 0.4) {
             self.activeLineView.frame.origin.x = 0
             self.activeLineView.frame.size.width = self.inactiveLineView.frame.size.width
-        })
+        }
         
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.4, animations: {
+        UIView.animate(withDuration: 0.4) {
             self.activeLineView.frame.origin.x = self.inactiveLineView.center.x
             self.activeLineView.frame.size.width = 0
-        })
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

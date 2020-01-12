@@ -7,7 +7,7 @@
 //
 
 class Note: Codable {
-    private(set) var creationDate = 0
+    let creationDate: Int
     private(set) var comment = ""
     
     init(creationDate: Int, comment: String) {
@@ -15,7 +15,7 @@ class Note: Codable {
         self.comment = comment
     }
     
-    func setComment(comment: String) {
+    func setComment(to comment: String) {
         self.comment = comment
     }
 }

@@ -66,6 +66,7 @@ class LoginViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
@@ -101,12 +102,14 @@ class LoginViewController: UIViewController, UITextViewDelegate {
             self.view.layoutIfNeeded()
         }
         
+        isKeyboardShown = true
+        if isRotatingWithKeyboard { isRotatingWithKeyboard = false }
+    }
+    
+    @objc private func keyboardDidShow(notification: Notification) {
         let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         let keyboardCoverHeight = loginScrollView.frame.maxY - keyboardFrame.origin.y
         if keyboardCoverHeight > 0 { loginScrollViewHeight.constant -= keyboardCoverHeight }
-        
-        isKeyboardShown = true
-        if isRotatingWithKeyboard { isRotatingWithKeyboard = false }
     }
     
     @objc private func keyboardWillHide(notification: Notification) {

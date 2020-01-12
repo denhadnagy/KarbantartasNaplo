@@ -8,6 +8,6 @@
 
 import UIKit
 
-class Constants {
+struct Constants {
     static let color = #colorLiteral(red: 0.2470197082, green: 0.3184922934, blue: 0.7106148601, alpha: 1)
 }

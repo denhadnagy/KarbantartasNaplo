@@ -16,34 +16,22 @@ enum Severity: String {
     case undefined = "Nem meghatározott"
     
     var color: UIColor {
-        get {
-            var R, G, B: CGFloat
-            
-            switch self {
-            case .ok: R = 0.55; G = 0.76; B = 0.29
-            case .soon: R = 1.0; G = 0.95; B = 0.46
-            case .actual: R = 1.0; G = 0.72; B = 0.30
-            case .urgent: R = 0.96; G = 0.26; B = 0.21
-            case .undefined: R = 0.93; G = 0.93; B = 0.93
-            }
-            
-            return UIColor(red: R, green: G, blue: B, alpha: 1.0)
+        switch self {
+        case .ok: return #colorLiteral(red: 0.55, green: 0.76, blue: 0.29, alpha: 1)
+        case .soon: return #colorLiteral(red: 1, green: 0.95, blue: 0.46, alpha: 1)
+        case .actual: return #colorLiteral(red: 1, green: 0.72, blue: 0.3, alpha: 1)
+        case .urgent: return #colorLiteral(red: 0.96, green: 0.26, blue: 0.21, alpha: 1)
+        case .undefined: return #colorLiteral(red: 0.93, green: 0.93, blue: 0.93, alpha: 1)
         }
     }
     
     var description: String {
-        get {
-            var descriptionString = ""
-            
-            switch self {
-            case .ok: descriptionString = "Nem igényel karbantartást."
-            case .soon: descriptionString = "Az üzemidő meghaladta a karbantartási periódus 80%-át."
-            case .actual: descriptionString = "Az üzemidő meghaladta a karbantartási periódus 90%-át."
-            case .urgent: descriptionString = "Az üzemidő meghaladta a karbantartási periódus 100%-át."
-            case .undefined: break
-            }
-            
-            return descriptionString
+        switch self {
+        case .ok: return "Nem igényel karbantartást."
+        case .soon: return "Az üzemidő meghaladta a karbantartási periódus 80%-át."
+        case .actual: return "Az üzemidő meghaladta a karbantartási periódus 90%-át."
+        case .urgent: return "Az üzemidő meghaladta a karbantartási periódus 100%-át."
+        case .undefined: return ""
         }
     }
 }

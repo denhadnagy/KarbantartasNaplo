@@ -38,6 +38,7 @@ class ErrorView: UIView {
         addSubview(errorView)
         
         errorView.frame = self.bounds
+        errorView.layer.cornerRadius = 10
         errorView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     

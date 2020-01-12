@@ -9,10 +9,10 @@
 import Foundation
 
 class Device: Codable {
-    private(set) var number = 0
-    private(set) var id = 0
-    private(set) var token = ""
-    private(set) var name = ""
+    let number: Int
+    let id: Int
+    let token: String
+    let name: String
     private(set) var itemNo: String?
     private(set) var operationTime: Int?
     private(set) var period = 0
@@ -20,22 +20,18 @@ class Device: Codable {
     private(set) var notes = [Note]()
     
     var rate: Double? {
-        get {
-            if operationTime == nil || period == 0 { return nil }
-            return min(round(Double(operationTime!) / Double(period) * 100.0), 100.0)
-        }
+        if operationTime == nil || period == 0 { return nil }
+        return min(round(Double(operationTime!) / Double(period) * 100.0), 100.0)
     }
     
     var severity: Severity {
-        get {
-            if rate == nil { return .undefined }
-            
-            switch rate! {
-            case let r where r < 80: return .ok
-            case let r where r < 90: return .soon
-            case let r where r < 100: return .actual
-            default: return .urgent
-            }
+        if rate == nil { return .undefined }
+        
+        switch rate! {
+        case ..<80: return .ok
+        case ..<90: return .soon
+        case ..<100: return .actual
+        default: return .urgent
         }
     }
     
@@ -44,7 +40,7 @@ class Device: Codable {
         lastService = Int(Date().timeIntervalSince1970)
     }
     
-    func setPeriod(period: Int) {
+    func setPeriod(to period: Int) {
         self.period = period
     }
     
@@ -56,11 +52,11 @@ class Device: Codable {
         notes.insert(Note(creationDate: Int(date.timeIntervalSince1970), comment: comment), at: 0)
     }
     
-    func removeNote(at: Int) {
-        notes.remove(at: at)
+    func removeNote(at index: Int) {
+        notes.remove(at: index)
     }
     
-    func removeAllNote() {
+    func removeAllNotes() {
         notes.removeAll()
     }
     

@@ -8,6 +8,6 @@
 
 extension Int {
     var digits: [Int] {
-        return String(self).compactMap { Int(String($0)) }
+        String(self).compactMap { Int(String($0)) }
     }
 }

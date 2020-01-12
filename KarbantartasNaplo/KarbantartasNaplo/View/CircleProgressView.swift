@@ -45,8 +45,19 @@ class CircleProgressView: UIView {
     
     var value = 0.0 {
         didSet {
-            progressLayer.strokeEnd = CGFloat(value / 100.0)
-            valueLabel.countFromCurrentValue(to: CGFloat(value), withDuration: 0.1)
+            let fromValue = oldValue / 100.0
+            let toValue = value / 100.0
+            let duration = abs(fromValue - toValue)
+            
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.fromValue = fromValue
+            animation.toValue = toValue
+            animation.duration = duration
+            
+            progressLayer.strokeEnd = CGFloat(toValue)
+            progressLayer.add(animation, forKey: "progress")
+                        
+            valueLabel.countFromCurrentValue(to: CGFloat(value), withDuration: duration)
         }
     }
     
@@ -82,7 +93,6 @@ class CircleProgressView: UIView {
         valueLabel.textAlignment = .center
         valueLabel.format = "%.0f%%"
         addSubview(valueLabel)
-        
     }
     
     //MARK: - Standard functions

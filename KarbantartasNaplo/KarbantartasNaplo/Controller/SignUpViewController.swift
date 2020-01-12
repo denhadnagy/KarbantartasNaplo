@@ -11,11 +11,14 @@ import UIKit
 class SignUpViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet private weak var signUpLabel: UILabel!
+    @IBOutlet private weak var signUpScrollView: UIScrollView!
     @IBOutlet private weak var emailTextField: MyTextField!
     @IBOutlet private weak var passwordTextField: MyTextField!
     @IBOutlet private weak var passwordAgainTextField: MyTextField!
     @IBOutlet private weak var signUpFailedLabel: UILabel!
     @IBOutlet private weak var signUpButton: UIButton!
+    
+    @IBOutlet private weak var signUpScrollViewHeight: NSLayoutConstraint!
     
     @IBOutlet private weak var logoImageViewTopCR: NSLayoutConstraint!
     @IBOutlet private weak var logoImageViewHeightCR: NSLayoutConstraint!
@@ -59,6 +62,7 @@ class SignUpViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
@@ -76,12 +80,12 @@ class SignUpViewController: UIViewController {
         var smallerBounds = signUpLabel.bounds
         signUpLabel.font = signUpLabel.font.withSize(16)
         smallerBounds.size = signUpLabel.intrinsicContentSize
-        
+
         let scaleX = smallerBounds.size.width / signUpLabel.frame.size.width
         let scaleY = smallerBounds.size.height / signUpLabel.frame.size.height
         signUpLabel.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         signUpLabel.bounds = smallerBounds
-        
+
         logoImageViewTopCR.constant = 10
         logoImageViewHeightCR.constant = 48
         signUpLabelTopCR.constant = 5
@@ -89,22 +93,30 @@ class SignUpViewController: UIViewController {
         signUpLabelBottomRC.constant = 10
         signUpLabelTopCC.constant = 10
         signUpLabelBottomCC.constant = 5
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.4) {
             self.signUpLabel.transform = .identity
             self.view.layoutIfNeeded()
-        })
-        
+        }
+
         isKeyboardShown = true
         if isRotatingWithKeyboard { isRotatingWithKeyboard = false }
     }
     
+    @objc private func keyboardDidShow(notification: Notification) {
+        let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let keyboardCoverHeight = signUpScrollView.frame.maxY - keyboardFrame.origin.y
+        if keyboardCoverHeight > 0 { signUpScrollViewHeight.constant -= keyboardCoverHeight }
+    }
+    
     @objc private func keyboardWillHide(notification: Notification) {
-        if isRotatingWithKeyboard { return }
+        signUpScrollViewHeight.constant = 206
         
+        if isRotatingWithKeyboard { return }
+
         var biggerBounds = signUpLabel.bounds
         signUpLabel.font = signUpLabel.font.withSize(32)
         biggerBounds.size = signUpLabel.intrinsicContentSize
-        
+
         let scaleX = biggerBounds.size.width / signUpLabel.frame.size.width
         let scaleY = biggerBounds.size.height / signUpLabel.frame.size.height
         signUpLabel.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
@@ -117,11 +129,11 @@ class SignUpViewController: UIViewController {
         signUpLabelBottomRC.constant = 30
         signUpLabelTopCC.constant = 39
         signUpLabelBottomCC.constant = 20
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.4) {
             self.signUpLabel.transform = .identity
             self.view.layoutIfNeeded()
-        })
-        
+        }
+
         isKeyboardShown = false
     }
     

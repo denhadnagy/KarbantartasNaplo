@@ -9,9 +9,6 @@
 import Alamofire
 
 class NetworkManager {
-    //MARK: - Properties
-    private static var manager: SessionManager?
-    
     //MARK: - GET requests
     static func loadDevices(completion: @escaping (Data?, Error?) -> Void) {
         sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/getDevices", method: .get, parameters: nil, headers: nil, completion: completion)
@@ -70,7 +67,7 @@ class NetworkManager {
     }
     
     static func login(email: String, password: String, completion: @escaping (Data?, Error?) -> Void) {
-        let headers = [
+        let headers: HTTPHeaders = [
             "hardwareId": UIDevice.current.identifierForVendor!.uuidString,
             "os": "iOS",
             "osVersion": UIDevice.current.systemVersion
@@ -84,7 +81,7 @@ class NetworkManager {
     }
     
     static func signUp(email: String, password: String, passwordAgain: String, completion: @escaping (Data?, Error?) -> Void) {
-        let headers = [
+        let headers: HTTPHeaders = [
             "hardwareId": UIDevice.current.identifierForVendor!.uuidString,
             "os": "iOS",
             "osVersion": UIDevice.current.systemVersion
@@ -110,18 +107,11 @@ class NetworkManager {
     
     //MARK: - Send request function
     private static func sendRequest(to url: String, method: HTTPMethod, parameters: Parameters?, headers: HTTPHeaders?, completion: @escaping (Data?, Error?) -> Void) {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 5
-        configuration.timeoutIntervalForResource = 5
-        manager = Alamofire.SessionManager(configuration: configuration)
-        
-        manager!.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
-            guard response.result.isSuccess, let value = response.result.value else {
-                completion(nil, response.result.error)
-                return
+        AF.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
+            switch response.result {
+            case .failure(let error): completion(nil, error)
+            case .success(let value): completion(value, nil)
             }
-            
-            completion(value, nil)
         }
     }
 }
