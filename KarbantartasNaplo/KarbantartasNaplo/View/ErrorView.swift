@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ErrorViewDelegate {
+    func showErrorView(withErrorMessage: String)
     func hideErrorView()
 }
 

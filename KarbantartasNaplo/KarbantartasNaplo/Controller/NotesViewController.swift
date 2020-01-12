@@ -16,7 +16,8 @@ class NotesViewController: UIViewController {
     @IBOutlet private weak var addButton: MyFloatingButton!
     @IBOutlet private weak var deleteCancelButton: UIButton!
     
-    @IBOutlet private weak var errorViewBottom: NSLayoutConstraint!
+    @IBOutlet private weak var errorViewLeading: NSLayoutConstraint!
+    @IBOutlet private weak var errorViewWidth: NSLayoutConstraint!
     @IBOutlet private weak var addButtonTrailing: NSLayoutConstraint!
     @IBOutlet private weak var deleteViewBottom: NSLayoutConstraint!
     
@@ -108,15 +109,20 @@ class NotesViewController: UIViewController {
         notesTableView.dataSource = self
         notesTableView.delegate = self
         
-        errorView.alpha = 0
         deleteBarButtonItem.isEnabled = device.notes.count > 0  //TODO:
         addButton.backgroundColor = Constants.color
         addButton.isEnabled = true  //TODO:
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        errorViewWidth.constant = UIScreen.main.bounds.width - 40
+        if errorViewLeading.constant != 0 { errorViewLeading.constant = -UIScreen.main.bounds.width + 20 }
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if errorViewBottom.constant == 0 { hideErrorView() }
+        if errorViewLeading.constant != 0 { hideErrorView() }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -165,15 +171,6 @@ class NotesViewController: UIViewController {
         device.sortNotes()
         deviceChanged()
         deletedNotes.removeAll()
-    }
-    
-    private func showErrorView(withErrorMessage: String) {
-        errorView.text = withErrorMessage
-        errorView.alpha = 1
-        errorViewBottom.constant = 40
-        UIView.animate(withDuration: 0.4) {
-            self.view.layoutIfNeeded()
-        }
     }
 }
 
@@ -284,13 +281,18 @@ extension NotesViewController: EditNoteViewControllerDelegate {
 
 //MARK: - Extension: ErrorViewDelegate
 extension NotesViewController: ErrorViewDelegate {
+    func showErrorView(withErrorMessage: String) {
+        errorView.text = withErrorMessage
+        errorViewLeading.constant = -UIScreen.main.bounds.width + 20
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() })
+    }
+    
     func hideErrorView() {
-        errorViewBottom.constant = 0
-        UIView.animate(withDuration: 0.4, animations: {
+        errorViewLeading.constant = 0
+        UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
         }) { completion in
             self.errorView.text = ""
-            self.errorView.alpha = 0
         }
     }
 }

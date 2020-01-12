@@ -23,7 +23,8 @@ class DevicesViewController: UIViewController {
     @IBOutlet private weak var devicesTableView: UITableView!
     @IBOutlet private weak var menuButton: MyFloatingButton!
     
-    @IBOutlet private weak var errorViewBottom: NSLayoutConstraint!
+    @IBOutlet private weak var errorViewLeading: NSLayoutConstraint!
+    @IBOutlet private weak var errorViewWidth: NSLayoutConstraint!
     @IBOutlet private weak var loginButtonCenterX: NSLayoutConstraint!
     @IBOutlet private weak var aboutButtonCenterX: NSLayoutConstraint!
     
@@ -72,7 +73,6 @@ class DevicesViewController: UIViewController {
         devicesTableView.dataSource = self
         devicesTableView.delegate = self
         
-        errorView.alpha = 0
         urgentFilterButton.color = Severity.urgent.color
         urgentFilterLabel.text = Severity.urgent.rawValue
         actualFilterButton.color = Severity.actual.color
@@ -91,9 +91,20 @@ class DevicesViewController: UIViewController {
         getDevices()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        errorViewWidth.constant = UIScreen.main.bounds.width - 40
+        if errorViewLeading.constant != 0 { errorViewLeading.constant = -UIScreen.main.bounds.width + 20 }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isMenuShown { isMenuShown = false }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if errorViewLeading.constant != 0 { hideErrorView() }
     }
     
     //MARK: - Navigation
@@ -147,11 +158,7 @@ class DevicesViewController: UIViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.errorView.text = "Kommunikációs hiba!"
-                    self.errorViewBottom.constant = 40
-                    UIView.animate(withDuration: 0.4) {
-                        self.view.layoutIfNeeded()
-                    }
+                    self.showErrorView(withErrorMessage: "Kommunikációs hiba!")
                 }
             }
             self.refreshControl.endRefreshing()
@@ -188,13 +195,18 @@ extension DevicesViewController: DetailsViewControllerDelegate {
 
 //MARK: - Extension: ErrorViewDelegate
 extension DevicesViewController: ErrorViewDelegate {
+    func showErrorView(withErrorMessage: String) {
+        errorView.text = withErrorMessage
+        errorViewLeading.constant = -UIScreen.main.bounds.width + 20
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() })
+    }
+    
     func hideErrorView() {
-        errorViewBottom.constant = 0
-        UIView.animate(withDuration: 0.4, animations: {
+        errorViewLeading.constant = 0
+        UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
         }) { completion in
             self.errorView.text = ""
-            self.errorView.alpha = 0
         }
     }
 }

@@ -262,14 +262,6 @@ class DetailsViewController: UIViewController {
     }
     
     //MARK: - Common functions
-    private func showErrorView(withErrorMessage: String) {
-        errorView.text = withErrorMessage
-        errorViewLeading.constant = -UIScreen.main.bounds.width + 20
-        UIView.animate(withDuration: 0.4) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
     private func showPopupView(popupView: UIView) {
         visualEffectView = UIVisualEffectView()
         visualEffectView.translatesAutoresizingMaskIntoConstraints = false
@@ -334,9 +326,15 @@ extension DetailsViewController: UIPickerViewDelegate {
 
 //MARK: - Extension: ErrorViewDelegate
 extension DetailsViewController: ErrorViewDelegate {
+    func showErrorView(withErrorMessage: String) {
+        errorView.text = withErrorMessage
+        errorViewLeading.constant = -UIScreen.main.bounds.width + 20
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() })
+    }
+    
     func hideErrorView() {
         errorViewLeading.constant = 0
-        UIView.animate(withDuration: 0.4, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
         }) { completion in
             self.errorView.text = ""

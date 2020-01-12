@@ -830,8 +830,9 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDk-98-YOy" customClass="ErrorView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="4" width="375" height="40"/>
+                                <rect key="frame" x="375" y="49" width="100" height="40"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="aG2-FL-2iA"/>
                                     <constraint firstAttribute="height" constant="40" id="k8P-VA-edV"/>
                                 </constraints>
                             </view>
@@ -947,10 +948,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pFs-sk-3b4" firstAttribute="trailing" secondItem="tDk-98-YOy" secondAttribute="trailing" id="5Vn-Wr-DfH"/>
                             <constraint firstItem="V2q-e2-jCt" firstAttribute="centerX" secondItem="1BB-B8-ZRI" secondAttribute="trailing" constant="-47" id="98N-jM-Dh4"/>
                             <constraint firstItem="41r-zS-sUc" firstAttribute="bottom" secondItem="pFs-sk-3b4" secondAttribute="bottom" id="GS8-NR-RF9"/>
-                            <constraint firstItem="tDk-98-YOy" firstAttribute="bottom" secondItem="pFs-sk-3b4" secondAttribute="top" id="LHU-hM-Qaf"/>
                             <constraint firstItem="o9J-kh-lfC" firstAttribute="centerX" secondItem="1BB-B8-ZRI" secondAttribute="trailing" constant="-47" id="Qlp-xz-o08"/>
                             <constraint firstItem="41r-zS-sUc" firstAttribute="trailing" secondItem="pFs-sk-3b4" secondAttribute="trailing" id="Sln-yt-75f"/>
                             <constraint firstItem="41r-zS-sUc" firstAttribute="leading" secondItem="pFs-sk-3b4" secondAttribute="leading" id="Smi-Pz-ZDg"/>
@@ -958,7 +957,8 @@
                             <constraint firstItem="FEy-7f-bfo" firstAttribute="bottom" secondItem="pFs-sk-3b4" secondAttribute="bottom" constant="-20" id="YBd-WC-gXH"/>
                             <constraint firstItem="o9J-kh-lfC" firstAttribute="centerY" secondItem="FEy-7f-bfo" secondAttribute="centerY" constant="-57" id="hfP-BI-ztR"/>
                             <constraint firstItem="FEy-7f-bfo" firstAttribute="centerX" secondItem="1BB-B8-ZRI" secondAttribute="trailing" constant="-47" id="hgA-Av-h2y"/>
-                            <constraint firstItem="tDk-98-YOy" firstAttribute="leading" secondItem="pFs-sk-3b4" secondAttribute="leading" id="jPR-QS-Z0N"/>
+                            <constraint firstItem="tDk-98-YOy" firstAttribute="leading" secondItem="1BB-B8-ZRI" secondAttribute="trailing" id="jPR-QS-Z0N"/>
+                            <constraint firstItem="tDk-98-YOy" firstAttribute="top" secondItem="pFs-sk-3b4" secondAttribute="top" constant="5" id="pe1-nq-xVO"/>
                             <constraint firstItem="qIJ-x9-1xm" firstAttribute="trailing" secondItem="pFs-sk-3b4" secondAttribute="trailing" constant="1" id="qbW-AQ-WS5"/>
                             <constraint firstItem="V2q-e2-jCt" firstAttribute="centerY" secondItem="o9J-kh-lfC" secondAttribute="centerY" constant="-65" id="tA1-WE-iPO"/>
                             <constraint firstItem="qIJ-x9-1xm" firstAttribute="leading" secondItem="pFs-sk-3b4" secondAttribute="leading" constant="-1" id="xwy-ri-Chd"/>
@@ -973,7 +973,8 @@
                         <outlet property="actualFilterLabel" destination="vnj-I9-WKG" id="tIS-Y2-e9N"/>
                         <outlet property="devicesTableView" destination="41r-zS-sUc" id="ehK-FC-6Bz"/>
                         <outlet property="errorView" destination="tDk-98-YOy" id="SYc-ZL-naP"/>
-                        <outlet property="errorViewBottom" destination="LHU-hM-Qaf" id="5ZZ-j8-cYh"/>
+                        <outlet property="errorViewLeading" destination="jPR-QS-Z0N" id="rnt-WE-KDR"/>
+                        <outlet property="errorViewWidth" destination="aG2-FL-2iA" id="qAj-mS-57g"/>
                         <outlet property="filterView" destination="qIJ-x9-1xm" id="7q5-fX-GmZ"/>
                         <outlet property="loginButtonCenterX" destination="98N-jM-Dh4" id="hdP-Jn-iVv"/>
                         <outlet property="menuButton" destination="FEy-7f-bfo" id="UfY-Ot-enU"/>
@@ -1395,9 +1396,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qF2-GT-mZh" customClass="ErrorView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="4" width="375" height="40"/>
+                                <rect key="frame" x="375" y="49" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LIj-FC-RfV"/>
+                                    <constraint firstAttribute="width" constant="100" id="m6c-Tf-ofm"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFe-hS-45h" userLabel="Delete View">
@@ -1457,13 +1459,12 @@
                         <constraints>
                             <constraint firstItem="zFe-hS-45h" firstAttribute="bottom" secondItem="UE8-KD-Y8m" secondAttribute="bottom" constant="50" id="11U-8X-Stt"/>
                             <constraint firstItem="UE8-KD-Y8m" firstAttribute="trailing" secondItem="zFe-hS-45h" secondAttribute="trailing" id="51b-QX-ww3"/>
-                            <constraint firstItem="qF2-GT-mZh" firstAttribute="bottom" secondItem="UE8-KD-Y8m" secondAttribute="top" id="9YK-Ts-rRl"/>
                             <constraint firstItem="zFe-hS-45h" firstAttribute="leading" secondItem="UE8-KD-Y8m" secondAttribute="leading" id="CYW-Qg-SBB"/>
                             <constraint firstItem="43S-8P-ScU" firstAttribute="trailing" secondItem="7vx-fm-FdL" secondAttribute="trailing" constant="-20" id="EYJ-l0-WLV"/>
-                            <constraint firstItem="UE8-KD-Y8m" firstAttribute="trailing" secondItem="qF2-GT-mZh" secondAttribute="trailing" id="FTE-Ne-uCz"/>
+                            <constraint firstItem="qF2-GT-mZh" firstAttribute="top" secondItem="UE8-KD-Y8m" secondAttribute="top" constant="5" id="MMA-mW-cRk"/>
                             <constraint firstItem="xKL-YW-lDY" firstAttribute="leading" secondItem="UE8-KD-Y8m" secondAttribute="leading" id="P6G-iM-Rui"/>
                             <constraint firstItem="xKL-YW-lDY" firstAttribute="bottom" secondItem="zFe-hS-45h" secondAttribute="top" id="W5s-93-Eaa"/>
-                            <constraint firstItem="qF2-GT-mZh" firstAttribute="leading" secondItem="UE8-KD-Y8m" secondAttribute="leading" id="Ysr-d0-iP7"/>
+                            <constraint firstItem="qF2-GT-mZh" firstAttribute="leading" secondItem="7vx-fm-FdL" secondAttribute="trailing" id="Ysr-d0-iP7"/>
                             <constraint firstItem="43S-8P-ScU" firstAttribute="bottom" secondItem="UE8-KD-Y8m" secondAttribute="bottom" constant="-20" id="aVG-eP-FiO"/>
                             <constraint firstItem="xKL-YW-lDY" firstAttribute="top" secondItem="UE8-KD-Y8m" secondAttribute="top" id="oie-eM-UIR"/>
                             <constraint firstItem="UE8-KD-Y8m" firstAttribute="trailing" secondItem="xKL-YW-lDY" secondAttribute="trailing" id="tt8-j4-gUm"/>
@@ -1485,7 +1486,8 @@
                         <outlet property="deleteCancelButton" destination="ubY-aV-Flr" id="7Lv-uo-fX6"/>
                         <outlet property="deleteViewBottom" destination="11U-8X-Stt" id="79e-No-0mu"/>
                         <outlet property="errorView" destination="qF2-GT-mZh" id="pvr-co-LMm"/>
-                        <outlet property="errorViewBottom" destination="9YK-Ts-rRl" id="G9a-2C-ULb"/>
+                        <outlet property="errorViewLeading" destination="Ysr-d0-iP7" id="JDU-lJ-wzV"/>
+                        <outlet property="errorViewWidth" destination="m6c-Tf-ofm" id="ggt-Lb-jYM"/>
                         <outlet property="notesTableView" destination="xKL-YW-lDY" id="4Ve-7U-Rah"/>
                         <segue destination="OEY-tQ-gJ5" kind="presentation" identifier="showEditNoteSegue" id="CYC-px-oQ9"/>
                     </connections>
