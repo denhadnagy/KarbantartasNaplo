@@ -1,0 +1,6 @@
+framework module Pods_KarbantartasNaploUITests {
+  umbrella header "Pods-KarbantartasNaploUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

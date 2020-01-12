@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (5.0.0-rc.3)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
+  - UICountingLabel (1.4.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.3)
+  - Charts (~> 3.4.0)
+  - UICountingLabel (~> 1.4.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Charts
+    - UICountingLabel
+
+SPEC CHECKSUMS:
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
+  UICountingLabel: faf890b505d96312e324a86718f031fafffb0ccb
+
+PODFILE CHECKSUM: 3d9ea98f1641e424864330cded2af2cdcedaee4f
+
+COCOAPODS: 1.8.4
