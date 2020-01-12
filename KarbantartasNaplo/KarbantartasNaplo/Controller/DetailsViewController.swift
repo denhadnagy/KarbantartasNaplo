@@ -28,7 +28,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet private weak var setPeriodButton: UIButton!
     @IBOutlet private weak var rateProgressView: CircleProgressView!
     
-    @IBOutlet private weak var errorViewBottom: NSLayoutConstraint!
+    @IBOutlet private weak var errorViewLeading: NSLayoutConstraint!
+    @IBOutlet private weak var errorViewWidth: NSLayoutConstraint!
     
     //MARK: - Properties
     private var visualEffectView: UIVisualEffectView!
@@ -58,7 +59,6 @@ class DetailsViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
         
-        errorView.alpha = 0
         nameLabel.text = device.name
         tokenLabel.text = device.token
         operationTimeLabel.text = device.operationTime != nil ? "\(device.operationTime!) h" : "?"
@@ -79,9 +79,15 @@ class DetailsViewController: UIViewController {
         rateProgressView.value = device.rate ?? 0.0
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        errorViewWidth.constant = UIScreen.main.bounds.width - 40
+        if errorViewLeading.constant != 0 { errorViewLeading.constant = -UIScreen.main.bounds.width + 20 }
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if errorViewBottom.constant == 0 { hideErrorView() }
+        if errorViewLeading.constant != 0 { hideErrorView() }
         if view.subviews.contains(serviceView) { closePopupView(popupView: serviceView) }
         if view.subviews.contains(setPeriodView) { closePopupView(popupView: setPeriodView) }
     }
@@ -186,7 +192,7 @@ class DetailsViewController: UIViewController {
         
         let newPeriod = getPickerViewSelectedRowsAsInteger(pickerView: setPeriodPickerView)
         if newPeriod == device.period {
-            if errorViewBottom.constant == 0 { hideErrorView() }
+            if errorViewLeading.constant != 0 { hideErrorView() }
             return
         }
         else if newPeriod == 0 {
@@ -256,15 +262,6 @@ class DetailsViewController: UIViewController {
     }
     
     //MARK: - Common functions
-    private func showErrorView(withErrorMessage: String) {
-        errorView.text = withErrorMessage
-        errorView.alpha = 1
-        errorViewBottom.constant = 40
-        UIView.animate(withDuration: 0.4) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
     private func showPopupView(popupView: UIView) {
         visualEffectView = UIVisualEffectView()
         visualEffectView.translatesAutoresizingMaskIntoConstraints = false
@@ -329,13 +326,18 @@ extension DetailsViewController: UIPickerViewDelegate {
 
 //MARK: - Extension: ErrorViewDelegate
 extension DetailsViewController: ErrorViewDelegate {
+    func showErrorView(withErrorMessage: String) {
+        errorView.text = withErrorMessage
+        errorViewLeading.constant = -UIScreen.main.bounds.width + 20
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: { self.view.layoutIfNeeded() })
+    }
+    
     func hideErrorView() {
-        errorViewBottom.constant = 0
-        UIView.animate(withDuration: 0.4, animations: {
+        errorViewLeading.constant = 0
+        UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
         }) { completion in
             self.errorView.text = ""
-            self.errorView.alpha = 0
         }
     }
 }
