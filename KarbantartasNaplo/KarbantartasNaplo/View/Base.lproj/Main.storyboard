@@ -1017,9 +1017,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4W-vl-GLd" customClass="ErrorView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="4" width="375" height="40"/>
+                                <rect key="frame" x="375" y="49" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="H0Y-7h-d87"/>
+                                    <constraint firstAttribute="width" constant="100" id="dY4-eE-d0Y"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Odr-uD-kkV">
@@ -1125,15 +1126,14 @@
                             <constraint firstItem="3bS-nF-KAT" firstAttribute="trailing" secondItem="A7Y-NZ-XyE" secondAttribute="trailing" constant="10" id="DT3-Wh-nEx"/>
                             <constraint firstItem="Odr-uD-kkV" firstAttribute="leading" secondItem="3bS-nF-KAT" secondAttribute="leading" constant="10" id="E9n-FA-wKG"/>
                             <constraint firstItem="hCB-rF-gBt" firstAttribute="leading" secondItem="3bS-nF-KAT" secondAttribute="leading" constant="20" id="G6o-2T-NSV"/>
-                            <constraint firstItem="3bS-nF-KAT" firstAttribute="trailing" secondItem="g4W-vl-GLd" secondAttribute="trailing" id="HT6-a6-SeD"/>
+                            <constraint firstItem="g4W-vl-GLd" firstAttribute="top" secondItem="3bS-nF-KAT" secondAttribute="top" constant="5" id="Hdl-Cr-wFJ"/>
                             <constraint firstItem="A7Y-NZ-XyE" firstAttribute="top" secondItem="Odr-uD-kkV" secondAttribute="bottom" constant="10" id="L1p-M1-iIc"/>
                             <constraint firstItem="A7Y-NZ-XyE" firstAttribute="leading" secondItem="Odr-uD-kkV" secondAttribute="trailing" constant="10" id="LC8-Oy-Qjl"/>
                             <constraint firstItem="hCB-rF-gBt" firstAttribute="top" secondItem="jUS-EP-t4t" secondAttribute="bottom" constant="20" id="RXC-Vw-cSN"/>
                             <constraint firstItem="3bS-nF-KAT" firstAttribute="bottom" secondItem="A7Y-NZ-XyE" secondAttribute="bottom" constant="10" id="RZj-1x-d52"/>
                             <constraint firstItem="3bS-nF-KAT" firstAttribute="trailing" secondItem="jUS-EP-t4t" secondAttribute="trailing" constant="20" id="WGL-W3-UPh"/>
                             <constraint firstItem="Odr-uD-kkV" firstAttribute="top" secondItem="81q-hk-0w8" secondAttribute="bottom" constant="10" id="XpP-kR-wMP"/>
-                            <constraint firstItem="g4W-vl-GLd" firstAttribute="bottom" secondItem="3bS-nF-KAT" secondAttribute="top" id="Y0G-1x-Bq3"/>
-                            <constraint firstItem="g4W-vl-GLd" firstAttribute="leading" secondItem="3bS-nF-KAT" secondAttribute="leading" id="a4B-J3-kwm"/>
+                            <constraint firstItem="g4W-vl-GLd" firstAttribute="leading" secondItem="RFJ-ou-q34" secondAttribute="trailing" id="a4B-J3-kwm"/>
                             <constraint firstItem="3bS-nF-KAT" firstAttribute="bottom" secondItem="A7Y-NZ-XyE" secondAttribute="bottom" constant="10" id="fWQ-Jv-wok"/>
                             <constraint firstItem="3bS-nF-KAT" firstAttribute="trailing" secondItem="81q-hk-0w8" secondAttribute="trailing" constant="10" id="kcR-Kq-b17"/>
                             <constraint firstItem="A7Y-NZ-XyE" firstAttribute="top" secondItem="Odr-uD-kkV" secondAttribute="bottom" constant="10" id="oj7-U2-hYr"/>
@@ -1210,7 +1210,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="errorView" destination="g4W-vl-GLd" id="U8Q-Nx-1dg"/>
-                        <outlet property="errorViewBottom" destination="Y0G-1x-Bq3" id="RII-1g-Zdv"/>
+                        <outlet property="errorViewLeading" destination="a4B-J3-kwm" id="LoP-96-zOV"/>
+                        <outlet property="errorViewWidth" destination="dY4-eE-d0Y" id="f4i-ZQ-oE9"/>
                         <outlet property="lastServiceLabel" destination="cYF-1y-9YU" id="wnq-nh-2sa"/>
                         <outlet property="nameLabel" destination="O6I-Y0-SO8" id="HWW-rm-fSi"/>
                         <outlet property="operationTimeLabel" destination="LNV-xu-gwC" id="eDS-as-uwh"/>
