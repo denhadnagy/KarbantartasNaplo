@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextViewDelegate {
+class LoginViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet private weak var loginLabel: UILabel!
     @IBOutlet private weak var loginScrollView: UIScrollView!
@@ -65,16 +65,14 @@ class LoginViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        signUpForKeyboardNotifications()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if isKeyboardShown { isRotatingWithKeyboard = true }
@@ -141,6 +139,13 @@ class LoginViewController: UIViewController, UITextViewDelegate {
         isKeyboardShown = false
     }
     
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SignUpViewController {
+            vc.delegate = self
+        }
+    }
+    
     //MARK: - Actions
     @IBAction func loginButtonTouchUpInside(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
@@ -163,10 +168,20 @@ class LoginViewController: UIViewController, UITextViewDelegate {
     }
 }
 
-//MARK: - Extensions
-extension LoginViewController: UITextFieldDelegate {
+//MARK: - Extension: UITextViewDelegate
+extension LoginViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        NotificationCenter.default.removeObserver(self)
         performSegue(withIdentifier: "showSignUpSegue", sender: nil)
         return true
+    }
+}
+
+//MARK: - Extension: SignUpViewControllerDelegate
+extension LoginViewController: SignUpViewControllerDelegate {
+    func signUpForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

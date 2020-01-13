@@ -448,7 +448,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVx-5X-j1P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="98.5"/>
                                 <color key="tintColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -461,7 +461,7 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QKT-Pu-p51">
-                                <rect key="frame" x="10" y="54" width="355" height="300"/>
+                                <rect key="frame" x="10" y="108.5" width="355" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="M73-8N-oQj">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="147.5"/>
@@ -508,13 +508,13 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="roQ-si-8VA">
-                                <rect key="frame" x="10" y="364" width="355" height="244"/>
+                                <rect key="frame" x="10" y="418.5" width="355" height="189.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-FE-rNh" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="218.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="164"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devices count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8K5-74-brt">
-                                        <rect key="frame" x="0.0" y="223.5" width="355" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="169" width="355" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -733,6 +733,127 @@
             </objects>
             <point key="canvasLocation" x="1579" y="32"/>
         </scene>
+        <!--Információk-->
+        <scene sceneID="2hE-f4-BVc">
+            <objects>
+                <viewController id="yF9-6v-mry" userLabel="Információk" customClass="InformationViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xh9-5M-nPq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfi-rz-EUA">
+                                <rect key="frame" x="40" y="0.0" width="295" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDQ-bB-fay">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="1099"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Információk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rh-Ap-5fg">
+                                                <rect key="frame" x="0.0" y="100" width="295" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2g-9d-Drz">
+                                                <rect key="frame" x="0.0" y="166" width="295" height="913"/>
+                                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac purus metus. Curabitur ut rutrum ante. Pellentesque ut varius ante. Aliquam erat sapien, lobortis non purus quis, consectetur dignissim ante. Mauris mollis orci vitae ultrices faucibus. Mauris pretium viverra vehicula. Nam sed dolor malesuada, ultricies nisi et, consequat nunc. Curabitur at viverra mi, et consectetur purus. Ut auctor rhoncus eleifend. Pellentesque tempor gravida tellus ac porta. Proin elit sem, posuere ut cursus ut, ullamcorper a elit. Praesent et risus eget ante imperdiet malesuada.
+
+Vivamus dapibus fringilla sem, sit amet semper justo venenatis ac. Aenean vehicula eu ipsum a commodo. In facilisis nisl id lectus sagittis, venenatis sodales lacus pretium. Suspendisse non nunc id arcu porttitor mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris suscipit turpis vel velit tempus sagittis. Nullam elementum urna nec sodales varius. Aenean ornare scelerisque nisl, at tincidunt sapien imperdiet eu. Vestibulum orci nibh, malesuada eu leo eget, feugiat blandit tortor. Donec tortor erat, vestibulum a iaculis in, congue at purus.
+
+Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit eget, sagittis sit amet ipsum. Nam et orci eu nisi laoreet sodales et ut nunc. Mauris aliquam dui id dictum fringilla. Morbi malesuada, nibh aliquet tempus fermentum, augue lacus mollis lacus, posuere tincidunt sapien erat et nisi. Aenean pellentesque efficitur nisl, id varius nulla sollicitudin at. Mauris aliquet ante eu ullamcorper commodo. Phasellus non lobortis quam. </string>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="a2g-9d-Drz" secondAttribute="bottom" constant="20" id="6Ve-U1-d0S"/>
+                                            <constraint firstAttribute="trailing" secondItem="a2g-9d-Drz" secondAttribute="trailing" id="8Lc-w5-fAh"/>
+                                            <constraint firstItem="a2g-9d-Drz" firstAttribute="leading" secondItem="RDQ-bB-fay" secondAttribute="leading" id="EfZ-4f-yiJ"/>
+                                            <constraint firstItem="5Rh-Ap-5fg" firstAttribute="leading" secondItem="RDQ-bB-fay" secondAttribute="leading" id="Xkh-ud-kqm"/>
+                                            <constraint firstAttribute="trailing" secondItem="5Rh-Ap-5fg" secondAttribute="trailing" id="Xv9-de-V0f"/>
+                                            <constraint firstItem="5Rh-Ap-5fg" firstAttribute="top" secondItem="RDQ-bB-fay" secondAttribute="top" constant="100" id="bDQ-Cr-kIL"/>
+                                            <constraint firstItem="a2g-9d-Drz" firstAttribute="top" secondItem="5Rh-Ap-5fg" secondAttribute="bottom" constant="30" id="bFA-Ks-tSy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="RDQ-bB-fay" secondAttribute="trailing" id="224-7o-nxi"/>
+                                    <constraint firstItem="RDQ-bB-fay" firstAttribute="top" secondItem="Pfi-rz-EUA" secondAttribute="top" id="9ff-mO-6M2"/>
+                                    <constraint firstItem="RDQ-bB-fay" firstAttribute="width" secondItem="Pfi-rz-EUA" secondAttribute="width" id="NKd-A3-3b6"/>
+                                    <constraint firstAttribute="bottom" secondItem="RDQ-bB-fay" secondAttribute="bottom" id="UBp-Iz-FjZ"/>
+                                    <constraint firstItem="RDQ-bB-fay" firstAttribute="leading" secondItem="Pfi-rz-EUA" secondAttribute="leading" id="u9S-Rn-O3b"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cl2-uj-qS1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-moleskine" translatesAutoresizingMaskIntoConstraints="NO" id="kVw-us-fB5">
+                                        <rect key="frame" x="10" y="12" width="55" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="P1F-Jv-RF2"/>
+                                            <constraint firstAttribute="height" constant="55" id="qUh-fd-glE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Karbantartás napló" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2P-tq-NbX">
+                                        <rect key="frame" x="75" y="27.5" width="171" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srL-ku-jxz" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
+                                        <rect key="frame" x="316.5" y="20" width="38.5" height="38.5"/>
+                                        <color key="backgroundColor" red="0.24701970819999999" green="0.31849229340000001" blue="0.71061486009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="38.5" id="Fxv-N6-rKO"/>
+                                            <constraint firstAttribute="height" constant="38.5" id="n7O-V1-edz"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
+                                        <state key="normal" image="icons8-multiply"/>
+                                        <connections>
+                                            <action selector="cancelButtonTouchUpInside:" destination="yF9-6v-mry" eventType="touchUpInside" id="srS-3V-FIK"/>
+                                            <action selector="cancelButtonTouchUpInside:" destination="dex-Wz-Ac8" eventType="touchUpInside" id="wUC-Iw-ac9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kVw-us-fB5" firstAttribute="centerY" secondItem="Cl2-uj-qS1" secondAttribute="centerY" id="2R4-9d-pBN"/>
+                                    <constraint firstItem="X2P-tq-NbX" firstAttribute="leading" secondItem="kVw-us-fB5" secondAttribute="trailing" constant="10" id="4WF-Ur-Qx9"/>
+                                    <constraint firstAttribute="height" constant="79" id="9MN-gd-SNj"/>
+                                    <constraint firstItem="kVw-us-fB5" firstAttribute="leading" secondItem="Cl2-uj-qS1" secondAttribute="leading" constant="10" id="C6f-8X-Fp1"/>
+                                    <constraint firstAttribute="trailing" secondItem="srL-ku-jxz" secondAttribute="trailing" constant="20" id="EE6-cJ-F1M"/>
+                                    <constraint firstItem="X2P-tq-NbX" firstAttribute="centerY" secondItem="Cl2-uj-qS1" secondAttribute="centerY" id="geW-5c-yPc"/>
+                                    <constraint firstItem="srL-ku-jxz" firstAttribute="top" secondItem="Cl2-uj-qS1" secondAttribute="top" constant="20" id="kPH-Lg-iAa"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X2P-tq-NbX" secondAttribute="trailing" constant="20" symbolic="YES" id="kxH-7H-2BO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Cl2-uj-qS1" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="Ms0-nv-CmL"/>
+                            <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="Pfi-rz-EUA" secondAttribute="trailing" constant="40" id="Vv6-V5-Lmw"/>
+                            <constraint firstItem="Pfi-rz-EUA" firstAttribute="bottom" secondItem="GbD-o3-I4x" secondAttribute="bottom" id="XDG-bO-grC"/>
+                            <constraint firstItem="Pfi-rz-EUA" firstAttribute="top" secondItem="GbD-o3-I4x" secondAttribute="top" id="bmx-W4-rUI"/>
+                            <constraint firstItem="Pfi-rz-EUA" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" constant="40" id="du1-wH-HLY"/>
+                            <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="Cl2-uj-qS1" secondAttribute="trailing" id="fhF-Uf-BRF"/>
+                            <constraint firstItem="Cl2-uj-qS1" firstAttribute="top" secondItem="GbD-o3-I4x" secondAttribute="top" id="v9l-hD-g4f"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GbD-o3-I4x"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentLabel" destination="a2g-9d-Drz" id="KtC-Ka-JVv"/>
+                        <outlet property="contentLabelTop" destination="bFA-Ks-tSy" id="ivX-gN-edo"/>
+                        <outlet property="scrollView" destination="Pfi-rz-EUA" id="Uas-IS-J1g"/>
+                        <outlet property="titleLabel" destination="5Rh-Ap-5fg" id="3O2-ap-zlE"/>
+                        <outlet property="titleLabelTop" destination="bDQ-Cr-kIL" id="zfN-tj-ygN"/>
+                        <outlet property="topView" destination="Cl2-uj-qS1" id="4uS-YZ-yCb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjq-nn-4dv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4089" y="958"/>
+        </scene>
         <!--Eszközök-->
         <scene sceneID="qXs-kS-sQT">
             <objects>
@@ -858,7 +979,7 @@
                                                                 <constraint firstAttribute="width" constant="40" id="hy0-T3-L0c"/>
                                                             </constraints>
                                                         </view>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HPI-s5-UVx">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HPI-s5-UVx">
                                                             <rect key="frame" x="50" y="0.0" width="251" height="52.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token   Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2io-0N-azj">
@@ -986,6 +1107,7 @@
                         <outlet property="urgentFilterLabel" destination="4gt-Sg-xS2" id="wjV-lN-CP8"/>
                         <segue destination="PC0-Jc-guA" kind="show" identifier="showDetailsSegue" id="y5g-Vn-0bd"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="showLoginSegue" id="ahn-Mm-C81"/>
+                        <segue destination="yF9-6v-mry" kind="presentation" identifier="showInformationSegue" id="izR-JL-kUg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYj-D1-coL" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SignUpViewControllerDelegate {
+    func signUpForKeyboardNotifications()
+}
+
 class SignUpViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet private weak var signUpLabel: UILabel!
@@ -33,6 +37,7 @@ class SignUpViewController: UIViewController {
     //MARK: - Properties
     private var isKeyboardShown = false
     private var isRotatingWithKeyboard = false
+    var delegate: SignUpViewControllerDelegate?
 
     //MARK: - Standard functions
     override func viewDidLoad() {
@@ -69,6 +74,7 @@ class SignUpViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        delegate?.signUpForKeyboardNotifications()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
