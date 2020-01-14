@@ -9,6 +9,8 @@ target 'KarbantartasNaplo' do
   pod 'Alamofire', '~> 5.0.0-rc.3'
   pod 'Charts', '~> 3.4.0'
   pod 'UICountingLabel', '~> 1.4.1'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 
   target 'KarbantartasNaploTests' do
     inherit! :search_paths

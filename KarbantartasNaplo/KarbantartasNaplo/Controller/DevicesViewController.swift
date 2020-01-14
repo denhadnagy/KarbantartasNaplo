@@ -32,7 +32,7 @@ class DevicesViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
     private var displayedDevices = [Device]()
     private var selectedDevice: Device?
-    
+        
     private var isMenuShown = false {
         didSet {
             let duration = 0.4
@@ -127,8 +127,38 @@ class DevicesViewController: UIViewController {
         case 2: performSegue(withIdentifier: "showLoginSegue", sender: nil)
         default: break
         }
-        
+
         isMenuShown = !isMenuShown
+        
+//        let db = Firestore.firestore()
+//        for device in DataCenter.shared.devices {
+//            var notesData = [[String: Any]]()
+//            for note in device.notes {
+//                let noteData: [String : Any] = [
+//                    "creationDate": note.creationDate,
+//                    "comment": note.comment
+//                ]
+//                notesData.append(noteData)
+//            }
+//            let deviceData: [String : Any] = [
+//                "number": device.number,
+//                "id": device.id,
+//                "token": device.token,
+//                "name": device.name,
+//                "itemNo": device.itemNo ?? "null",
+//                "operationTime": device.operationTime ?? "null",
+//                "period": device.period,
+//                "lastService": device.lastService,
+//                "notes": notesData
+//                ]
+//            db.collection("devices").document(String(device.id)).setData(deviceData) { error in
+//                if let e = error {
+//                    print("Error writing document: \(e)")
+//                } else {
+//                    print("Document successfully written!")
+//                }
+//            }
+//        }
     }
     
     //MARK: - Common functions
