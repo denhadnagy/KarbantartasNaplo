@@ -123,7 +123,7 @@ class DevicesViewController: UIViewController {
     
     @IBAction func menuButtonTouchUpInside(_ sender: MyFloatingButton) {
         switch sender.tag {
-        case 1: debugPrint("About")
+        case 1: performSegue(withIdentifier: "showInformationSegue", sender: nil)
         case 2: performSegue(withIdentifier: "showLoginSegue", sender: nil)
         default: break
         }

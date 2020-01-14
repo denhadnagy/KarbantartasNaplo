@@ -33,6 +33,7 @@
 		65724804211D70EC00EEBDD8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65724803211D70EC00EEBDD8 /* ErrorView.swift */; };
 		6573C49620DBDE97006500AF /* SeverityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6573C49520DBDE97006500AF /* SeverityView.xib */; };
 		6573C49820DBE0C0006500AF /* SeverityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6573C49720DBE0C0006500AF /* SeverityView.swift */; };
+		6574123C23CB85B70092E62D /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6574123B23CB85B70092E62D /* InformationViewController.swift */; };
 		657AA9602122C24100C6953A /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657AA95F2122C24100C6953A /* NotesTableViewCell.swift */; };
 		657BCBE82121A05F00486449 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BCBE72121A05F00486449 /* Note.swift */; };
 		657BCBEA2122012100486449 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BCBE92122012100486449 /* NotesViewController.swift */; };
@@ -102,6 +103,7 @@
 		65724803211D70EC00EEBDD8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6573C49520DBDE97006500AF /* SeverityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeverityView.xib; sourceTree = "<group>"; };
 		6573C49720DBE0C0006500AF /* SeverityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeverityView.swift; sourceTree = "<group>"; };
+		6574123B23CB85B70092E62D /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		657AA95F2122C24100C6953A /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		657BCBE72121A05F00486449 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		657BCBE92122012100486449 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				6539C88520E4BE6400A2B3CF /* DetailsViewController.swift */,
 				656D92D620CECC6F009CF273 /* DevicesViewController.swift */,
 				65163DBC216BBDAA00D1502A /* EditNoteViewController.swift */,
+				6574123B23CB85B70092E62D /* InformationViewController.swift */,
 				653506A420A4891000CD611C /* LoginViewController.swift */,
 				657BCBE92122012100486449 /* NotesViewController.swift */,
 				65232EB320B2DA6E00B8BD20 /* SignUpViewController.swift */,
@@ -178,6 +181,7 @@
 				6584D77D20CFC34400121A17 /* DevicesTableViewCell.swift */,
 				65724803211D70EC00EEBDD8 /* ErrorView.swift */,
 				65724801211D6E6800EEBDD8 /* ErrorView.xib */,
+				653506AB20A4891100CD611C /* LaunchScreen.storyboard */,
 				653506A620A4891000CD611C /* Main.storyboard */,
 				65013CAB20D2CD0800C99B17 /* MyButton.swift */,
 				65A7EE552185FE70009F1CC2 /* MyFloatingButton.swift */,
@@ -223,7 +227,6 @@
 				653487FC20BC563B002A8519 /* View */,
 				65232EB220B2D9E200B8BD20 /* Controller */,
 				653506A920A4891100CD611C /* Assets.xcassets */,
-				653506AB20A4891100CD611C /* LaunchScreen.storyboard */,
 				653506AE20A4891100CD611C /* Info.plist */,
 			);
 			path = KarbantartasNaplo;
@@ -502,6 +505,7 @@
 				6539C88620E4BE6400A2B3CF /* DetailsViewController.swift in Sources */,
 				65F78F8320E66C49009FDB9E /* CircleProgressView.swift in Sources */,
 				657BCBEA2122012100486449 /* NotesViewController.swift in Sources */,
+				6574123C23CB85B70092E62D /* InformationViewController.swift in Sources */,
 				6573C49820DBE0C0006500AF /* SeverityView.swift in Sources */,
 				6584D78020CFD32200121A17 /* CircleView.swift in Sources */,
 				65724804211D70EC00EEBDD8 /* ErrorView.swift in Sources */,
