@@ -181,6 +181,7 @@
 				6584D77D20CFC34400121A17 /* DevicesTableViewCell.swift */,
 				65724803211D70EC00EEBDD8 /* ErrorView.swift */,
 				65724801211D6E6800EEBDD8 /* ErrorView.xib */,
+				653506AB20A4891100CD611C /* LaunchScreen.storyboard */,
 				653506A620A4891000CD611C /* Main.storyboard */,
 				65013CAB20D2CD0800C99B17 /* MyButton.swift */,
 				65A7EE552185FE70009F1CC2 /* MyFloatingButton.swift */,
@@ -226,7 +227,6 @@
 				653487FC20BC563B002A8519 /* View */,
 				65232EB220B2D9E200B8BD20 /* Controller */,
 				653506A920A4891100CD611C /* Assets.xcassets */,
-				653506AB20A4891100CD611C /* LaunchScreen.storyboard */,
 				653506AE20A4891100CD611C /* Info.plist */,
 			);
 			path = KarbantartasNaplo;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rqV-2b-oa0">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,11 +12,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="Belépés" customClass="LoginViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-moleskine" translatesAutoresizingMaskIntoConstraints="NO" id="K2p-j6-gUy">
-                                <rect key="frame" x="139.5" y="50" width="96" height="96"/>
+                                <rect key="frame" x="159" y="50" width="96" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="41A-av-WsZ"/>
                                 </constraints>
@@ -32,39 +32,39 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belépés" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="oqi-Cy-ek4">
-                                <rect key="frame" x="135" y="166" width="105" height="38.5"/>
+                                <rect key="frame" x="154.66666666666666" y="166" width="104.99999999999997" height="38.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="olM-ph-L7N">
-                                <rect key="frame" x="37.5" y="259.5" width="310" height="163"/>
+                                <rect key="frame" x="41.333333333333343" y="259.33333333333331" width="341.33333333333326" height="163"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fkb-5x-BIS">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="163"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="163"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPS-FY-wED" customClass="MyTextField" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="Qg6-pg-Yld"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFt-xN-WFu" customClass="MyTextField" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="43" width="300" height="33"/>
+                                                <rect key="frame" x="0.0" y="43" width="331.33333333333331" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="wu5-QJ-uNN"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Érvénytelen Email vagy Jelszó!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hMi-nW-J2x">
-                                                <rect key="frame" x="0.0" y="86" width="300" height="17"/>
+                                                <rect key="frame" x="0.0" y="86" width="331.33333333333331" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eip-Rs-9lj">
-                                                <rect key="frame" x="0.0" y="113" width="300" height="50"/>
+                                                <rect key="frame" x="0.0" y="113" width="331.33333333333331" height="50"/>
                                                 <color key="backgroundColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="eCs-g4-kY3"/>
@@ -97,7 +97,7 @@
                                 </constraints>
                             </scrollView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Nincsen fiókja? Regisztráljon!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YUH-Xp-3JW">
-                                <rect key="frame" x="0.0" y="607" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="768" width="414" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5hI-7I-g4W"/>
@@ -107,11 +107,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tld-pm-HBH" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="316.5" y="20" width="38.5" height="38.5"/>
+                                <rect key="frame" x="356" y="20" width="38" height="38"/>
                                 <color key="backgroundColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="38.5" id="C7R-BE-nWG"/>
-                                    <constraint firstAttribute="height" constant="38.5" id="pUe-F5-VbZ"/>
+                                    <constraint firstAttribute="width" constant="38" id="C7R-BE-nWG"/>
+                                    <constraint firstAttribute="height" constant="38" id="pUe-F5-VbZ"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
                                 <state key="normal" image="icons8-multiply"/>
@@ -239,11 +239,11 @@
             <objects>
                 <viewController id="dex-Wz-Ac8" userLabel="Regisztrálás" customClass="SignUpViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P2u-Lc-aiZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-moleskine" translatesAutoresizingMaskIntoConstraints="NO" id="cPB-YC-Pq3">
-                                <rect key="frame" x="139.5" y="50" width="96" height="96"/>
+                                <rect key="frame" x="159" y="50" width="96" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="EIL-e6-l9u"/>
                                 </constraints>
@@ -259,17 +259,17 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Új fiók" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bG-Me-FQg">
-                                <rect key="frame" x="148" y="166" width="79.5" height="38.5"/>
+                                <rect key="frame" x="167.33333333333334" y="166" width="79.333333333333343" height="38.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bs-Zf-87E" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="316.5" y="20" width="38.5" height="38.5"/>
+                                <rect key="frame" x="356" y="20" width="38" height="38"/>
                                 <color key="backgroundColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38.5" id="dci-AC-abO"/>
-                                    <constraint firstAttribute="width" constant="38.5" id="y8M-2l-q7q"/>
+                                    <constraint firstAttribute="height" constant="38" id="dci-AC-abO"/>
+                                    <constraint firstAttribute="width" constant="38" id="y8M-2l-q7q"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
                                 <state key="normal" image="icons8-multiply"/>
@@ -278,40 +278,40 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1S-kr-tVA">
-                                <rect key="frame" x="42.5" y="234.5" width="300" height="206"/>
+                                <rect key="frame" x="46.333333333333343" y="234.33333333333337" width="331.33333333333326" height="206"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ob0-Le-uO3">
-                                        <rect key="frame" x="0.0" y="0.0" width="290" height="206"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="321.33333333333331" height="206"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyO-xZ-Fzt" customClass="MyTextField" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="321.33333333333331" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="eTI-DJ-GEN"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUN-Yd-ghV" customClass="MyTextField" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="43" width="290" height="33"/>
+                                                <rect key="frame" x="0.0" y="42.999999999999972" width="321.33333333333331" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="9Mj-nb-0rC"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCT-3f-4M7" customClass="MyTextField" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="86" width="290" height="33"/>
+                                                <rect key="frame" x="0.0" y="85.999999999999972" width="321.33333333333331" height="33"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="Ix0-Ue-dEq"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sikertelen regisztrálás!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="70d-RS-3Wb">
-                                                <rect key="frame" x="0.0" y="129" width="290" height="17"/>
+                                                <rect key="frame" x="0.0" y="128.99999999999997" width="321.33333333333331" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QA5-8X-Sim">
-                                                <rect key="frame" x="0.0" y="156" width="290" height="50"/>
+                                                <rect key="frame" x="0.0" y="155.99999999999997" width="321.33333333333331" height="50"/>
                                                 <color key="backgroundColor" red="0.24701970819999999" green="0.31849229340000001" blue="0.71061486009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="mUT-Kq-Ch3"/>
@@ -444,11 +444,11 @@
             <objects>
                 <viewController id="LZR-2Q-NoO" customClass="SummaryViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="28P-N9-uYb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVx-5X-j1P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="98.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="tintColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -461,13 +461,13 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QKT-Pu-p51">
-                                <rect key="frame" x="10" y="108.5" width="355" height="300"/>
+                                <rect key="frame" x="10" y="97.999999999999972" width="394" height="403.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="M73-8N-oQj">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="147.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="199"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LP-5y-Gh8" customClass="SeverityView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="147.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194.66666666666666" height="199"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -475,7 +475,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ut-sM-b6X" customClass="SeverityView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="180" y="0.0" width="175" height="147.5"/>
+                                                <rect key="frame" x="199.66666666666663" y="0.0" width="194.33333333333337" height="199"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -485,10 +485,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QfN-fl-Xez">
-                                        <rect key="frame" x="0.0" y="152.5" width="355" height="147.5"/>
+                                        <rect key="frame" x="0.0" y="204" width="394" height="199.33333333333337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD4-3g-GqW" customClass="SeverityView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="147.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194.66666666666666" height="199.33333333333334"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -496,7 +496,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dh6-p2-3gH" customClass="SeverityView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="180" y="0.0" width="175" height="147.5"/>
+                                                <rect key="frame" x="199.66666666666663" y="0.0" width="194.33333333333337" height="199.33333333333334"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -508,13 +508,13 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="roQ-si-8VA">
-                                <rect key="frame" x="10" y="418.5" width="355" height="189.5"/>
+                                <rect key="frame" x="10" y="511.33333333333326" width="394" height="291.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-FE-rNh" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="164"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="266.33333333333331"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devices count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8K5-74-brt">
-                                        <rect key="frame" x="0.0" y="169" width="355" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="271.33333333333331" width="394" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -715,7 +715,7 @@
                 <navigationController id="Ecf-UA-tKu" userLabel="Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Eszközök" image="icons8-gear" id="c0t-Bo-yRM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CZJ-PP-cQ2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -738,30 +738,30 @@
             <objects>
                 <viewController id="yF9-6v-mry" userLabel="Információk" customClass="InformationViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xh9-5M-nPq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfi-rz-EUA">
-                                <rect key="frame" x="40" y="0.0" width="295" height="647"/>
+                                <rect key="frame" x="40" y="0.0" width="334" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDQ-bB-fay">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="1099"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="997.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Információk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rh-Ap-5fg">
-                                                <rect key="frame" x="0.0" y="100" width="295" height="36"/>
+                                                <rect key="frame" x="0.0" y="100" width="334" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2g-9d-Drz">
-                                                <rect key="frame" x="0.0" y="166" width="295" height="913"/>
+                                                <rect key="frame" x="0.0" y="165.99999999999994" width="334" height="811.66666666666652"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac purus metus. Curabitur ut rutrum ante. Pellentesque ut varius ante. Aliquam erat sapien, lobortis non purus quis, consectetur dignissim ante. Mauris mollis orci vitae ultrices faucibus. Mauris pretium viverra vehicula. Nam sed dolor malesuada, ultricies nisi et, consequat nunc. Curabitur at viverra mi, et consectetur purus. Ut auctor rhoncus eleifend. Pellentesque tempor gravida tellus ac porta. Proin elit sem, posuere ut cursus ut, ullamcorper a elit. Praesent et risus eget ante imperdiet malesuada.
 
 Vivamus dapibus fringilla sem, sit amet semper justo venenatis ac. Aenean vehicula eu ipsum a commodo. In facilisis nisl id lectus sagittis, venenatis sodales lacus pretium. Suspendisse non nunc id arcu porttitor mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris suscipit turpis vel velit tempus sagittis. Nullam elementum urna nec sodales varius. Aenean ornare scelerisque nisl, at tincidunt sapien imperdiet eu. Vestibulum orci nibh, malesuada eu leo eget, feugiat blandit tortor. Donec tortor erat, vestibulum a iaculis in, congue at purus.
 
 Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit eget, sagittis sit amet ipsum. Nam et orci eu nisi laoreet sodales et ut nunc. Mauris aliquam dui id dictum fringilla. Morbi malesuada, nibh aliquet tempus fermentum, augue lacus mollis lacus, posuere tincidunt sapien erat et nisi. Aenean pellentesque efficitur nisl, id varius nulla sollicitudin at. Mauris aliquet ante eu ullamcorper commodo. Phasellus non lobortis quam. </string>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -786,7 +786,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cl2-uj-qS1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-moleskine" translatesAutoresizingMaskIntoConstraints="NO" id="kVw-us-fB5">
                                         <rect key="frame" x="10" y="12" width="55" height="55"/>
@@ -796,17 +796,17 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Karbantartás napló" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2P-tq-NbX">
-                                        <rect key="frame" x="75" y="27.5" width="171" height="24"/>
+                                        <rect key="frame" x="75.000000000000014" y="27.666666666666671" width="170.33333333333337" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srL-ku-jxz" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                        <rect key="frame" x="316.5" y="20" width="38.5" height="38.5"/>
+                                        <rect key="frame" x="356" y="20" width="38" height="38"/>
                                         <color key="backgroundColor" red="0.24701970819999999" green="0.31849229340000001" blue="0.71061486009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="38.5" id="Fxv-N6-rKO"/>
-                                            <constraint firstAttribute="height" constant="38.5" id="n7O-V1-edz"/>
+                                            <constraint firstAttribute="width" constant="38" id="Fxv-N6-rKO"/>
+                                            <constraint firstAttribute="height" constant="38" id="n7O-V1-edz"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
                                         <state key="normal" image="icons8-multiply"/>
@@ -828,20 +828,85 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X2P-tq-NbX" secondAttribute="trailing" constant="20" symbolic="YES" id="kxH-7H-2BO"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oI-Bd-sCO">
+                                <rect key="frame" x="0.0" y="746" width="414" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="fb9-w4-Xzz"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6X-ha-4eK">
+                                <rect key="frame" x="0.0" y="748" width="414" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="1dt-mi-jyo">
+                                        <rect key="frame" x="112" y="15" width="190" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBH-dL-czI">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="047-el-pIP"/>
+                                                    <constraint firstAttribute="height" constant="30" id="rm2-bN-dBR"/>
+                                                </constraints>
+                                                <state key="normal" image="gmail"/>
+                                                <connections>
+                                                    <action selector="cancelButtonTouchUpInside:" destination="yF9-6v-mry" eventType="touchUpInside" id="f8V-uT-W0S"/>
+                                                    <action selector="contactButtonTouchUpInside:" destination="yF9-6v-mry" eventType="touchUpInside" id="xdr-qc-Mkn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eg-2H-3Kk">
+                                                <rect key="frame" x="80" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="26L-Wa-Njp"/>
+                                                    <constraint firstAttribute="height" constant="30" id="kvp-Xy-yaF"/>
+                                                </constraints>
+                                                <state key="normal" image="mail"/>
+                                                <connections>
+                                                    <action selector="contactButtonTouchUpInside:" destination="yF9-6v-mry" eventType="touchUpInside" id="gHY-we-4gA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCB-pU-Hln">
+                                                <rect key="frame" x="160" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="DRK-Dp-4Iw"/>
+                                                    <constraint firstAttribute="width" constant="30" id="Ijz-GS-zwt"/>
+                                                </constraints>
+                                                <state key="normal" image="github"/>
+                                                <connections>
+                                                    <action selector="contactButtonTouchUpInside:" destination="yF9-6v-mry" eventType="touchUpInside" id="JWN-ga-SbH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="1dt-mi-jyo" firstAttribute="centerY" secondItem="I6X-ha-4eK" secondAttribute="centerY" id="4h2-uw-DYg"/>
+                                    <constraint firstItem="1dt-mi-jyo" firstAttribute="centerX" secondItem="I6X-ha-4eK" secondAttribute="centerX" id="9p3-FF-0bN"/>
+                                    <constraint firstAttribute="height" constant="60" id="qys-h2-2ur"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="I6X-ha-4eK" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="IEf-qe-BC5"/>
                             <constraint firstItem="Cl2-uj-qS1" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="Ms0-nv-CmL"/>
+                            <constraint firstItem="1oI-Bd-sCO" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="OKB-bk-L0R"/>
+                            <constraint firstItem="I6X-ha-4eK" firstAttribute="top" secondItem="1oI-Bd-sCO" secondAttribute="bottom" id="VBK-rc-1nj"/>
                             <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="Pfi-rz-EUA" secondAttribute="trailing" constant="40" id="Vv6-V5-Lmw"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="bottom" secondItem="GbD-o3-I4x" secondAttribute="bottom" id="XDG-bO-grC"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="top" secondItem="GbD-o3-I4x" secondAttribute="top" id="bmx-W4-rUI"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" constant="40" id="du1-wH-HLY"/>
                             <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="Cl2-uj-qS1" secondAttribute="trailing" id="fhF-Uf-BRF"/>
+                            <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="I6X-ha-4eK" secondAttribute="trailing" id="jxQ-Do-5Pu"/>
                             <constraint firstItem="Cl2-uj-qS1" firstAttribute="top" secondItem="GbD-o3-I4x" secondAttribute="top" id="v9l-hD-g4f"/>
+                            <constraint firstItem="GbD-o3-I4x" firstAttribute="bottom" secondItem="I6X-ha-4eK" secondAttribute="bottom" id="wOs-qN-d3M"/>
+                            <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="1oI-Bd-sCO" secondAttribute="trailing" id="zh7-gp-pf5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GbD-o3-I4x"/>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="I6X-ha-4eK" id="h1a-zj-rqp"/>
+                        <outlet property="bottomViewBottom" destination="wOs-qN-d3M" id="KzA-Gp-VRP"/>
                         <outlet property="contentLabel" destination="a2g-9d-Drz" id="KtC-Ka-JVv"/>
                         <outlet property="contentLabelTop" destination="bFA-Ks-tSy" id="ivX-gN-edo"/>
                         <outlet property="scrollView" destination="Pfi-rz-EUA" id="Uas-IS-J1g"/>
@@ -859,14 +924,14 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
             <objects>
                 <viewController id="8fi-95-wDR" customClass="DevicesViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1BB-B8-ZRI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIJ-x9-1xm">
-                                <rect key="frame" x="-1" y="44" width="377" height="60"/>
+                                <rect key="frame" x="-1" y="88" width="416" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-VK-dRi">
-                                        <rect key="frame" x="56.5" y="8" width="264" height="44"/>
+                                        <rect key="frame" x="62.333333333333343" y="8" width="291.33333333333326" height="44"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7Rc-kQ-0Kd">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
@@ -879,7 +944,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-Sg-xS2">
-                                                        <rect key="frame" x="5" y="32" width="20" height="12"/>
+                                                        <rect key="frame" x="4.9999999999999929" y="32" width="20" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -887,7 +952,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7BU-C5-ot3">
-                                                <rect key="frame" x="78" y="0.0" width="30" height="44"/>
+                                                <rect key="frame" x="87" y="0.0" width="30" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSi-BH-zgv" customClass="MyButton" customModule="KarbantartasNaplo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -905,7 +970,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-FN-URi">
-                                                <rect key="frame" x="156" y="0.0" width="30" height="44"/>
+                                                <rect key="frame" x="174.33333333333331" y="0.0" width="30" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZB-3Q-RdH" customClass="MyButton" customModule="KarbantartasNaplo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -923,7 +988,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gOC-eJ-c0f">
-                                                <rect key="frame" x="234" y="0.0" width="30" height="44"/>
+                                                <rect key="frame" x="261.33333333333337" y="0.0" width="30" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVM-Se-BXW" customClass="MyButton" customModule="KarbantartasNaplo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -951,25 +1016,25 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDk-98-YOy" customClass="ErrorView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="375" y="49" width="100" height="40"/>
+                                <rect key="frame" x="414" y="93" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="aG2-FL-2iA"/>
                                     <constraint firstAttribute="height" constant="40" id="k8P-VA-edV"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="41r-zS-sUc">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="devicesTableViewCell" rowHeight="75" id="Okx-YM-Spo" customClass="DevicesTableViewCell" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Okx-YM-Spo" id="8BB-Cf-gFZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bjc-DJ-2UE">
-                                                    <rect key="frame" x="10" y="10" width="339" height="55"/>
+                                                    <rect key="frame" x="10" y="10" width="373" height="55"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ugb-OC-rQH" customClass="CircleView" customModule="KarbantartasNaplo" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -980,22 +1045,22 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HPI-s5-UVx">
-                                                            <rect key="frame" x="50" y="0.0" width="251" height="52.5"/>
+                                                            <rect key="frame" x="50" y="0.0" width="285.33333333333331" height="51.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token   Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2io-0N-azj">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="100.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100.33333333333333" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXj-pW-Gob">
-                                                                    <rect key="frame" x="0.0" y="20.5" width="70.5" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="20.333333333333332" width="70.333333333333329" height="15.666666666666668"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operation time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3D7-fU-Em9">
-                                                                    <rect key="frame" x="0.0" y="36.5" width="87" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="36" width="87" height="15.666666666666664"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -1003,7 +1068,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpb-vE-Lwy">
-                                                            <rect key="frame" x="311" y="0.0" width="28" height="20.5"/>
+                                                            <rect key="frame" x="345.33333333333331" y="0.0" width="27.666666666666686" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1029,7 +1094,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2q-e2-jCt" userLabel="Login Button" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="300.5" y="421" width="55" height="55"/>
+                                <rect key="frame" x="339.66666666666669" y="616" width="55" height="55"/>
                                 <color key="backgroundColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="Onn-ZB-0M9"/>
@@ -1041,7 +1106,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9J-kh-lfC" userLabel="About Button" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="300.5" y="486" width="55" height="55"/>
+                                <rect key="frame" x="339.66666666666669" y="681" width="55" height="55"/>
                                 <color key="backgroundColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="lq3-VC-NdR"/>
@@ -1054,7 +1119,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEy-7f-bfo" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="300.5" y="543" width="55" height="55"/>
+                                <rect key="frame" x="339.66666666666669" y="738" width="55" height="55"/>
                                 <color key="backgroundColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="MnT-sS-ZcG"/>
@@ -1119,20 +1184,20 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
             <objects>
                 <viewController id="PC0-Jc-guA" customClass="DetailsViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RFJ-ou-q34">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="81q-hk-0w8">
-                                <rect key="frame" x="10" y="54" width="355" height="37.5"/>
+                                <rect key="frame" x="10" y="98" width="394" height="37.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6I-Y0-SO8">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPa-jJ-cgE">
-                                        <rect key="frame" x="0.0" y="20.5" width="355" height="17"/>
+                                        <rect key="frame" x="0.0" y="20.333333333333329" width="394" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1140,23 +1205,23 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4W-vl-GLd" customClass="ErrorView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="375" y="49" width="100" height="40"/>
+                                <rect key="frame" x="414" y="93" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="H0Y-7h-d87"/>
                                     <constraint firstAttribute="width" constant="100" id="dY4-eE-d0Y"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Odr-uD-kkV">
-                                <rect key="frame" x="10" y="111.5" width="355" height="54.5"/>
+                                <rect key="frame" x="10" y="155.33333333333334" width="394" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Üzemidő" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8B-3h-Atq">
-                                        <rect key="frame" x="151.5" y="0.0" width="52" height="16"/>
+                                        <rect key="frame" x="171" y="0.0" width="52" height="15.666666666666666"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operation time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="LNV-xu-gwC">
-                                        <rect key="frame" x="72.5" y="16" width="210" height="38.5"/>
+                                        <rect key="frame" x="92.333333333333329" y="15.666666666666661" width="209.66666666666669" height="38.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1164,17 +1229,17 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7Y-NZ-XyE" customClass="CircleProgressView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="10" y="176" width="355" height="296"/>
+                                <rect key="frame" x="10" y="219.33333333333337" width="394" height="448"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jUS-EP-t4t">
-                                <rect key="frame" x="20" y="482" width="335" height="56"/>
+                                <rect key="frame" x="20" y="677.33333333333337" width="374" height="55.666666666666629"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1WG-gK-F2C">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.333333333333332"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periódus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCG-dx-VCM">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="20.333333333333332"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="zc4-FY-bIF"/>
                                                 </constraints>
@@ -1183,7 +1248,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Period" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="A3z-bc-2t3">
-                                                <rect key="frame" x="60" y="0.0" width="275" height="20.5"/>
+                                                <rect key="frame" x="60" y="0.0" width="314" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1191,10 +1256,10 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dE2-mi-Vda">
-                                        <rect key="frame" x="0.0" y="35.5" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="35.333333333333258" width="374" height="20.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Előző szerviz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZe-3F-gnN">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="20.333333333333332"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Run-Ba-sfx"/>
                                                 </constraints>
@@ -1203,7 +1268,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Last service" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYF-1y-9YU">
-                                                <rect key="frame" x="80" y="0.0" width="255" height="20.5"/>
+                                                <rect key="frame" x="80" y="0.0" width="294" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1213,10 +1278,10 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hCB-rF-gBt">
-                                <rect key="frame" x="20" y="558" width="335" height="50"/>
+                                <rect key="frame" x="20" y="753" width="374" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvL-Bm-qJ8">
-                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
                                         <color key="backgroundColor" red="0.24701970819999999" green="0.31849229340000001" blue="0.71061486009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="icons8-support"/>
                                         <connections>
@@ -1224,7 +1289,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tit-TR-7Ir">
-                                        <rect key="frame" x="177.5" y="0.0" width="157.5" height="50"/>
+                                        <rect key="frame" x="197" y="0.0" width="177" height="50"/>
                                         <color key="backgroundColor" red="0.24701970819999999" green="0.31849229340000001" blue="0.71061486009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="icons8-time-machine"/>
                                         <connections>
@@ -1355,7 +1420,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQn-9s-7Zx">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <rect key="frame" x="0.0" y="44" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="2lb-kJ-Jrg"/>
                                 <constraint firstAttribute="height" constant="40" id="FFd-pn-gIx"/>
@@ -1368,13 +1433,13 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Szervizelés" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1e-Wf-Z6W">
-                            <rect key="frame" x="76.5" y="10" width="87" height="21"/>
+                            <rect key="frame" x="76.666666666666671" y="54" width="87.000000000000014" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Az eszköz üzemidejének nullázása. Biztosan folytatod?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfb-AH-QyI">
-                            <rect key="frame" x="10" y="40" width="220" height="41"/>
+                            <rect key="frame" x="10" y="84" width="220" height="40.666666666666657"/>
                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -1413,7 +1478,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0M-Cc-jXW">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <rect key="frame" x="0.0" y="44" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="EoU-jN-oYA"/>
                                 <constraint firstAttribute="width" constant="40" id="jgD-dG-hyS"/>
@@ -1425,7 +1490,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periódus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="162-0q-I9F">
-                            <rect key="frame" x="86" y="10" width="68" height="21"/>
+                            <rect key="frame" x="86" y="54" width="68" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -1445,7 +1510,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                             </connections>
                         </button>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KJ-xA-60y">
-                            <rect key="frame" x="20" y="40" width="200" height="75"/>
+                            <rect key="frame" x="20" y="84" width="200" height="31"/>
                         </pickerView>
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="0.19975385273972598" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1471,31 +1536,31 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
             <objects>
                 <viewController id="h6N-8i-ufj" customClass="NotesViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7vx-fm-FdL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xKL-YW-lDY">
-                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notesTableViewCell" rowHeight="60" id="IB7-zk-8FT" customClass="NotesTableViewCell" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IB7-zk-8FT" id="jkc-hN-UKS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="4Nn-Fx-ZAA">
-                                                    <rect key="frame" x="10" y="10" width="355" height="40"/>
+                                                    <rect key="frame" x="10" y="10" width="394" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Creation date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOo-fA-j5k">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100.5" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="100.33333333333333" height="24.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvI-Xw-MU8">
-                                                            <rect key="frame" x="0.0" y="24" width="58.5" height="16"/>
+                                                            <rect key="frame" x="0.0" y="24.333333333333339" width="58.333333333333336" height="15.666666666666668"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1518,14 +1583,14 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qF2-GT-mZh" customClass="ErrorView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="375" y="49" width="100" height="40"/>
+                                <rect key="frame" x="414" y="93" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LIj-FC-RfV"/>
                                     <constraint firstAttribute="width" constant="100" id="m6c-Tf-ofm"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFe-hS-45h" userLabel="Delete View">
-                                <rect key="frame" x="0.0" y="618" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7l-4o-XIm">
                                         <rect key="frame" x="20" y="0.0" width="113" height="30"/>
@@ -1538,7 +1603,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubY-aV-Flr">
-                                        <rect key="frame" x="289" y="0.0" width="66" height="30"/>
+                                        <rect key="frame" x="328" y="0.0" width="66" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Mégsem">
                                             <color key="titleColor" red="0.24701970815658569" green="0.31849229335784912" blue="0.71061486005783081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1564,7 +1629,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43S-8P-ScU" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                <rect key="frame" x="300" y="543" width="55" height="55"/>
+                                <rect key="frame" x="339" y="738" width="55" height="55"/>
                                 <color key="backgroundColor" red="0.24701970819999999" green="0.31849229340000001" blue="0.71061486009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="gEN-1d-EHg"/>
@@ -1623,36 +1688,37 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
             <objects>
                 <viewController id="OEY-tQ-gJ5" userLabel="Bejegyzés szerkesztése" customClass="EditNoteViewController" customModule="KarbantartasNaplo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kxq-Xu-bOP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5t-qq-9q0">
-                                <rect key="frame" x="10" y="10" width="355" height="55"/>
+                                <rect key="frame" x="20" y="20" width="374" height="38"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwj-cK-QIM" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
                                         <color key="backgroundColor" red="0.24701970819999999" green="0.31849229340000001" blue="0.71061486009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="2Rs-GX-RSH"/>
-                                            <constraint firstAttribute="height" constant="55" id="rPz-Tc-zLQ"/>
+                                            <constraint firstAttribute="width" constant="38" id="2Rs-GX-RSH"/>
+                                            <constraint firstAttribute="height" constant="38" id="rPz-Tc-zLQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
                                         <state key="normal" image="icons8-multiply"/>
                                         <connections>
                                             <action selector="cancelButtonTouchUpInside:" destination="OEY-tQ-gJ5" eventType="touchUpInside" id="asW-QL-Ccu"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZfR-oa-03K">
-                                        <rect key="frame" x="55" y="0.0" width="245" height="55"/>
+                                        <rect key="frame" x="38" y="0.0" width="298" height="38"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Creation date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8r3-Wk-5w8">
-                                                <rect key="frame" x="0.0" y="0.0" width="245" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="298" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creation time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPf-5r-5Lf">
-                                                <rect key="frame" x="0.0" y="38" width="245" height="17"/>
+                                                <rect key="frame" x="0.0" y="21" width="298" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1660,13 +1726,14 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uG1-0z-ayG" customClass="MyFloatingButton" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                        <rect key="frame" x="300" y="0.0" width="55" height="55"/>
+                                        <rect key="frame" x="336" y="0.0" width="38" height="38"/>
                                         <color key="backgroundColor" red="0.24701970819999999" green="0.31849229340000001" blue="0.71061486009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="0Tg-hU-1T9"/>
-                                            <constraint firstAttribute="width" constant="55" id="IxX-ZL-XK0"/>
+                                            <constraint firstAttribute="height" constant="38" id="0Tg-hU-1T9"/>
+                                            <constraint firstAttribute="width" constant="38" id="IxX-ZL-XK0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
                                         <state key="normal" image="icons8-checkmark"/>
                                         <connections>
                                             <action selector="okButtonTouchUpInside:" destination="OEY-tQ-gJ5" eventType="touchUpInside" id="B3l-Iy-CHl"/>
@@ -1675,7 +1742,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EZS-28-Phr">
-                                <rect key="frame" x="20" y="85" width="335" height="503"/>
+                                <rect key="frame" x="20" y="78" width="374" height="671"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1686,10 +1753,10 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                             <constraint firstItem="P7S-oO-O43" firstAttribute="trailing" secondItem="EZS-28-Phr" secondAttribute="trailing" constant="20" id="1bE-Qe-gmt"/>
                             <constraint firstItem="P7S-oO-O43" firstAttribute="bottom" secondItem="EZS-28-Phr" secondAttribute="bottom" constant="10" id="U69-RU-SjX"/>
                             <constraint firstItem="EZS-28-Phr" firstAttribute="leading" secondItem="P7S-oO-O43" secondAttribute="leading" constant="20" id="UJQ-TX-d69"/>
-                            <constraint firstItem="c5t-qq-9q0" firstAttribute="leading" secondItem="P7S-oO-O43" secondAttribute="leading" constant="10" id="YZy-jA-Dzg"/>
+                            <constraint firstItem="c5t-qq-9q0" firstAttribute="leading" secondItem="P7S-oO-O43" secondAttribute="leading" constant="20" id="YZy-jA-Dzg"/>
                             <constraint firstItem="EZS-28-Phr" firstAttribute="top" secondItem="c5t-qq-9q0" secondAttribute="bottom" constant="20" id="h3g-sw-dVl"/>
-                            <constraint firstItem="P7S-oO-O43" firstAttribute="trailing" secondItem="c5t-qq-9q0" secondAttribute="trailing" constant="10" id="vt4-ay-nFP"/>
-                            <constraint firstItem="c5t-qq-9q0" firstAttribute="top" secondItem="P7S-oO-O43" secondAttribute="top" constant="10" id="xxA-Ku-OUV"/>
+                            <constraint firstItem="P7S-oO-O43" firstAttribute="trailing" secondItem="c5t-qq-9q0" secondAttribute="trailing" constant="20" id="vt4-ay-nFP"/>
+                            <constraint firstItem="c5t-qq-9q0" firstAttribute="top" secondItem="P7S-oO-O43" secondAttribute="top" constant="20" id="xxA-Ku-OUV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P7S-oO-O43"/>
                     </view>
@@ -1710,6 +1777,8 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
         </scene>
     </scenes>
     <resources>
+        <image name="github" width="30" height="30"/>
+        <image name="gmail" width="30" height="30"/>
         <image name="icons8-chart" width="30" height="30"/>
         <image name="icons8-checkmark" width="30" height="30"/>
         <image name="icons8-customer" width="30" height="30"/>
@@ -1722,5 +1791,6 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
         <image name="icons8-plus-math" width="30" height="30"/>
         <image name="icons8-support" width="30" height="30"/>
         <image name="icons8-time-machine" width="30" height="30"/>
+        <image name="mail" width="42.666667938232422" height="42.666667938232422"/>
     </resources>
 </document>
