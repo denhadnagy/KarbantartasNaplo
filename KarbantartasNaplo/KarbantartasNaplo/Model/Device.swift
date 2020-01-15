@@ -8,16 +8,16 @@
 
 import Foundation
 
-class Device: Codable {
+class Device {
     let number: Int
     let id: Int
     let token: String
     let name: String
     private(set) var itemNo: String?
     private(set) var operationTime: Int?
-    private(set) var period = 0
-    private(set) var lastService = 0
-    private(set) var notes = [Note]()
+    private(set) var period: Int
+    private(set) var lastService: Int
+    private(set) var notes: [Note]
     
     var rate: Double? {
         if operationTime == nil || period == 0 { return nil }
@@ -33,6 +33,18 @@ class Device: Codable {
         case ..<100: return .actual
         default: return .urgent
         }
+    }
+    
+    init(number: Int, id: Int, token: String, name: String, itemNo: String?, operationTime: Int?, period: Int, lastService: Int, notes: [Note]) {
+        self.number = number
+        self.id = id
+        self.token = token
+        self.name = name
+        self.itemNo = itemNo
+        self.operationTime = operationTime
+        self.period = period
+        self.lastService = lastService
+        self.notes = notes
     }
     
     func setOperationTimeToZero() {

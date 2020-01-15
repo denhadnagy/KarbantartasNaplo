@@ -6,7 +6,7 @@
 //  Copyright © 2018. Daniel. All rights reserved.
 //
 
-class Note: Codable {
+class Note {
     let creationDate: Int
     private(set) var comment = ""
     

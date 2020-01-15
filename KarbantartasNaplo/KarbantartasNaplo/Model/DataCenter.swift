@@ -7,26 +7,75 @@
 //
 
 import UIKit
+import Firebase
 
 class DataCenter {
     static let shared = DataCenter()
     private(set) var devices = [Device]()
     private(set) var login: Login?
+    private let db = Firestore.firestore()
     
     private init() { }
     
     func getDevices(completion: @escaping (Bool) -> Void) {
-        NetworkManager.loadDevices() { data, error in
-            if data == nil {
-                completion(false)
-                return
-            }
+//        NetworkManager.loadDevices() { data, error in
+//            if data == nil {
+//                completion(false)
+//                return
+//            }
+//
+//            do {
+//                self.devices = try JSONDecoder().decode([Device].self, from: data!)
+//                completion(true)
+//            } catch {
+//                completion(false)
+//            }
+//        }
+        
+        db.collection("devices").addSnapshotListener { (querySnapshot, error) in
+            self.devices = []
             
-            do {
-                self.devices = try JSONDecoder().decode([Device].self, from: data!)
-                completion(true)
-            } catch {
+            if let e = error {
+                print("There was an issue retrieving data from Firestore, \(e)")
                 completion(false)
+            } else {
+                if let safeDocuments = querySnapshot?.documents {
+                    for document in safeDocuments {
+                        let data = document.data()
+                        
+                        let number = data["number"] as? Int
+                        let id = data["id"] as? Int
+                        let token = data["token"] as? String
+                        let name = data["name"] as? String
+                        
+                        var itemNo = data["itemNo"] as? String
+                        if itemNo != nil && itemNo == "null" { itemNo = nil }
+                        
+                        let operationTime = data["operationTime"] as? Int
+                        let period = data["period"] as? Int
+                        let lastService = data["lastService"] as? Int
+                        let notes = data["notes"] as? [[String: Any]]
+                        
+                        var arrayOfNotes = [Note]()
+                        if let safeNotes = notes {
+                            for note in safeNotes {
+                                let creationDate = note["creationDate"] as? Int
+                                let comment = note["comment"] as? String
+                                
+                                if let safeCreationDate = creationDate, let safeComment = comment {
+                                    let newNote = Note(creationDate: safeCreationDate, comment: safeComment)
+                                    arrayOfNotes.append(newNote)
+                                }
+                            }
+                        }
+                        
+                        if let safeNumber = number, let safeId = id, let safeToken = token, let safeName = name, let safePeriod = period, let safeLastService = lastService {
+                            let newDevice = Device(number: safeNumber, id: safeId, token: safeToken, name: safeName, itemNo: itemNo, operationTime: operationTime, period: safePeriod, lastService: safeLastService, notes: arrayOfNotes)
+                            self.devices.append(newDevice)
+                        }
+                    }
+                }
+                completion(true)
             }
         }
     }
