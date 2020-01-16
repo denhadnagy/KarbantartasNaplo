@@ -22,7 +22,6 @@
 		653506B820A4891100CD611C /* KarbantartasNaploTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506B720A4891100CD611C /* KarbantartasNaploTests.swift */; };
 		653506C320A4891100CD611C /* KarbantartasNaploUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653506C220A4891100CD611C /* KarbantartasNaploUITests.swift */; };
 		6539C88620E4BE6400A2B3CF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6539C88520E4BE6400A2B3CF /* DetailsViewController.swift */; };
-		655ED7AB20CA6A7F0006E472 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655ED7AA20CA6A7F0006E472 /* User.swift */; };
 		655ED7AD20CA6CAF0006E472 /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655ED7AC20CA6CAF0006E472 /* DataCenter.swift */; };
 		6566926620C2CD2600BE9A0A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6566926520C2CD2600BE9A0A /* Constants.swift */; };
 		656821CD20C95AD9001ED1AE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656821CC20C95AD9001ED1AE /* NetworkManager.swift */; };
@@ -38,7 +37,6 @@
 		657AA9602122C24100C6953A /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657AA95F2122C24100C6953A /* NotesTableViewCell.swift */; };
 		657BCBE82121A05F00486449 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BCBE72121A05F00486449 /* Note.swift */; };
 		657BCBEA2122012100486449 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BCBE92122012100486449 /* NotesViewController.swift */; };
-		657DF62720CBC68A0066C81D /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DF62620CBC68A0066C81D /* Login.swift */; };
 		6580025A20D550F100011C93 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580025920D550F100011C93 /* Enumerations.swift */; };
 		6584D77E20CFC34400121A17 /* DevicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584D77D20CFC34400121A17 /* DevicesTableViewCell.swift */; };
 		6584D78020CFD32200121A17 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584D77F20CFD32200121A17 /* CircleView.swift */; };
@@ -93,7 +91,6 @@
 		653506C220A4891100CD611C /* KarbantartasNaploUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarbantartasNaploUITests.swift; sourceTree = "<group>"; };
 		653506C420A4891100CD611C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6539C88520E4BE6400A2B3CF /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		655ED7AA20CA6A7F0006E472 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		655ED7AC20CA6CAF0006E472 /* DataCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCenter.swift; sourceTree = "<group>"; };
 		6566926520C2CD2600BE9A0A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		656821CC20C95AD9001ED1AE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -109,7 +106,6 @@
 		657AA95F2122C24100C6953A /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		657BCBE72121A05F00486449 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		657BCBE92122012100486449 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
-		657DF62620CBC68A0066C81D /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		6580025920D550F100011C93 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		6584D77D20CFC34400121A17 /* DevicesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesTableViewCell.swift; sourceTree = "<group>"; };
 		6584D77F20CFD32200121A17 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -258,10 +254,8 @@
 			children = (
 				655ED7AC20CA6CAF0006E472 /* DataCenter.swift */,
 				656D92D420CEC146009CF273 /* Device.swift */,
-				657DF62620CBC68A0066C81D /* Login.swift */,
 				656821CC20C95AD9001ED1AE /* NetworkManager.swift */,
 				657BCBE72121A05F00486449 /* Note.swift */,
-				655ED7AA20CA6A7F0006E472 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -504,7 +498,6 @@
 				657BCBE82121A05F00486449 /* Note.swift in Sources */,
 				6534880020BC5FC2002A8519 /* MyTextField.swift in Sources */,
 				6580025A20D550F100011C93 /* Enumerations.swift in Sources */,
-				657DF62720CBC68A0066C81D /* Login.swift in Sources */,
 				655ED7AD20CA6CAF0006E472 /* DataCenter.swift in Sources */,
 				6539C88620E4BE6400A2B3CF /* DetailsViewController.swift in Sources */,
 				65F78F8320E66C49009FDB9E /* CircleProgressView.swift in Sources */,
@@ -513,7 +506,6 @@
 				6573C49820DBE0C0006500AF /* SeverityView.swift in Sources */,
 				6584D78020CFD32200121A17 /* CircleView.swift in Sources */,
 				65724804211D70EC00EEBDD8 /* ErrorView.swift in Sources */,
-				655ED7AB20CA6A7F0006E472 /* User.swift in Sources */,
 				6586C7B3212955AB000E5743 /* Extensions.swift in Sources */,
 				656D92D720CECC6F009CF273 /* DevicesViewController.swift in Sources */,
 				656D92D520CEC146009CF273 /* Device.swift in Sources */,

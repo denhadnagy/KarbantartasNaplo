@@ -66,19 +66,19 @@ class NetworkManager {
 //        sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/addNoteToDevice", method: .post, parameters: parameters, headers: nil, completion: completion)
 //    }
     
-    static func login(email: String, password: String, completion: @escaping (Data?, Error?) -> Void) {
-        let headers: HTTPHeaders = [
-            "hardwareId": UIDevice.current.identifierForVendor!.uuidString,
-            "os": "iOS",
-            "osVersion": UIDevice.current.systemVersion
-        ]
-        let parameters = [
-            "email": email,
-            "password": password
-        ]
-        
-        sendRequest(to: "http://138.197.187.213/itacademy/login", method: .post, parameters: parameters, headers: headers, completion: completion)
-    }
+//    static func login(email: String, password: String, completion: @escaping (Data?, Error?) -> Void) {
+//        let headers: HTTPHeaders = [
+//            "hardwareId": UIDevice.current.identifierForVendor!.uuidString,
+//            "os": "iOS",
+//            "osVersion": UIDevice.current.systemVersion
+//        ]
+//        let parameters = [
+//            "email": email,
+//            "password": password
+//        ]
+//
+//        sendRequest(to: "http://138.197.187.213/itacademy/login", method: .post, parameters: parameters, headers: headers, completion: completion)
+//    }
     
     static func signUp(email: String, password: String, passwordAgain: String, completion: @escaping (Data?, Error?) -> Void) {
         let headers: HTTPHeaders = [

@@ -35,3 +35,9 @@ enum Severity: String {
         }
     }
 }
+
+enum User {
+    case nobody
+    case boss
+    case admin
+}

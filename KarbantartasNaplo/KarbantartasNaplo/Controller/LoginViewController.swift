@@ -151,7 +151,8 @@ class LoginViewController: UIViewController {
         if let email = emailTextField.text, let password = passwordTextField.text {
             DataCenter.shared.loginUser(email: email, password: password) { success, errorMessage in
                 if success {
-                    //TODO:
+                    self.view.endEditing(true)
+                    self.dismiss(animated: true, completion: nil)
                 } else {
                     self.loginFailedLabel.text = errorMessage!
                     UIView.animate(withDuration: 0.2) {

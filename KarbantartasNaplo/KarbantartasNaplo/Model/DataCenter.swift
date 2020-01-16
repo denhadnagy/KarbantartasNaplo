@@ -12,7 +12,7 @@ import Firebase
 class DataCenter {
     static let shared = DataCenter()
     private(set) var devices = [Device]()
-    private(set) var login: Login?
+    private(set) var user = User.nobody
     private let db = Firestore.firestore()
     
     private init() { }
@@ -200,7 +200,7 @@ class DataCenter {
             return nil
         }) { (object, error) in
             if let e = error {
-                print("Updating note of device failed: \(e)")
+                print("Updating note of device failed, \(e)")
                 completion(false)
             } else {
                 device.notes.first(where: { $0.creationDate == creationDate })!.setComment(to: comment)
@@ -239,7 +239,7 @@ class DataCenter {
             return nil
         }) { (object, error) in
             if let e = error {
-                print("Deleting notes of device failed: \(e)")
+                print("Deleting notes of device failed, \(e)")
                 completion(false)
             } else {
                 completion(true)
@@ -248,17 +248,31 @@ class DataCenter {
     }
     
     func loginUser(email: String, password: String, completion: @escaping (Bool, String?) -> Void) {
-        NetworkManager.login(email: email, password: password) { data, error in
-            if data == nil {
-                completion(false, "Kommunikációs hiba!")
-                return
-            }
-            
-            do {
-                self.login = try JSONDecoder().decode(Login.self, from: data!)
+//        NetworkManager.login(email: email, password: password) { data, error in
+//            if data == nil {
+//                completion(false, "Kommunikációs hiba!")
+//                return
+//            }
+//
+//            do {
+//                self.login = try JSONDecoder().decode(Login.self, from: data!)
+//                completion(true, nil)
+//            } catch {
+//                completion(false, "Érvénytelen Email vagy Jelszó!")
+//            }
+//        }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            if let e = error {
+                print("Login failed, \(e)")
+                completion(false, "Sikertelen bejelentkezés!")
+            } else {
+                if authResult?.user.email == "admin@admin.com" {
+                    self.user = .admin
+                } else {
+                    self.user = .boss
+                }
                 completion(true, nil)
-            } catch {
-                completion(false, "Érvénytelen Email vagy Jelszó!")
             }
         }
     }
