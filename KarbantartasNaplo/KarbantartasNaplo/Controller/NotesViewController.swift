@@ -65,28 +65,43 @@ class NotesViewController: UIViewController {
                     if creationDates.count > 0 {
                         deleteInProgress = true
                         
-                        NetworkManager.deleteNotesOfDevice(device: self.device, creationDates: creationDates) { data, error in
-                            var errorMessage = "Kommunikációs hiba!"
-                            
-                            if data != nil {
-                                do {
-                                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-                                        if let message = jsonData["message"] as? String {
-                                            if message == "success" {
-                                                errorMessage = ""
-                                            }
-                                        }
-                                    }
-                                } catch { }
-                            }
-                            
-                            if errorMessage.isEmpty {
+//                        NetworkManager.deleteNotesOfDevice(device: self.device, creationDates: creationDates) { data, error in
+//                            var errorMessage = "Kommunikációs hiba!"
+//
+//                            if data != nil {
+//                                do {
+//                                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+//                                        if let message = jsonData["message"] as? String {
+//                                            if message == "success" {
+//                                                errorMessage = ""
+//                                            }
+//                                        }
+//                                    }
+//                                } catch { }
+//                            }
+//
+//                            if errorMessage.isEmpty {
+//                                self.deletedNotes.removeAll()
+//                                DispatchQueue.main.async { self.hideErrorView() }
+//                            } else {
+//                                DispatchQueue.main.async {
+//                                    self.restoreDeletedNotes()
+//                                    self.showErrorView(withErrorMessage: errorMessage)
+//                                }
+//                            }
+//
+//                            self.deleteInProgress = false
+//                            DispatchQueue.main.async { self.navigationItem.setHidesBackButton(false, animated: true) }
+//                        }
+                        
+                        DataCenter.shared.deleteNotesOfDevice(id: device.id, creationDates: creationDates) { success in
+                            if success {
                                 self.deletedNotes.removeAll()
                                 DispatchQueue.main.async { self.hideErrorView() }
                             } else {
                                 DispatchQueue.main.async {
                                     self.restoreDeletedNotes()
-                                    self.showErrorView(withErrorMessage: errorMessage)
+                                    self.showErrorView(withErrorMessage: "Kommunikációs hiba!")
                                 }
                             }
                             
@@ -104,7 +119,7 @@ class NotesViewController: UIViewController {
     //MARK: - Standard functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         errorView.delegate = self
         notesTableView.dataSource = self
         notesTableView.delegate = self
@@ -222,58 +237,80 @@ extension NotesViewController: DetailsViewControllerDelegate {
 
 //MARK: - Extension: EditNoteViewControllerDelegate
 extension NotesViewController: EditNoteViewControllerDelegate {
-    func addNote(date: Date, comment: String) {
-        NetworkManager.addNoteToDevice(device: device, creationDate: Int(date.timeIntervalSince1970), comment: comment) { data, error in
-            var errorMessage = "Kommunikációs hiba!"
-            
-            if data != nil {
-                do {
-                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-                        if let message = jsonData["message"] as? String {
-                            if message == "success" {
-                                errorMessage = ""
-                            }
-                        }
-                    }
-                } catch { }
-            }
-            
-            if errorMessage.isEmpty {
-                self.device.addNote(date: date, comment: comment)
+    func addNote(comment: String) {
+//        NetworkManager.addNoteToDevice(device: device, creationDate: Int(date.timeIntervalSince1970), comment: comment) { data, error in
+//            var errorMessage = "Kommunikációs hiba!"
+//
+//            if data != nil {
+//                do {
+//                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+//                        if let message = jsonData["message"] as? String {
+//                            if message == "success" {
+//                                errorMessage = ""
+//                            }
+//                        }
+//                    }
+//                } catch { }
+//            }
+//
+//            if errorMessage.isEmpty {
+//                self.device.addNote(date: date, comment: comment)
+//                DispatchQueue.main.async {
+//                    self.deviceChanged()
+//                    self.hideErrorView()
+//                }
+//            } else {
+//                DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
+//            }
+//        }
+        
+        DataCenter.shared.addNoteToDevice(id: device.id, comment: comment) { success in
+            if success {
                 DispatchQueue.main.async {
                     self.deviceChanged()
                     self.hideErrorView()
                 }
             } else {
-                DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
+                DispatchQueue.main.async { self.showErrorView(withErrorMessage: "Kommunikációs hiba!") }
             }
         }
     }
     
     func noteChanged(creationDate: Int, comment: String) {
-        NetworkManager.updateNoteOfDevice(device: device, creationDate: creationDate, comment: comment) { data, error in
-            var errorMessage = "Kommunikációs hiba!"
-            
-            if data != nil {
-                do {
-                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-                        if let message = jsonData["message"] as? String {
-                            if message == "success" {
-                                errorMessage = ""
-                            }
-                        }
-                    }
-                } catch { }
-            }
-            
-            if errorMessage.isEmpty {
-                self.device.notes.first(where: { $0.creationDate == creationDate })?.setComment(to: comment)
+//        NetworkManager.updateNoteOfDevice(device: device, creationDate: creationDate, comment: comment) { data, error in
+//            var errorMessage = "Kommunikációs hiba!"
+//
+//            if data != nil {
+//                do {
+//                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+//                        if let message = jsonData["message"] as? String {
+//                            if message == "success" {
+//                                errorMessage = ""
+//                            }
+//                        }
+//                    }
+//                } catch { }
+//            }
+//
+//            if errorMessage.isEmpty {
+//                self.device.notes.first(where: { $0.creationDate == creationDate })?.setComment(to: comment)
+//                DispatchQueue.main.async {
+//                    self.notesTableView.reloadData()
+//                    self.hideErrorView()
+//                }
+//            } else {
+//                DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
+//            }
+//        }
+        
+        DataCenter.shared.updateNoteOfDevice(id: device.id, creationDate: creationDate, comment: comment) { success in
+            if success {
                 DispatchQueue.main.async {
                     self.notesTableView.reloadData()
                     self.hideErrorView()
                 }
             } else {
-                DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
+                DispatchQueue.main.async { self.showErrorView(withErrorMessage: "Kommunikációs hiba!") }
             }
         }
     }

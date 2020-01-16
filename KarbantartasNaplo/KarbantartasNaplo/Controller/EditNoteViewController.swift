@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditNoteViewControllerDelegate {
-    func addNote(date: Date, comment: String)
+    func addNote(comment: String)
     func noteChanged(creationDate: Int, comment: String)
 }
 
@@ -86,7 +86,7 @@ class EditNoteViewController: UIViewController {
         if note != nil {
             delegate?.noteChanged(creationDate: note!.creationDate, comment: commentTextView.text)
         } else {
-            delegate?.addNote(date: Date(), comment: commentTextView.text)
+            delegate?.addNote(comment: commentTextView.text)
         }
         close()
     }

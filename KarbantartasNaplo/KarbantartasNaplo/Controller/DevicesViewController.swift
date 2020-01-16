@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Firebase
 
 class DevicesViewController: UIViewController {
     //MARK: - Outlets
@@ -150,12 +151,32 @@ class DevicesViewController: UIViewController {
 //                "period": device.period,
 //                "lastService": device.lastService,
 //                "notes": notesData
-//                ]
+//            ]
 //            db.collection("devices").document(String(device.id)).setData(deviceData) { error in
 //                if let e = error {
 //                    print("Error writing document: \(e)")
 //                } else {
 //                    print("Document successfully written!")
+//                }
+//            }
+//        }
+        
+//        for device in DataCenter.shared.devices {
+//            let deviceData: [String : Any] = [
+//                "number": device.number,
+//                "id": device.id,
+//                "token": device.token,
+//                "name": device.name,
+//                "itemNo": device.itemNo ?? "null",
+//                "operationTime": device.operationTime ?? "null",
+//                "period": device.period,
+//                "lastService": device.lastService
+//            ]
+//            db.collection("devices").document(String(device.id)).setData(deviceData) { error in
+//                if let e = error {
+//                    print("Error writing device: \(e)")
+//                } else {
+//                    print("Device successfully written!")
 //                }
 //            }
 //        }
