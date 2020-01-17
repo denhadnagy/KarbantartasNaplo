@@ -6,9 +6,9 @@
 //  Copyright © 2018. Daniel. All rights reserved.
 //
 
-import Alamofire
+//import Alamofire
 
-class NetworkManager {
+//class NetworkManager {
     //MARK: - GET requests
 //    static func loadDevices(completion: @escaping (Data?, Error?) -> Void) {
 //        sendRequest(to: "https://5b763aee-2eec-4c50-bc02-b4ad32d58a80.mock.pstmn.io/getDevices", method: .get, parameters: nil, headers: nil, completion: completion)
@@ -80,20 +80,20 @@ class NetworkManager {
 //        sendRequest(to: "http://138.197.187.213/itacademy/login", method: .post, parameters: parameters, headers: headers, completion: completion)
 //    }
     
-    static func signUp(email: String, password: String, passwordAgain: String, completion: @escaping (Data?, Error?) -> Void) {
-        let headers: HTTPHeaders = [
-            "hardwareId": UIDevice.current.identifierForVendor!.uuidString,
-            "os": "iOS",
-            "osVersion": UIDevice.current.systemVersion
-        ]
-        let parameters = [
-            "email": email,
-            "password": password,
-            "repassword": passwordAgain
-        ]
-        
-        sendRequest(to: "http://138.197.187.213/itacademy/register", method: .post, parameters: parameters, headers: headers, completion: completion)
-    }
+//    static func signUp(email: String, password: String, passwordAgain: String, completion: @escaping (Data?, Error?) -> Void) {
+//        let headers: HTTPHeaders = [
+//            "hardwareId": UIDevice.current.identifierForVendor!.uuidString,
+//            "os": "iOS",
+//            "osVersion": UIDevice.current.systemVersion
+//        ]
+//        let parameters = [
+//            "email": email,
+//            "password": password,
+//            "repassword": passwordAgain
+//        ]
+//
+//        sendRequest(to: "http://138.197.187.213/itacademy/register", method: .post, parameters: parameters, headers: headers, completion: completion)
+//    }
     
     //MARK: - DELETE requests
 //    static func deleteNotesOfDevice(device: Device, creationDates: [Int], completion: @escaping (Data?, Error?) -> Void) {
@@ -106,12 +106,12 @@ class NetworkManager {
 //    }
     
     //MARK: - Send request function
-    private static func sendRequest(to url: String, method: HTTPMethod, parameters: Parameters?, headers: HTTPHeaders?, completion: @escaping (Data?, Error?) -> Void) {
-        AF.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
-            switch response.result {
-            case .failure(let error): completion(nil, error)
-            case .success(let value): completion(value, nil)
-            }
-        }
-    }
-}
+//    private static func sendRequest(to url: String, method: HTTPMethod, parameters: Parameters?, headers: HTTPHeaders?, completion: @escaping (Data?, Error?) -> Void) {
+//        AF.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
+//            switch response.result {
+//            case .failure(let error): completion(nil, error)
+//            case .success(let value): completion(value, nil)
+//            }
+//        }
+//    }
+//}

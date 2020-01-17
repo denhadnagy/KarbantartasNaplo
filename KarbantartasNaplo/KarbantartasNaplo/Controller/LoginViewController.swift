@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate {
+    func loginCompleted()
+}
+
 class LoginViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet private weak var loginLabel: UILabel!
@@ -33,6 +37,7 @@ class LoginViewController: UIViewController {
     //MARK: - Properties
     private var isKeyboardShown = false
     private var isRotatingWithKeyboard = false
+    var delegate: LoginViewControllerDelegate?
     
     //MARK: - Standard functions
     override func viewDidLoad() {
@@ -55,12 +60,13 @@ class LoginViewController: UIViewController {
         signUpTextView.delegate = self
         
         let attributedString = NSMutableAttributedString(string: signUpTextView.text)
-        let range = attributedString.mutableString.range(of: "Regisztráljon!")
+        let range = attributedString.mutableString.range(of: "regisztrálása")
         attributedString.addAttribute(NSAttributedString.Key.link, value: "", range: range)
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), range: range)
         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
         signUpTextView.attributedText = attributedString
         signUpTextView.textAlignment = .center
+        signUpTextView.isHidden = DataCenter.shared.user.rawValue < User.admin.rawValue
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,10 +155,10 @@ class LoginViewController: UIViewController {
     //MARK: - Actions
     @IBAction func loginButtonTouchUpInside(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            DataCenter.shared.loginUser(email: email, password: password) { success, errorMessage in
+            DataCenter.shared.loginUser(email: email, password: password) { (success, errorMessage) in
                 if success {
-                    self.view.endEditing(true)
-                    self.dismiss(animated: true, completion: nil)
+                    self.delegate?.loginCompleted()
+                    self.close()
                 } else {
                     self.loginFailedLabel.text = errorMessage!
                     UIView.animate(withDuration: 0.2) {
@@ -164,6 +170,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func cancelButtonTouchUpInside(_ sender: UIButton) {
+        close()
+    }
+    
+    //MARK: - Common functions
+    private func close() {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }

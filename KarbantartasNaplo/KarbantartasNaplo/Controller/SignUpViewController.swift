@@ -146,20 +146,32 @@ class SignUpViewController: UIViewController {
     //MARK: - Actions
     @IBAction func signUpButtonTouchUpInside(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text, let passwordAgain = passwordAgainTextField.text {
-            DataCenter.shared.signUpUser(email: email, password: password, passwordAgain: passwordAgain) { success, errorMessage in
-                if success {
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    self.signUpFailedLabel.text = errorMessage!
-                    UIView.animate(withDuration: 0.2) {
-                        self.signUpFailedLabel.alpha = 1
+            if password == passwordAgain {
+                DataCenter.shared.signupUser(email: email, password: password) { (success, errorMessage) in
+                    if success {
+                        self.close()
+                    } else {
+                        self.signUpFailedLabel.text = errorMessage!
+                        UIView.animate(withDuration: 0.2) {
+                            self.signUpFailedLabel.alpha = 1
+                        }
                     }
+                }
+            } else {
+                signUpFailedLabel.text = "A megadott jelszavak nem egyeznek!"
+                UIView.animate(withDuration: 0.2) {
+                    self.signUpFailedLabel.alpha = 1
                 }
             }
         }
     }
     
     @IBAction func cancelButtonTouchUpInside(_ sender: UIButton) {
+        close()
+    }
+    
+    //MARK: - Common functions
+    private func close() {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }

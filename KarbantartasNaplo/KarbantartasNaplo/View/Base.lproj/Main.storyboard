@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rqV-2b-oa0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rqV-2b-oa0">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -96,7 +96,7 @@
                                     <constraint firstItem="fkb-5x-BIS" firstAttribute="top" secondItem="olM-ph-L7N" secondAttribute="top" id="or3-ZO-Z3b"/>
                                 </constraints>
                             </scrollView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Nincsen fiókja? Regisztráljon!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YUH-Xp-3JW">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Új vezető regisztrálása" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YUH-Xp-3JW">
                                 <rect key="frame" x="0.0" y="768" width="414" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -464,10 +464,10 @@
                                 <rect key="frame" x="10" y="97.999999999999972" width="394" height="403.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="M73-8N-oQj">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="199"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="199.33333333333334"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LP-5y-Gh8" customClass="SeverityView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="194.66666666666666" height="199"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194.66666666666666" height="199.33333333333334"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -475,7 +475,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ut-sM-b6X" customClass="SeverityView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="199.66666666666663" y="0.0" width="194.33333333333337" height="199"/>
+                                                <rect key="frame" x="199.66666666666663" y="0.0" width="194.33333333333337" height="199.33333333333334"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -485,10 +485,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QfN-fl-Xez">
-                                        <rect key="frame" x="0.0" y="204" width="394" height="199.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="204.33333333333331" width="394" height="199"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD4-3g-GqW" customClass="SeverityView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="194.66666666666666" height="199.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194.66666666666666" height="199"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -496,7 +496,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dh6-p2-3gH" customClass="SeverityView" customModule="KarbantartasNaplo" customModuleProvider="target">
-                                                <rect key="frame" x="199.66666666666663" y="0.0" width="194.33333333333337" height="199.33333333333334"/>
+                                                <rect key="frame" x="199.66666666666663" y="0.0" width="194.33333333333337" height="199"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -828,11 +828,18 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X2P-tq-NbX" secondAttribute="trailing" constant="20" symbolic="YES" id="kxH-7H-2BO"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oI-Bd-sCO">
-                                <rect key="frame" x="0.0" y="746" width="414" height="2"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view hidden="YES" alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5my-7z-1nM" userLabel="Top Separator View">
+                                <rect key="frame" x="0.0" y="79" width="414" height="1"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="fb9-w4-Xzz"/>
+                                    <constraint firstAttribute="height" constant="1" id="dZH-vX-VjS"/>
+                                </constraints>
+                            </view>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oI-Bd-sCO" userLabel="Bottom Separator View">
+                                <rect key="frame" x="0.0" y="747" width="414" height="1"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="fb9-w4-Xzz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6X-ha-4eK">
@@ -849,8 +856,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                                 </constraints>
                                                 <state key="normal" image="gmail"/>
                                                 <connections>
-                                                    <action selector="cancelButtonTouchUpInside:" destination="yF9-6v-mry" eventType="touchUpInside" id="f8V-uT-W0S"/>
-                                                    <action selector="contactButtonTouchUpInside:" destination="yF9-6v-mry" eventType="touchUpInside" id="xdr-qc-Mkn"/>
+                                                    <action selector="contactButtonTouchUpInside:" destination="yF9-6v-mry" eventType="touchUpInside" id="caz-sW-HWo"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eg-2H-3Kk">
@@ -888,14 +894,17 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="5my-7z-1nM" firstAttribute="top" secondItem="Cl2-uj-qS1" secondAttribute="bottom" id="1v6-KJ-v3X"/>
                             <constraint firstItem="I6X-ha-4eK" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="IEf-qe-BC5"/>
                             <constraint firstItem="Cl2-uj-qS1" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="Ms0-nv-CmL"/>
                             <constraint firstItem="1oI-Bd-sCO" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="OKB-bk-L0R"/>
+                            <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="5my-7z-1nM" secondAttribute="trailing" constant="20" symbolic="YES" id="Pk2-Mz-NYR"/>
                             <constraint firstItem="I6X-ha-4eK" firstAttribute="top" secondItem="1oI-Bd-sCO" secondAttribute="bottom" id="VBK-rc-1nj"/>
                             <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="Pfi-rz-EUA" secondAttribute="trailing" constant="40" id="Vv6-V5-Lmw"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="bottom" secondItem="GbD-o3-I4x" secondAttribute="bottom" id="XDG-bO-grC"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="top" secondItem="GbD-o3-I4x" secondAttribute="top" id="bmx-W4-rUI"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" constant="40" id="du1-wH-HLY"/>
+                            <constraint firstItem="5my-7z-1nM" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" constant="20" symbolic="YES" id="duX-mD-LL8"/>
                             <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="Cl2-uj-qS1" secondAttribute="trailing" id="fhF-Uf-BRF"/>
                             <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="I6X-ha-4eK" secondAttribute="trailing" id="jxQ-Do-5Pu"/>
                             <constraint firstItem="Cl2-uj-qS1" firstAttribute="top" secondItem="GbD-o3-I4x" secondAttribute="top" id="v9l-hD-g4f"/>
@@ -912,6 +921,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                         <outlet property="scrollView" destination="Pfi-rz-EUA" id="Uas-IS-J1g"/>
                         <outlet property="titleLabel" destination="5Rh-Ap-5fg" id="3O2-ap-zlE"/>
                         <outlet property="titleLabelTop" destination="bDQ-Cr-kIL" id="zfN-tj-ygN"/>
+                        <outlet property="topSeparatorView" destination="5my-7z-1nM" id="THP-XF-BpO"/>
                         <outlet property="topView" destination="Cl2-uj-qS1" id="4uS-YZ-yCb"/>
                     </connections>
                 </viewController>
@@ -1152,7 +1162,13 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pFs-sk-3b4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Eszközök" id="LOT-mc-UvD"/>
+                    <navigationItem key="navigationItem" title="Eszközök" id="LOT-mc-UvD">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-customer-logout" id="dJW-yt-kOG">
+                            <connections>
+                                <action selector="logoutBarButtonItemAction:" destination="8fi-95-wDR" id="io1-OV-M11"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="aboutButtonCenterX" destination="Qlp-xz-o08" id="Po3-fs-INF"/>
                         <outlet property="actualFilterButton" destination="nSi-BH-zgv" id="Pax-ge-sqU"/>
@@ -1782,6 +1798,7 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
         <image name="icons8-chart" width="30" height="30"/>
         <image name="icons8-checkmark" width="30" height="30"/>
         <image name="icons8-customer" width="30" height="30"/>
+        <image name="icons8-customer-logout" width="30" height="30"/>
         <image name="icons8-delete" width="30" height="30"/>
         <image name="icons8-gear" width="30" height="30"/>
         <image name="icons8-info" width="30" height="30"/>

@@ -45,6 +45,7 @@ class EditNoteViewController: UIViewController {
             dateFormatter.dateFormat = "HH:mm"
             creationTimeLabel.text = dateFormatter.string(from: creationDate)
             commentTextView.text = note!.comment
+            commentTextView.isEditable = DataCenter.shared.user.rawValue > User.nobody.rawValue
             initialComment = note!.comment
         }
         
@@ -62,8 +63,10 @@ class EditNoteViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let location = commentTextView.text.count - 1
-        commentTextView.scrollRangeToVisible(NSMakeRange(location, 1))
+        if commentTextView.isEditable {
+            let location = commentTextView.text.count - 1
+            commentTextView.scrollRangeToVisible(NSMakeRange(location, 1))
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

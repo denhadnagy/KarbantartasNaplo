@@ -36,7 +36,7 @@ enum Severity: String {
     }
 }
 
-enum User {
+enum User: Int {
     case nobody
     case boss
     case admin

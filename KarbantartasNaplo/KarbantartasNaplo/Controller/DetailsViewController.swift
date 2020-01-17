@@ -58,6 +58,7 @@ class DetailsViewController: UIViewController {
         let lastServiceDate = Date(timeIntervalSince1970: TimeInterval(device.lastService))
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
+        let isUserLoggedIn = DataCenter.shared.user.rawValue > User.nobody.rawValue
         
         nameLabel.text = device.name
         tokenLabel.text = device.token
@@ -68,10 +69,12 @@ class DetailsViewController: UIViewController {
         lastServiceLabel.text = dateFormatter.string(from: lastServiceDate)
         serviceButton.layer.cornerRadius = 5
         serviceButton.backgroundColor = Constants.color
-        serviceButton.isEnabled = device.operationTime != nil   //TODO:
+        serviceButton.isEnabled = device.operationTime != nil && isUserLoggedIn
+        serviceButton.alpha = isUserLoggedIn ? 1 : 0.6
         setPeriodButton.layer.cornerRadius = 5
         setPeriodButton.backgroundColor = Constants.color
-        setPeriodButton.isEnabled = true    //TODO:
+        setPeriodButton.isEnabled = isUserLoggedIn
+        setPeriodButton.alpha = isUserLoggedIn ? 1 : 0.6
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -107,71 +110,6 @@ class DetailsViewController: UIViewController {
     
     @IBAction func serviceViewContinueButtonTouchUpInside(_ sender: UIButton) {
         closePopupView(popupView: serviceView)
-        
-//        NetworkManager.serviceDevice(device: device) { data, error in
-//            var errorMessage = "Kommunikációs hiba!"
-//            let oldOperationTime = self.device.operationTime
-//
-//            if data != nil {
-//                do {
-//                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-//                        if let message = jsonData["message"] as? String {
-//                            if message == "success" {
-//                                errorMessage = ""
-//                            }
-//                        }
-//                    }
-//                } catch { }
-//            }
-//
-//            if errorMessage.isEmpty {
-//                self.device.setOperationTimeToZero()
-//
-//                let lastServiceDate = Date(timeIntervalSince1970: TimeInterval(self.device.lastService))
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "yyyy.MM.dd"
-//
-//                DispatchQueue.main.async {
-//                    self.operationTimeLabel.text = self.device.operationTime != nil ? "\(self.device.operationTime!) h" : "?"
-//                    self.lastServiceLabel.text = dateFormatter.string(from: lastServiceDate)
-//                    self.rateProgressView.progressLineColor = self.device.severity.color
-//                    self.rateProgressView.value = self.device.rate ?? 0.0
-//                }
-//                self.delegateInDevicesViewController?.deviceChanged()
-//
-//                let comment = """
-//                Üzemidő nullázása.
-//                Előző karbantartás óta eltelt üzemidő: \(oldOperationTime != nil ? String(oldOperationTime!) : "?") h.
-//                Karbantartási periódus: \(self.device.period) h.
-//                """
-//                NetworkManager.addNoteToDevice(device: self.device, creationDate: self.device.lastService, comment: comment) { data, error in
-//                    errorMessage = "Kommunikációs hiba!"
-//
-//                    if data != nil {
-//                        do {
-//                            if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-//                                if let message = jsonData["message"] as? String {
-//                                    if message == "success" {
-//                                        errorMessage = ""
-//                                    }
-//                                }
-//                            }
-//                        } catch { }
-//                    }
-//
-//                    if errorMessage.isEmpty {
-//                        self.device.addNote(date: Date(timeIntervalSince1970: TimeInterval(self.device.lastService)), comment: comment)
-//                        self.delegateInNotesViewController?.deviceChanged()
-//                        DispatchQueue.main.async { self.hideErrorView() }
-//                    } else {
-//                        DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
-//                    }
-//                }
-//            } else {
-//                DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
-//            }
-//        }
-        
         DataCenter.shared.serviceDevice(id: device.id) { success in
             if success {
                 let lastServiceDate = Date(timeIntervalSince1970: TimeInterval(self.device.lastService))
@@ -219,62 +157,6 @@ class DetailsViewController: UIViewController {
             showErrorView(withErrorMessage: "Periódus nem lehet 0!")
             return
         }
-        
-//        NetworkManager.setDevicePeriod(device: device, period: newPeriod) { data, error in
-//            var errorMessage = "Kommunikációs hiba!"
-//            let oldPeriod = self.device.period
-//
-//            if data != nil {
-//                do {
-//                    if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-//                        if let message = jsonData["message"] as? String {
-//                            if message == "success" {
-//                                errorMessage = ""
-//                            }
-//                        }
-//                    }
-//                } catch { }
-//            }
-//
-//            if errorMessage.isEmpty {
-//                self.device.setPeriod(to: newPeriod)
-//
-//                DispatchQueue.main.async {
-//                    self.periodLabel.text = "\(self.device.period) h"
-//                    self.rateProgressView.progressLineColor = self.device.severity.color
-//                    self.rateProgressView.value = self.device.rate ?? 0.0
-//                }
-//                self.delegateInDevicesViewController?.deviceChanged()
-//
-//                let comment = "Karbantartási periódus módosítása: \(oldPeriod) h -> \(self.device.period) h."
-//                let date = Date()
-//                NetworkManager.addNoteToDevice(device: self.device, creationDate: Int(date.timeIntervalSince1970), comment: comment) { data, error in
-//                    errorMessage = "Kommunikációs hiba!"
-//
-//                    if data != nil {
-//                        do {
-//                            if let jsonData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-//                                if let message = jsonData["message"] as? String {
-//                                    if message == "success" {
-//                                        errorMessage = ""
-//                                    }
-//                                }
-//                            }
-//                        } catch { }
-//                    }
-//
-//                    if errorMessage.isEmpty {
-//                        self.device.addNote(date: date, comment: comment)
-//                        self.delegateInNotesViewController?.deviceChanged()
-//                        DispatchQueue.main.async { self.hideErrorView() }
-//                    } else {
-//                        DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
-//                    }
-//                }
-//            } else {
-//                DispatchQueue.main.async { self.showErrorView(withErrorMessage: errorMessage) }
-//            }
-//        }
         
         DataCenter.shared.setDevicePeriod(id: device.id, newPeriod: newPeriod) { success in
             if success {

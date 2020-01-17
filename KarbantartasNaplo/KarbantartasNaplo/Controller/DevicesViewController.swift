@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
 
 class DevicesViewController: UIViewController {
     //MARK: - Outlets
@@ -69,6 +69,8 @@ class DevicesViewController: UIViewController {
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
         
         errorView.delegate = self
         devicesTableView.dataSource = self
@@ -110,13 +112,34 @@ class DevicesViewController: UIViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? DetailsViewController {
-            vc.delegateInDevicesViewController = self
-            vc.device = selectedDevice
+        switch segue.identifier {
+        case "showDetailsSegue":
+            if let vc = segue.destination as? DetailsViewController {
+                vc.delegateInDevicesViewController = self
+                vc.device = selectedDevice
+            }
+        case "showLoginSegue":
+            if let vc = segue.destination as? LoginViewController {
+                vc.delegate = self
+            }
+        default: break
         }
     }
     
     //MARK: - Actions
+    @IBAction func logoutBarButtonItemAction(_ sender: UIBarButtonItem) {
+        DataCenter.shared.logoutUser { (success, errorMessage) in
+            if success {
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+            } else {
+                DispatchQueue.main.async {
+                    self.showErrorView(withErrorMessage: errorMessage!)
+                }
+            }
+        }
+    }
+    
     @IBAction func filterButtonTouchUpInside(_ sender: MyButton) {
         sender.isChecked = !sender.isChecked
         filterDevices()
@@ -130,56 +153,6 @@ class DevicesViewController: UIViewController {
         }
 
         isMenuShown = !isMenuShown
-        
-//        let db = Firestore.firestore()
-//        for device in DataCenter.shared.devices {
-//            var notesData = [[String: Any]]()
-//            for note in device.notes {
-//                let noteData: [String : Any] = [
-//                    "creationDate": note.creationDate,
-//                    "comment": note.comment
-//                ]
-//                notesData.append(noteData)
-//            }
-//            let deviceData: [String : Any] = [
-//                "number": device.number,
-//                "id": device.id,
-//                "token": device.token,
-//                "name": device.name,
-//                "itemNo": device.itemNo ?? "null",
-//                "operationTime": device.operationTime ?? "null",
-//                "period": device.period,
-//                "lastService": device.lastService,
-//                "notes": notesData
-//            ]
-//            db.collection("devices").document(String(device.id)).setData(deviceData) { error in
-//                if let e = error {
-//                    print("Error writing document: \(e)")
-//                } else {
-//                    print("Document successfully written!")
-//                }
-//            }
-//        }
-        
-//        for device in DataCenter.shared.devices {
-//            let deviceData: [String : Any] = [
-//                "number": device.number,
-//                "id": device.id,
-//                "token": device.token,
-//                "name": device.name,
-//                "itemNo": device.itemNo ?? "null",
-//                "operationTime": device.operationTime ?? "null",
-//                "period": device.period,
-//                "lastService": device.lastService
-//            ]
-//            db.collection("devices").document(String(device.id)).setData(deviceData) { error in
-//                if let e = error {
-//                    print("Error writing device: \(e)")
-//                } else {
-//                    print("Device successfully written!")
-//                }
-//            }
-//        }
     }
     
     //MARK: - Common functions
@@ -234,6 +207,14 @@ extension DevicesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedDevice = displayedDevices[indexPath.row]
         performSegue(withIdentifier: "showDetailsSegue", sender: nil)
+    }
+}
+
+//MARK: - Extension: LoginViewControllerDelegate
+extension DevicesViewController: LoginViewControllerDelegate {
+    func loginCompleted() {
+        navigationItem.rightBarButtonItem?.isEnabled = true
+        navigationItem.rightBarButtonItem?.tintColor = nil
     }
 }
 

@@ -11,6 +11,7 @@ import UIKit
 class InformationViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet private weak var topView: UIView!
+    @IBOutlet private weak var topSeparatorView: UIView!
     @IBOutlet private weak var bottomView: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -23,7 +24,9 @@ class InformationViewController: UIViewController {
     //MARK: - Standard functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        scrollView.delegate = self
+        
         topView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         bottomView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         titleLabel.alpha = 0
@@ -63,5 +66,12 @@ class InformationViewController: UIViewController {
         if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+}
+
+//MARK: - Extension: UIScrollViewDelegate
+extension InformationViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        topSeparatorView.isHidden = scrollView.contentOffset.y < 20
     }
 }
