@@ -38,7 +38,7 @@ class ErrorView: UIView {
         Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)
         addSubview(errorView)
         
-        errorView.frame = self.bounds
+        errorView.frame = bounds
         errorView.layer.cornerRadius = 10
         errorView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }

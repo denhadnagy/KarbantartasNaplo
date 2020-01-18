@@ -56,7 +56,7 @@ class CircleProgressView: UIView {
             
             progressLayer.strokeEnd = CGFloat(toValue)
             progressLayer.add(animation, forKey: "progress")
-                        
+            
             valueLabel.countFromCurrentValue(to: CGFloat(value), withDuration: duration)
         }
     }

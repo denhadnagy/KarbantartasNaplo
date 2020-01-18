@@ -29,6 +29,7 @@ class InformationViewController: UIViewController {
         
         topView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         bottomView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        topSeparatorView.alpha = 0
         titleLabel.alpha = 0
         contentLabel.alpha = 0
         titleLabelTop.constant = 130
@@ -72,6 +73,11 @@ class InformationViewController: UIViewController {
 //MARK: - Extension: UIScrollViewDelegate
 extension InformationViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        topSeparatorView.isHidden = scrollView.contentOffset.y < 20
+        switch scrollView.contentOffset.y {
+        case ..<20: topSeparatorView.alpha = 0
+        case ..<30: topSeparatorView.alpha = 0.2 * ((scrollView.contentOffset.y - 20) / 10)
+        case 30...: topSeparatorView.alpha = 0.2
+        default: break
+        }
     }
 }

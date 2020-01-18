@@ -54,8 +54,10 @@ class SeverityView: UIView {
         
         layer.cornerRadius = 10
         severityView.layer.cornerRadius = 10
-        severityView.frame = self.bounds
+        severityView.frame = bounds
         severityView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        layoutIfNeeded()
     }
     
     //MARK: - Standard functions

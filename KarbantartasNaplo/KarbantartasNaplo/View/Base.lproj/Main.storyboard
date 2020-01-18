@@ -828,16 +828,16 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X2P-tq-NbX" secondAttribute="trailing" constant="20" symbolic="YES" id="kxH-7H-2BO"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5my-7z-1nM" userLabel="Top Separator View">
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5my-7z-1nM" userLabel="Top Separator View">
                                 <rect key="frame" x="0.0" y="79" width="414" height="1"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="dZH-vX-VjS"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oI-Bd-sCO" userLabel="Bottom Separator View">
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oI-Bd-sCO" userLabel="Bottom Separator View">
                                 <rect key="frame" x="0.0" y="747" width="414" height="1"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="fb9-w4-Xzz"/>
                                 </constraints>
@@ -898,13 +898,13 @@ Integer id sem ut metus convallis posuere. Sed sem massa, pharetra at hendrerit 
                             <constraint firstItem="I6X-ha-4eK" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="IEf-qe-BC5"/>
                             <constraint firstItem="Cl2-uj-qS1" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="Ms0-nv-CmL"/>
                             <constraint firstItem="1oI-Bd-sCO" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" id="OKB-bk-L0R"/>
-                            <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="5my-7z-1nM" secondAttribute="trailing" constant="20" symbolic="YES" id="Pk2-Mz-NYR"/>
+                            <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="5my-7z-1nM" secondAttribute="trailing" symbolic="YES" id="Pk2-Mz-NYR"/>
                             <constraint firstItem="I6X-ha-4eK" firstAttribute="top" secondItem="1oI-Bd-sCO" secondAttribute="bottom" id="VBK-rc-1nj"/>
                             <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="Pfi-rz-EUA" secondAttribute="trailing" constant="40" id="Vv6-V5-Lmw"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="bottom" secondItem="GbD-o3-I4x" secondAttribute="bottom" id="XDG-bO-grC"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="top" secondItem="GbD-o3-I4x" secondAttribute="top" id="bmx-W4-rUI"/>
                             <constraint firstItem="Pfi-rz-EUA" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" constant="40" id="du1-wH-HLY"/>
-                            <constraint firstItem="5my-7z-1nM" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" constant="20" symbolic="YES" id="duX-mD-LL8"/>
+                            <constraint firstItem="5my-7z-1nM" firstAttribute="leading" secondItem="GbD-o3-I4x" secondAttribute="leading" symbolic="YES" id="duX-mD-LL8"/>
                             <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="Cl2-uj-qS1" secondAttribute="trailing" id="fhF-Uf-BRF"/>
                             <constraint firstItem="GbD-o3-I4x" firstAttribute="trailing" secondItem="I6X-ha-4eK" secondAttribute="trailing" id="jxQ-Do-5Pu"/>
                             <constraint firstItem="Cl2-uj-qS1" firstAttribute="top" secondItem="GbD-o3-I4x" secondAttribute="top" id="v9l-hD-g4f"/>
